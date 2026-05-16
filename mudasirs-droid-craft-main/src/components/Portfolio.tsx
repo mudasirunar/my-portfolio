@@ -45,11 +45,12 @@ import bgCollection from "@/assets/bentoapp/collection_screen.jpg";
 import bgImageViewer from "@/assets/bentoapp/image_viewer_overlay.jpg";
 
 import taCover from "@/assets/todoapp/cover.jpeg";
-import taHome from "@/assets/todoapp/home_screen.jpg";
-import taSearchHighlight from "@/assets/todoapp/search_highligth.jpg";
-import taTasks from "@/assets/todoapp/tasks_screen.jpg";
-import taAiRewrite from "@/assets/todoapp/ai_rewrite_styling_dialog.jpg";
-import taPdfExport from "@/assets/todoapp/pdf_export_dialog.jpeg";
+import taHome from "@/assets/todoapp/home_screen.png";
+import taTasks from "@/assets/todoapp/tasks_screen.png";
+import taSearchHighlight from "@/assets/todoapp/search_highligth.png";
+import taAiRewrite from "@/assets/todoapp/ai_rewrite_styling_dialog.png";
+import taVoiceInput from "@/assets/todoapp/voice_input_bottom_sheet.png";
+import taPdfPreview from "@/assets/todoapp/pdf_preview_screen.png";
 
 import piCover from "@/assets/phoneinfo/cover.jpeg";
 import piHome from "@/assets/phoneinfo/home_screen.png";
@@ -66,10 +67,11 @@ const phoneInfoImages = [
 
 const todoAppImages = [
   taHome,
-  taSearchHighlight,
   taTasks,
+  taSearchHighlight,
   taAiRewrite,
-  taPdfExport
+  taVoiceInput,
+  taPdfPreview
 ];
 
 const bentoAppImages = [
@@ -492,13 +494,13 @@ const SmartLedgerDesc = () => (
         <Sparkles className="w-5 h-5 text-primary" /> Key Features
       </h4>
       <ul className="space-y-3 list-none">
-        <li className="flex gap-2"><span className="shrink-0 text-xl">📊</span> <span><strong>Dynamic Ledger Management:</strong> Create highly customized ledgers tailored to your needs. Support for Single Date, Month-Only, and Start/End Date ranges.</span></li>
-        <li className="flex gap-2"><span className="shrink-0 text-xl">📝</span> <span><strong>Comprehensive Expense Tracking:</strong> Manage daily logs effortlessly. Add titles, amounts, descriptions, and attach up to multiple receipt photos.</span></li>
-        <li className="flex gap-2"><span className="shrink-0 text-xl">🔔</span> <span><strong>Smart Notification System:</strong> Intelligent reminders for daily logs with direct input and quick-reply actions, including a fallback auto-reminder mechanism.</span></li>
-        <li className="flex gap-2"><span className="shrink-0 text-xl">🤖</span> <span><strong>AI-Powered Financial Assistant:</strong> Integrates with Groq API to analyze your data, offering spending predictions and personalized optimization tips.</span></li>
-        <li className="flex gap-2"><span className="shrink-0 text-xl">📈</span> <span><strong>Advanced Analytics:</strong> Interactive, beautiful charts providing a visual breakdown of your financial distribution.</span></li>
-        <li className="flex gap-2"><span className="shrink-0 text-xl">☁️</span> <span><strong>Smart Backup & Restore:</strong> Local and Google Drive backup options with an intelligent restore mechanism that safely ignores duplicates.</span></li>
-        <li className="flex gap-2"><span className="shrink-0 text-xl">🗑️</span> <span><strong>Safe Deletion (Trash Bin):</strong> An automated safety net that holds deleted records and purges them after 15 days.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>Dynamic Ledger Management:</strong> Create highly customized ledgers tailored to your needs. Support for Single Date, Month-Only, and Start/End Date ranges.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>Comprehensive Expense Tracking:</strong> Manage daily logs effortlessly. Add titles, amounts, descriptions, and attach up to multiple receipt photos.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>Smart Notification System:</strong> Intelligent reminders for daily logs with direct input and quick-reply actions, including a fallback auto-reminder mechanism.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>AI-Powered Financial Assistant:</strong> Integrates with Groq API to analyze your data, offering spending predictions and personalized optimization tips.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>Advanced Analytics:</strong> Interactive, beautiful charts providing a visual breakdown of your financial distribution.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>Smart Backup & Restore:</strong> Local and Google Drive backup options with an intelligent restore mechanism that safely ignores duplicates.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>Safe Deletion (Trash Bin):</strong> An automated safety net that holds deleted records and purges them after 15 days.</span></li>
       </ul>
     </div>
 
@@ -570,13 +572,13 @@ const WeatherAppDesc = () => (
         <Sparkles className="w-5 h-5 text-primary" /> Key Features
       </h4>
       <ul className="space-y-3 list-none">
-        <li className="flex gap-2"><span className="shrink-0 text-xl">🌦️</span> <span><strong>Real-Time Weather:</strong> Instant access to current temperature, "feels like", humidity, wind speed, visibility, and barometric pressure.</span></li>
-        <li className="flex gap-2"><span className="shrink-0 text-xl">🕒</span> <span><strong>24-Hour Forecast:</strong> Detailed hourly predictions to help plan your day, including temperature variances and expected peaks.</span></li>
-        <li className="flex gap-2"><span className="shrink-0 text-xl">🌅</span> <span><strong>Solar Metrics:</strong> Accurate sunrise and sunset times dynamically adjusted to the local timezone.</span></li>
-        <li className="flex gap-2"><span className="shrink-0 text-xl">📍</span> <span><strong>Auto-Detect Location:</strong> Automatically fetches your current location's weather using GPS and Fused Location Provider.</span></li>
-        <li className="flex gap-2"><span className="shrink-0 text-xl">🌍</span> <span><strong>Global City Search:</strong> Find weather data for any city worldwide using the integrated geocoding search.</span></li>
-        <li className="flex gap-2"><span className="shrink-0 text-xl">🎨</span> <span><strong>Dynamic Animated Backgrounds:</strong> Custom Canvas-based animations for Clear, Cloudy, Rain, Snow, Thunderstorm, Mist, and Smoke.</span></li>
-        <li className="flex gap-2"><span className="shrink-0 text-xl">💾</span> <span><strong>Save Favorite Cities:</strong> Persist your favorite searched locations locally for quick access using a swipeable pager interface.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>Real-Time Weather:</strong> Instant access to current temperature, "feels like", humidity, wind speed, visibility, and barometric pressure.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>24-Hour Forecast:</strong> Detailed hourly predictions to help plan your day, including temperature variances and expected peaks.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>Solar Metrics:</strong> Accurate sunrise and sunset times dynamically adjusted to the local timezone.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>Auto-Detect Location:</strong> Automatically fetches your current location's weather using GPS and Fused Location Provider.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>Global City Search:</strong> Find weather data for any city worldwide using the integrated geocoding search.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>Dynamic Animated Backgrounds:</strong> Custom Canvas-based animations for Clear, Cloudy, Rain, Snow, Thunderstorm, Mist, and Smoke.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>Save Favorite Cities:</strong> Persist your favorite searched locations locally for quick access using a swipeable pager interface.</span></li>
       </ul>
     </div>
 
@@ -649,18 +651,18 @@ const BentoAppDesc = () => (
       <div className="space-y-4">
         <div>
           <strong className="text-foreground">Grid System & Collections</strong>
-          <ul className="list-disc list-inside mt-2 space-y-1 ml-1 text-sm">
-            <li><strong>Dynamic Bento Layout:</strong> Intelligent grid system that auto-aligns items.</li>
-            <li><strong>Multiple Shape Variations:</strong> Rectangular (Square, Tall, Wide, Small) and clipping shapes (Edged, Rounded, Circular).</li>
-            <li><strong>Custom Collections:</strong> Create, edit, and organize multiple themed collections.</li>
+          <ul className="mt-2 space-y-2 ml-1 text-sm list-none">
+            <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>Dynamic Bento Layout:</strong> Intelligent grid system that auto-aligns items.</span></li>
+            <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>Multiple Shape Variations:</strong> Rectangular (Square, Tall, Wide, Small) and clipping shapes (Edged, Rounded, Circular).</span></li>
+            <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>Custom Collections:</strong> Create, edit, and organize multiple themed collections.</span></li>
           </ul>
         </div>
         <div>
           <strong className="text-foreground">UI/UX & Image Handling</strong>
-          <ul className="list-disc list-inside mt-2 space-y-1 ml-1 text-sm">
-            <li><strong>Rich Customization:</strong> Customize tile colors, text styling, typography, and content alignment.</li>
-            <li><strong>Immersive Experience:</strong> Edge-to-edge design with dynamic status bar handling and smooth animations.</li>
-            <li><strong>Advanced Image Viewer:</strong> Full-screen overlay with pinch-to-zoom and swipe-to-dismiss.</li>
+          <ul className="mt-2 space-y-2 ml-1 text-sm list-none">
+            <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>Rich Customization:</strong> Customize tile colors, text styling, typography, and content alignment.</span></li>
+            <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>Immersive Experience:</strong> Edge-to-edge design with dynamic status bar handling and smooth animations.</span></li>
+            <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>Advanced Image Viewer:</strong> Full-screen overlay with pinch-to-zoom and swipe-to-dismiss.</span></li>
           </ul>
         </div>
       </div>
@@ -735,7 +737,7 @@ const TodoAppDesc = () => (
     <div>
       <h3 className="text-3xl font-bold text-foreground mb-4">TodoApp</h3>
       <p className="text-base leading-relaxed">
-        TodoApp is a modern, feature-rich task management application designed to boost productivity. It goes beyond simple task lists by seamlessly integrating AI to refine and rewrite your tasks, ensuring your project planning is as clear and professional as possible.
+        TodoApp is a modern, feature-rich task management application designed to boost productivity. It goes beyond simple task lists by seamlessly integrating AI to refine and rewrite your tasks, voice input for hands-free data entry, and robust cloud sync to keep your projects updated across all your devices.
       </p>
     </div>
 
@@ -743,28 +745,25 @@ const TodoAppDesc = () => (
       <h4 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
         <Sparkles className="w-5 h-5 text-primary" /> Key Features
       </h4>
-      <ul className="space-y-3 list-none">
-        <li className="flex gap-2"><span className="shrink-0 text-xl">🤖</span> <span><strong>AI-Powered Task Rewriting:</strong> Utilizes the Groq API (running llama-3.3-70b-versatile) to instantly rewrite tasks in Standard, Professional, or Casual styles.</span></li>
-        <li className="flex gap-2"><span className="shrink-0 text-xl">🔍</span> <span><strong>Dynamic Search with Highlights:</strong> Instantly filter collections and tasks. The application dynamically highlights matching queries directly within the text.</span></li>
-        <li className="flex gap-2"><span className="shrink-0 text-xl">🗂️</span> <span><strong>Organized Collections:</strong> Group tasks into projects, and pin high-priority collections to the top of your workspace.</span></li>
-        <li className="flex gap-2"><span className="shrink-0 text-xl">📊</span> <span><strong>Visual Progress Tracking:</strong> Multi-color progress bars that dynamically reflect the ratio of completed and favorited tasks.</span></li>
-        <li className="flex gap-2"><span className="shrink-0 text-xl">⏪</span> <span><strong>Robust Undo/Redo System:</strong> Built-in stack ensuring accidental deletions or changes are easily reverted.</span></li>
-        <li className="flex gap-2"><span className="shrink-0 text-xl">📄</span> <span><strong>PDF Export:</strong> Easily export entire task collections into beautifully formatted PDF documents.</span></li>
+      <ul className="space-y-4 list-none">
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>Cloud Sync & Authentication:</strong> Seamlessly syncs your tasks and collections across multiple devices in real-time using Firebase. Includes offline support, robust conflict resolution, and seamless account linking via Google Sign-In.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>Voice-to-Text Entry:</strong> Integrated speech recognition allows you to quickly add or append text to tasks hands-free using your device's microphone.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>AI-Powered Task Rewriting:</strong> Utilizes the Groq API (running the <code>llama-3.3-70b-versatile</code> model) to instantly rewrite task descriptions. Users can choose between Standard, Professional, and Casual styles to match the context of their work.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>Dynamic Search with Highlights:</strong> Instantly filter collections and tasks from the dashboard. The application dynamically highlights matching search queries directly within the text for rapid navigation and context discovery.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>Organized Collections:</strong> Group tasks into overarching projects or collections. Pin high-priority collections to the top of your workspace for immediate access.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>Visual Progress Tracking:</strong> Get a quick overview of your productivity with multi-color progress bars that dynamically reflect the ratio of completed tasks, including specialized indicators for "Favorited" tasks.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>PDF Preview & Export:</strong> Preview beautifully formatted PDF documents of your task collections before seamlessly exporting them for sharing or offline tracking. Customizable settings allow you to include or exclude summaries, favorites, and task statuses.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>Data Backup & Restore:</strong> Safely export and backup your entire workspace (including app settings and task data) locally or securely via Google Drive integration. Import your <code>.zip</code> backups at any time to restore your state.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>Interactive UI/UX:</strong> Built entirely with Jetpack Compose, featuring smooth swipe-to-dismiss actions, haptic feedback, spring-physics animations, and an intuitive, modern aesthetic.</span></li>
       </ul>
     </div>
 
     <div>
       <h4 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-        <Layers className="w-5 h-5 text-teal" /> Architecture & Tech Stack
+        <Cpu className="w-5 h-5 text-primary" /> Tech Stack
       </h4>
-      <p className="mb-4 text-base">This project strictly follows the <strong>MVVM (Model-View-ViewModel)</strong> architectural pattern to ensure a clean separation of concerns and a highly testable, maintainable codebase.</p>
-      <ul className="space-y-3 mb-6">
-        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-teal mt-2 shrink-0" /><span><strong>Model:</strong> Room Database acts as the single source of truth for local data.</span></li>
-        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-teal mt-2 shrink-0" /><span><strong>ViewModel:</strong> Manages UI state, business logic (custom Undo/Redo stack), and bridges the UI and database using Kotlin Flows.</span></li>
-        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-teal mt-2 shrink-0" /><span><strong>Network Layer:</strong> A lightweight, decoupled AiHelper object leverages Retrofit to handle asynchronous API calls to the Groq API.</span></li>
-      </ul>
       <div className="flex flex-wrap gap-2 mb-2">
-        {["Kotlin", "Jetpack Compose", "Room Database", "Retrofit", "Groq API", "Coroutines & Flow", "Gson"].map(t => (
+        {["Kotlin", "Jetpack Compose", "MVVM Architecture", "Room Database", "Firebase Firestore", "Firebase Authentication", "Android Credential Manager", "WorkManager", "Retrofit", "Coroutines & Flow", "Gson"].map(t => (
           <Badge key={t} variant="secondary" className="px-3 py-1 text-xs">{t}</Badge>
         ))}
       </div>
@@ -772,13 +771,14 @@ const TodoAppDesc = () => (
 
     <div>
       <h4 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-        <Zap className="w-5 h-5 text-yellow-500" /> Future Improvements
+        <Layers className="w-5 h-5 text-teal" /> Architecture
       </h4>
+      <p className="mb-4 text-base">This project follows the <strong>MVVM (Model-View-ViewModel)</strong> architectural pattern to ensure a clean separation of concerns and a highly testable, maintainable codebase.</p>
       <ul className="space-y-3">
-        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-yellow-500 mt-2 shrink-0" /><span><strong>Cloud Sync & Auth:</strong> Implement Firebase Authentication and Firestore for cross-device syncing.</span></li>
-        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-yellow-500 mt-2 shrink-0" /><span><strong>Collaborative Workspaces:</strong> Real-time sharing of task collections with other users.</span></li>
-        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-yellow-500 mt-2 shrink-0" /><span><strong>Voice-to-Text Entry:</strong> Hands-free task addition via voice recognition.</span></li>
-        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-yellow-500 mt-2 shrink-0" /><span><strong>Advanced AI Features:</strong> Auto-generate subtasks based on broad project titles.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-teal mt-2 shrink-0" /><span><strong>Model:</strong> Room Database acts as the fast local source of truth (<code>TodoGroupEntity</code>), while <code>SyncManager</code> coordinates with Firebase Firestore for real-time remote syncing.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-teal mt-2 shrink-0" /><span><strong>ViewModel:</strong> <code>TodoViewModel</code> manages the UI state, handles business logic (like the custom Undo/Redo stack), and acts as the bridge between the UI and the local repository using Kotlin Flows.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-teal mt-2 shrink-0" /><span><span><strong>View:</strong> Jetpack Compose screens (<code>DashboardScreen</code>, <code>AddTodoScreen</code>) observe the ViewModel's state flows and reactively render the UI.</span></span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-teal mt-2 shrink-0" /><span><strong>Network & Background Layer:</strong> A decoupled <code>AiHelper</code> object leverages Retrofit to handle asynchronous API calls to the Groq API. <code>SyncWorker</code> and <code>SyncManager</code> use WorkManager to guarantee eventual consistency for offline edits.</span></li>
       </ul>
     </div>
 
@@ -786,14 +786,19 @@ const TodoAppDesc = () => (
       <h4 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
         <Download className="w-5 h-5 text-primary" /> Installation Steps
       </h4>
-      <ol className="list-decimal list-inside space-y-2 text-base">
+      <ol className="list-decimal list-inside space-y-3 text-base">
         <li><strong>Clone the Repository:</strong> <code className="bg-background px-2 py-1 rounded border text-xs ml-1">git clone https://github.com/mudasirunar/TodoApp.git</code></li>
-        <li><strong>Open in Android Studio:</strong> Select File {'>'} Open, and navigate to the cloned directory.</li>
-        <li><strong>Configure API Keys:</strong> Open `local.properties` and add your Groq API key: <code className="bg-background px-2 py-1 rounded border text-xs ml-1">GROQ_API_KEY="your_api_key_here"</code></li>
-        <li><strong>Run the App:</strong> Connect an Android device or emulator and run.</li>
+        <li><strong>Open in Android Studio:</strong> Select <strong>File &gt; Open</strong> and navigate to the cloned directory.</li>
+        <li><strong>Configure API Keys &amp; Firebase:</strong>
+          <ul className="list-disc list-inside ml-6 mt-2 space-y-1 text-sm">
+            <li>Add your Groq API key to <code>local.properties</code>: <code className="bg-background px-2 py-1 rounded border text-xs block mt-1 w-fit">GROQ_API_KEY="your_api_key_here"</code></li>
+            <li>Place your <code>google-services.json</code> in the <code>app/</code> directory after setting up Firebase.</li>
+          </ul>
+        </li>
+        <li><strong>Run the App:</strong> Connect an Android device or emulator and click <strong>Run</strong>.</li>
       </ol>
-      <div className="mt-6 pt-6 border-t border-primary/10 flex flex-wrap justify-center gap-4">
-        <a href="https://github.com/mudasirunar/TodoApp/releases/tag/v1.1.1" target="_blank" rel="noreferrer">
+      <div className="mt-8 pt-6 border-t border-primary/10 flex flex-wrap justify-center gap-4">
+        <a href="https://github.com/mudasirunar/TodoApp/releases/tag/v2.0" target="_blank" rel="noreferrer">
           <Button size="lg" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto">
             <Download className="w-5 h-5 mr-2" /> Download APK
           </Button>
@@ -824,16 +829,16 @@ const PhoneInfoDesc = () => (
       <div className="space-y-4">
         <div>
           <strong className="text-foreground">Device Overview & Diagnostics</strong>
-          <ul className="list-disc list-inside mt-2 space-y-1 ml-1 text-sm">
-            <li><strong>Quick-Glance Dashboard:</strong> Real-time core metrics like RAM usage, storage, CPU name, and battery health.</li>
-            <li><strong>Advanced Hardware Diagnostics:</strong> Deep-dives into System & Identity, CPU & Memory, Camera Specs, Connectivity, Battery Analytics, and Sensors.</li>
+          <ul className="mt-2 space-y-2 ml-1 text-sm list-none">
+            <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>Quick-Glance Dashboard:</strong> Real-time core metrics like RAM usage, storage, CPU name, and battery health.</span></li>
+            <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>Advanced Hardware Diagnostics:</strong> Deep-dives into System & Identity, CPU & Memory, Camera Specs, Connectivity, Battery Analytics, and Sensors.</span></li>
           </ul>
         </div>
         <div>
           <strong className="text-foreground">App Management & Connectivity</strong>
-          <ul className="list-disc list-inside mt-2 space-y-1 ml-1 text-sm">
-            <li><strong>Application Management:</strong> Categorized app lists detailing exact storage footprints with sorting and search.</li>
-            <li><strong>Internet Speed Test:</strong> Integrated secure network speed test (via Speakeasy) directly from the Wi-Fi details.</li>
+          <ul className="mt-2 space-y-2 ml-1 text-sm list-none">
+            <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>Application Management:</strong> Categorized app lists detailing exact storage footprints with sorting and search.</span></li>
+            <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>Internet Speed Test:</strong> Integrated secure network speed test (via Speakeasy) directly from the Wi-Fi details.</span></li>
           </ul>
         </div>
       </div>
@@ -923,18 +928,18 @@ const AiBillOptimizerDesc = () => (
         <div>
           <strong className="text-foreground">1. Seasonal Bill Predictor (Long-Term)</strong>
           <p className="mt-1 mb-2 text-sm">Powered by <strong>Random Forest Regression</strong>, analyzing monthly consumption patterns against the PRECON dataset.</p>
-          <ul className="list-disc list-inside space-y-1 ml-1 text-sm">
-            <li><strong>KNN Archetype Matching:</strong> Identifies a user's "Energy Twin" by comparing their usage signature against real-world Pakistani households.</li>
-            <li><strong>Seasonal Scaling:</strong> Dynamically adjusts appliance weights (HVAC vs. Refrigeration) based on monthly thermal coefficients for Pakistan's climate.</li>
-            <li><strong>Recency-Weighted Calibration:</strong> Exponential decay algorithm ensures lifestyle changes are reflected in predictions faster than old, irrelevant data.</li>
+          <ul className="mt-2 space-y-2 ml-1 text-sm list-none">
+            <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>KNN Archetype Matching:</strong> Identifies a user's "Energy Twin" by comparing their usage signature against real-world Pakistani households.</span></li>
+            <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>Seasonal Scaling:</strong> Dynamically adjusts appliance weights (HVAC vs. Refrigeration) based on monthly thermal coefficients for Pakistan's climate.</span></li>
+            <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>Recency-Weighted Calibration:</strong> Exponential decay algorithm ensures lifestyle changes are reflected in predictions faster than old, irrelevant data.</span></li>
           </ul>
         </div>
         <div>
           <strong className="text-foreground">2. 24-Hour Load Forecaster (Short-Term)</strong>
           <p className="mt-1 mb-2 text-sm">Powered by a <strong>Bidirectional LSTM (Bi-LSTM)</strong> network for daily forecasting.</p>
-          <ul className="list-disc list-inside space-y-1 ml-1 text-sm">
-            <li><strong>Sequential Learning:</strong> Analyzes the last 48 hours of usage to predict consumption spikes for the next 24 hours.</li>
-            <li><strong>Layer Normalization:</strong> Handles high variance in residential load data, providing a "Pre-Warning" before users hit peak-hour thresholds.</li>
+          <ul className="mt-2 space-y-2 ml-1 text-sm list-none">
+            <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>Sequential Learning:</strong> Analyzes the last 48 hours of usage to predict consumption spikes for the next 24 hours.</span></li>
+            <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>Layer Normalization:</strong> Handles high variance in residential load data, providing a "Pre-Warning" before users hit peak-hour thresholds.</span></li>
           </ul>
         </div>
       </div>
