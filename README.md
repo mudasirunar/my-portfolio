@@ -24,7 +24,3 @@ A personal developer portfolio built with **React**, **TypeScript**, and **TanSt
 ## Deployment
 
 Configured for **Cloudflare Pages** via `wrangler.jsonc`.
-
----
-
-> Built by [Mudasir Unar](https://github.com/mudasirunar)

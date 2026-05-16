@@ -1216,7 +1216,7 @@ function Projects() {
       tech: ["Kotlin", "Compose", "Firebase", "MVVM", "Room DB", "Groq API"],
       gradient: "from-purple to-teal",
       githubLink: "https://github.com/mudasirunar/TodoApp",
-      apkLink: "https://github.com/mudasirunar/TodoApp/releases/tag/v1.1.1",
+      apkLink: "https://github.com/mudasirunar/TodoApp/releases/tag/v2.0",
       images: todoAppImages,
       longDesc: <TodoAppDesc />,
       coverImage: taCover,
