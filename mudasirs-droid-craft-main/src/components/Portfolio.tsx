@@ -157,7 +157,7 @@ function Navbar() {
     <header className="fixed top-0 inset-x-0 z-50 px-4 pt-4">
       <nav className="mx-auto max-w-6xl glass rounded-full px-5 py-3 flex items-center justify-between shadow-card">
         <a href="#home" className="font-display font-bold text-lg tracking-tight">
-          <span className="text-gradient">Mudasir</span>.dev
+          <span className="text-gradient">Mudasir</span>.tech
         </a>
         <ul className="hidden md:flex items-center gap-1 text-sm">
           {NAV.map((n) => (
