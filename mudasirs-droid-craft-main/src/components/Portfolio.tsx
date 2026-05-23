@@ -798,7 +798,7 @@ const TodoAppDesc = () => (
         <li><strong>Run the App:</strong> Connect an Android device or emulator and click <strong>Run</strong>.</li>
       </ol>
       <div className="mt-8 pt-6 border-t border-primary/10 flex flex-wrap justify-center gap-4">
-        <a href="https://github.com/mudasirunar/TodoApp/releases/tag/v2.0" target="_blank" rel="noreferrer">
+        <a href="https://github.com/mudasirunar/TodoApp/releases/tag/v2.1" target="_blank" rel="noreferrer">
           <Button size="lg" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto">
             <Download className="w-5 h-5 mr-2" /> Download APK
           </Button>
@@ -1216,7 +1216,7 @@ function Projects() {
       tech: ["Kotlin", "Compose", "Firebase", "MVVM", "Room DB", "Groq API"],
       gradient: "from-purple to-teal",
       githubLink: "https://github.com/mudasirunar/TodoApp",
-      apkLink: "https://github.com/mudasirunar/TodoApp/releases/tag/v2.0",
+      apkLink: "https://github.com/mudasirunar/TodoApp/releases/tag/v2.1",
       images: todoAppImages,
       longDesc: <TodoAppDesc />,
       coverImage: taCover,
