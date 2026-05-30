@@ -1,6 +1,6 @@
 # Mudasir's Portfolio Website
 
-🌐 **Live Site:** [my-portfolio.unarmudasir.workers.dev](https://my-portfolio.unarmudasir.workers.dev)
+🌐 **Live Site:** [https://mudasir.tech](https://mudasir.tech)
 
 A personal developer portfolio built with **React**, **TypeScript**, and **TanStack Router**. Showcases my projects, skills, and experience as a Junior Android Developer.
 
