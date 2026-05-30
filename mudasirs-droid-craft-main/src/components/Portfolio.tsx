@@ -132,6 +132,33 @@ const aiBillOptimizerImages = [
   aboSim
 ];
 
+const PROJECT_LINKS = {
+  smartLedger: {
+    github: "https://github.com/mudasirunar/SmartLedger",
+    apk: "https://github.com/mudasirunar/SmartLedger/releases/tag/v1.2",
+  },
+  bentoGrid: {
+    github: "https://github.com/mudasirunar/BentoGridApp",
+    apk: "https://github.com/mudasirunar/BentoGridApp/releases/tag/v1.0",
+  },
+  todoApp: {
+    github: "https://github.com/mudasirunar/TodoApp",
+    apk: "https://github.com/mudasirunar/TodoApp/releases/tag/v2.2",
+  },
+  phoneInfo: {
+    github: "https://github.com/mudasirunar/PhoneInfo",
+    apk: "https://github.com/mudasirunar/PhoneInfo/releases/tag/v1.0",
+  },
+  weatherApp: {
+    github: "https://github.com/mudasirunar/WeatherApp",
+    apk: "https://github.com/mudasirunar/WeatherApp/releases/tag/v1.0",
+  },
+  billOptimizer: {
+    github: "https://github.com/mudasirunar/bill-optimizer",
+    website: "https://bill-optimizer.vercel.app/",
+  },
+};
+
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const } },
@@ -529,23 +556,19 @@ const SmartLedgerDesc = () => (
     </div>
 
     <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10">
-      <h4 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-        <Download className="w-5 h-5 text-primary" /> Installation Steps
+      <h4 className="text-xl font-semibold text-foreground mb-3 flex items-center gap-2">
+        <Smartphone className="w-5 h-5 text-primary" /> Get the App
       </h4>
-      <ol className="list-decimal list-inside space-y-2 text-base">
-        <li><strong>Clone the Repository:</strong> <code className="bg-background px-2 py-1 rounded border text-xs ml-1">git clone https://github.com/mudasirunar/SmartLedger.git</code></li>
-        <li><strong>Open in Android Studio:</strong> Launch and select Open an existing project.</li>
-        <li><strong>Configure API Key:</strong> Create a <code>local.properties</code> file in the root and add: <code className="bg-background px-2 py-1 rounded border text-xs block mt-1 w-fit">GROQ_API_KEY="YOUR_KEY"</code></li>
-        <li><strong>Sync Project:</strong> Download all necessary dependencies.</li>
-        <li><strong>Run the App:</strong> Select emulator or physical device.</li>
-      </ol>
-      <div className="mt-6 pt-6 border-t border-primary/10 flex flex-wrap justify-center gap-4">
-        <a href="https://github.com/mudasirunar/SmartLedger/releases/tag/v1.2" target="_blank" rel="noreferrer">
+      <p className="text-base text-muted-foreground mb-6">
+        Experience SmartLedger directly on your Android device. Download the pre-built APK to start managing your finances, or view the complete Kotlin source code on GitHub.
+      </p>
+      <div className="flex flex-wrap justify-center gap-4">
+        <a href={PROJECT_LINKS.smartLedger.apk} target="_blank" rel="noreferrer">
           <Button size="lg" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto">
             <Download className="w-5 h-5 mr-2" /> Download APK
           </Button>
         </a>
-        <a href="https://github.com/mudasirunar/SmartLedger" target="_blank" rel="noreferrer">
+        <a href={PROJECT_LINKS.smartLedger.github} target="_blank" rel="noreferrer">
           <Button size="lg" variant="outline" className="rounded-full w-full sm:w-auto">
             <Github className="w-5 h-5 mr-2" /> View Source Code
           </Button>
@@ -607,22 +630,19 @@ const WeatherAppDesc = () => (
     </div>
 
     <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10">
-      <h4 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-        <Download className="w-5 h-5 text-primary" /> Installation Steps
+      <h4 className="text-xl font-semibold text-foreground mb-3 flex items-center gap-2">
+        <Smartphone className="w-5 h-5 text-primary" /> Get the App
       </h4>
-      <ol className="list-decimal list-inside space-y-2 text-base">
-        <li><strong>Clone the Repository:</strong> <code className="bg-background px-2 py-1 rounded border text-xs ml-1">git clone https://github.com/mudasirunar/WeatherApp.git</code></li>
-        <li><strong>Open in Android Studio:</strong> Launch and select Open an existing project.</li>
-        <li><strong>API Key Configuration:</strong> Get a free API key from OpenWeatherMap and replace the placeholder key.</li>
-        <li><strong>Build and Run:</strong> Sync Gradle and run the app.</li>
-      </ol>
-      <div className="mt-6 pt-6 border-t border-primary/10 flex flex-wrap justify-center gap-4">
-        <a href="https://github.com/mudasirunar/WeatherApp/releases/tag/v1.0" target="_blank" rel="noreferrer">
+      <p className="text-base text-muted-foreground mb-6">
+        Check real-time weather and forecast data on the go. Download the installer APK directly for your Android device, or browse the clean MVVM & Jetpack Compose source code on GitHub.
+      </p>
+      <div className="flex flex-wrap justify-center gap-4">
+        <a href={PROJECT_LINKS.weatherApp.apk} target="_blank" rel="noreferrer">
           <Button size="lg" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto">
             <Download className="w-5 h-5 mr-2" /> Download APK
           </Button>
         </a>
-        <a href="https://github.com/mudasirunar/WeatherApp" target="_blank" rel="noreferrer">
+        <a href={PROJECT_LINKS.weatherApp.github} target="_blank" rel="noreferrer">
           <Button size="lg" variant="outline" className="rounded-full w-full sm:w-auto">
             <Github className="w-5 h-5 mr-2" /> View Source Code
           </Button>
@@ -707,22 +727,19 @@ const BentoAppDesc = () => (
     </div>
 
     <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10">
-      <h4 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-        <Download className="w-5 h-5 text-primary" /> Installation Steps
+      <h4 className="text-xl font-semibold text-foreground mb-3 flex items-center gap-2">
+        <Smartphone className="w-5 h-5 text-primary" /> Get the App
       </h4>
-      <ol className="list-decimal list-inside space-y-2 text-base">
-        <li><strong>Clone the Repository:</strong> <code className="bg-background px-2 py-1 rounded border text-xs ml-1">git clone https://github.com/mudasirunar/BentoGridApp.git</code></li>
-        <li><strong>Open in Android Studio:</strong> Select File {'>'} Open, and navigate to the cloned directory.</li>
-        <li><strong>Sync Gradle:</strong> Download all necessary dependencies.</li>
-        <li><strong>Run the App:</strong> Connect an Android device or emulator and run.</li>
-      </ol>
-      <div className="mt-6 pt-6 border-t border-primary/10 flex flex-wrap justify-center gap-4">
-        <a href="https://github.com/mudasirunar/BentoGridApp/releases/tag/v1.0" target="_blank" rel="noreferrer">
+      <p className="text-base text-muted-foreground mb-6">
+        Start curating beautiful bento layouts for your images and notes. Download the pre-built APK file directly to your phone, or check out the codebase on GitHub.
+      </p>
+      <div className="flex flex-wrap justify-center gap-4">
+        <a href={PROJECT_LINKS.bentoGrid.apk} target="_blank" rel="noreferrer">
           <Button size="lg" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto">
             <Download className="w-5 h-5 mr-2" /> Download APK
           </Button>
         </a>
-        <a href="https://github.com/mudasirunar/BentoGridApp" target="_blank" rel="noreferrer">
+        <a href={PROJECT_LINKS.bentoGrid.github} target="_blank" rel="noreferrer">
           <Button size="lg" variant="outline" className="rounded-full w-full sm:w-auto">
             <Github className="w-5 h-5 mr-2" /> View Source Code
           </Button>
@@ -783,27 +800,19 @@ const TodoAppDesc = () => (
     </div>
 
     <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10">
-      <h4 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-        <Download className="w-5 h-5 text-primary" /> Installation Steps
+      <h4 className="text-xl font-semibold text-foreground mb-3 flex items-center gap-2">
+        <Smartphone className="w-5 h-5 text-primary" /> Get the App
       </h4>
-      <ol className="list-decimal list-inside space-y-3 text-base">
-        <li><strong>Clone the Repository:</strong> <code className="bg-background px-2 py-1 rounded border text-xs ml-1">git clone https://github.com/mudasirunar/TodoApp.git</code></li>
-        <li><strong>Open in Android Studio:</strong> Select <strong>File &gt; Open</strong> and navigate to the cloned directory.</li>
-        <li><strong>Configure API Keys &amp; Firebase:</strong>
-          <ul className="list-disc list-inside ml-6 mt-2 space-y-1 text-sm">
-            <li>Add your Groq API key to <code>local.properties</code>: <code className="bg-background px-2 py-1 rounded border text-xs block mt-1 w-fit">GROQ_API_KEY="your_api_key_here"</code></li>
-            <li>Place your <code>google-services.json</code> in the <code>app/</code> directory after setting up Firebase.</li>
-          </ul>
-        </li>
-        <li><strong>Run the App:</strong> Connect an Android device or emulator and click <strong>Run</strong>.</li>
-      </ol>
-      <div className="mt-8 pt-6 border-t border-primary/10 flex flex-wrap justify-center gap-4">
-        <a href="https://github.com/mudasirunar/TodoApp/releases/tag/v2.1" target="_blank" rel="noreferrer">
+      <p className="text-base text-muted-foreground mb-6">
+        Enhance your daily productivity with AI-driven task organization. Download the installer APK directly to your Android device, or study the source code on GitHub.
+      </p>
+      <div className="flex flex-wrap justify-center gap-4">
+        <a href={PROJECT_LINKS.todoApp.apk} target="_blank" rel="noreferrer">
           <Button size="lg" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto">
             <Download className="w-5 h-5 mr-2" /> Download APK
           </Button>
         </a>
-        <a href="https://github.com/mudasirunar/TodoApp" target="_blank" rel="noreferrer">
+        <a href={PROJECT_LINKS.todoApp.github} target="_blank" rel="noreferrer">
           <Button size="lg" variant="outline" className="rounded-full w-full sm:w-auto">
             <Github className="w-5 h-5 mr-2" /> View Source Code
           </Button>
@@ -883,21 +892,19 @@ const PhoneInfoDesc = () => (
     </div>
 
     <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10">
-      <h4 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-        <Download className="w-5 h-5 text-primary" /> Installation Steps
+      <h4 className="text-xl font-semibold text-foreground mb-3 flex items-center gap-2">
+        <Smartphone className="w-5 h-5 text-primary" /> Get the App
       </h4>
-      <ol className="list-decimal list-inside space-y-2 text-base">
-        <li><strong>Clone the Repository:</strong> <code className="bg-background px-2 py-1 rounded border text-xs ml-1">git clone https://github.com/mudasirunar/PhoneInfo.git</code></li>
-        <li><strong>Open in Android Studio:</strong> Select File {'>'} Open, and navigate to the cloned directory.</li>
-        <li><strong>Run the App:</strong> Connect an Android device or emulator and run. Grant requested permissions for full diagnostic details.</li>
-      </ol>
-      <div className="mt-6 pt-6 border-t border-primary/10 flex flex-wrap justify-center gap-4">
-        <a href="https://github.com/mudasirunar/PhoneInfo/releases/tag/v1.0" target="_blank" rel="noreferrer">
+      <p className="text-base text-muted-foreground mb-6">
+        Run instant diagnostic scans and monitor system metrics on your device. Download the pre-compiled APK directly to your phone, or view the implementation code on GitHub.
+      </p>
+      <div className="flex flex-wrap justify-center gap-4">
+        <a href={PROJECT_LINKS.phoneInfo.apk} target="_blank" rel="noreferrer">
           <Button size="lg" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto">
             <Download className="w-5 h-5 mr-2" /> Download APK
           </Button>
         </a>
-        <a href="https://github.com/mudasirunar/PhoneInfo" target="_blank" rel="noreferrer">
+        <a href={PROJECT_LINKS.phoneInfo.github} target="_blank" rel="noreferrer">
           <Button size="lg" variant="outline" className="rounded-full w-full sm:w-auto">
             <Github className="w-5 h-5 mr-2" /> View Source Code
           </Button>
@@ -996,12 +1003,12 @@ const AiBillOptimizerDesc = () => (
         <li><strong>Simulate Appliances:</strong> Toggle appliances in the Simulator to instantly see the impact on your monthly bill.</li>
       </ol>
       <div className="mt-6 pt-6 border-t border-primary/10 flex items-center justify-center gap-4 flex-wrap">
-        <a href="https://bill-optimizer.vercel.app/" target="_blank" rel="noreferrer">
+        <a href={PROJECT_LINKS.billOptimizer.website} target="_blank" rel="noreferrer">
           <Button size="lg" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground">
             <ExternalLink className="w-5 h-5 mr-2" /> Open Website
           </Button>
         </a>
-        <a href="https://github.com/mudasirunar/bill-optimizer" target="_blank" rel="noreferrer">
+        <a href={PROJECT_LINKS.billOptimizer.github} target="_blank" rel="noreferrer">
           <Button size="lg" variant="outline" className="rounded-full">
             <Github className="w-5 h-5 mr-2" /> View Source Code
           </Button>
@@ -1191,8 +1198,8 @@ function Projects() {
       desc: "AI-powered Android finance tracker with smart ledger management, analytics, budgeting, and predictive insights.",
       tech: ["Kotlin", "XML Layouts", "Room DB", "AI", "Retrofit"],
       gradient: "from-primary to-purple",
-      githubLink: "https://github.com/mudasirunar/SmartLedger",
-      apkLink: "https://github.com/mudasirunar/SmartLedger/releases/tag/v1.2",
+      githubLink: PROJECT_LINKS.smartLedger.github,
+      apkLink: PROJECT_LINKS.smartLedger.apk,
       images: smartLedgerImages,
       longDesc: <SmartLedgerDesc />,
       coverImage: slCover,
@@ -1203,8 +1210,8 @@ function Projects() {
       desc: "Modern Android app for creating highly customizable, aesthetic visual collections using a dynamic Bento-style grid system.",
       tech: ["Kotlin", "Compose", "Room DB", "MVVM", "Coil"],
       gradient: "from-purple to-pink",
-      githubLink: "https://github.com/mudasirunar/BentoGridApp",
-      apkLink: "https://github.com/mudasirunar/BentoGridApp/releases/tag/v1.0",
+      githubLink: PROJECT_LINKS.bentoGrid.github,
+      apkLink: PROJECT_LINKS.bentoGrid.apk,
       images: bentoAppImages,
       longDesc: <BentoAppDesc />,
       coverImage: bgCover,
@@ -1215,8 +1222,8 @@ function Projects() {
       desc: "Task manager enhanced with AI-powered task rewriting and smart productivity assistance.",
       tech: ["Kotlin", "Compose", "Firebase", "MVVM", "Room DB", "Groq API"],
       gradient: "from-purple to-teal",
-      githubLink: "https://github.com/mudasirunar/TodoApp",
-      apkLink: "https://github.com/mudasirunar/TodoApp/releases/tag/v2.1",
+      githubLink: PROJECT_LINKS.todoApp.github,
+      apkLink: PROJECT_LINKS.todoApp.apk,
       images: todoAppImages,
       longDesc: <TodoAppDesc />,
       coverImage: taCover,
@@ -1227,8 +1234,8 @@ function Projects() {
       desc: "Comprehensive Android utility for real-time hardware diagnostics, sensor data, and system metrics.",
       tech: ["Kotlin", "Compose", "StateFlow", "Hardware APIs"],
       gradient: "from-blue-600 to-indigo-800",
-      githubLink: "https://github.com/mudasirunar/PhoneInfo",
-      apkLink: "https://github.com/mudasirunar/PhoneInfo/releases/tag/v1.0",
+      githubLink: PROJECT_LINKS.phoneInfo.github,
+      apkLink: PROJECT_LINKS.phoneInfo.apk,
       images: phoneInfoImages,
       longDesc: <PhoneInfoDesc />,
       coverImage: piCover,
@@ -1239,8 +1246,8 @@ function Projects() {
       desc: "Real-time weather forecasts powered by OpenWeather API with dynamic UI updates and location tracking.",
       tech: ["Kotlin", "Compose", "MVVM", "Room DB", "Retrofit", "OpenWeather API"],
       gradient: "from-teal to-primary",
-      githubLink: "https://github.com/mudasirunar/WeatherApp",
-      apkLink: "https://github.com/mudasirunar/WeatherApp/releases/tag/v1.0",
+      githubLink: PROJECT_LINKS.weatherApp.github,
+      apkLink: PROJECT_LINKS.weatherApp.apk,
       images: weatherAppImages,
       longDesc: <WeatherAppDesc />,
       coverImage: waCover,
@@ -1251,8 +1258,8 @@ function Projects() {
       desc: "AI-powered electricity bill optimizer using PRECON dataset — Seasonal bill prediction with Random Forest & 24-hour load forecasting with Bi-LSTM.",
       tech: ["Python", "Flask", "TensorFlow", "Bi-LSTM", "Firebase"],
       gradient: "from-yellow-500 to-orange-600",
-      githubLink: "https://github.com/mudasirunar/bill-optimizer",
-      websiteLink: "https://bill-optimizer.vercel.app/",
+      githubLink: PROJECT_LINKS.billOptimizer.github,
+      websiteLink: PROJECT_LINKS.billOptimizer.website,
       images: aiBillOptimizerImages,
       longDesc: <AiBillOptimizerDesc />,
       coverImage: aboCover,
