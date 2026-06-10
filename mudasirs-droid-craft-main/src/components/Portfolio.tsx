@@ -13,6 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import profileImg from "@/assets/profile.jpeg";
 import { generateAndDownloadResume } from "@/lib/generateResume";
+import { logAnalyticsEvent } from "@/lib/firebase";
 
 import slCover from "@/assets/smartledger/cover.jpeg";
 import slDashboard from "@/assets/smartledger/dashboard.jpg";
@@ -243,7 +244,10 @@ function Hero() {
           <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-3">
             <a href="#projects"><Button size="lg" className="rounded-full shadow-glow">View Projects <ArrowRight className="w-4 h-4 ml-1" /></Button></a>
             <a href="#contact"><Button size="lg" variant="outline" className="rounded-full">Contact Me</Button></a>
-            <Button size="lg" variant="ghost" className="rounded-full" onClick={generateAndDownloadResume}><Download className="w-4 h-4 mr-1" /> Resume</Button>
+            <Button size="lg" variant="ghost" className="rounded-full" onClick={() => {
+              generateAndDownloadResume();
+              logAnalyticsEvent("download_resume", { source: "hero" });
+            }}><Download className="w-4 h-4 mr-1" /> Resume</Button>
           </motion.div>
           <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-2">
             {stack.map((s) => (
@@ -1319,21 +1323,24 @@ function Projects() {
                   </div>
                   <div className="mt-5 flex flex-wrap gap-2">
                     {p.websiteLink && (
-                      <a href={p.websiteLink} target="_blank" rel="noreferrer">
+                      <a href={p.websiteLink} target="_blank" rel="noreferrer" onClick={() => logAnalyticsEvent("project_click", { project_title: p.title, link_type: "live_demo" })}>
                         <Button size="sm" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground"><ExternalLink className="w-3.5 h-3.5 mr-1" /> Live Demo</Button>
                       </a>
                     )}
                     {p.apkLink && (
-                      <a href={p.apkLink} target="_blank" rel="noreferrer">
+                      <a href={p.apkLink} target="_blank" rel="noreferrer" onClick={() => logAnalyticsEvent("project_click", { project_title: p.title, link_type: "apk" })}>
                         <Button size="sm" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground"><Download className="w-3.5 h-3.5 mr-1" /> APK</Button>
                       </a>
                     )}
                     {p.githubLink && (
-                      <a href={p.githubLink} target="_blank" rel="noreferrer">
+                      <a href={p.githubLink} target="_blank" rel="noreferrer" onClick={() => logAnalyticsEvent("project_click", { project_title: p.title, link_type: "code" })}>
                         <Button size="sm" variant="outline" className="rounded-full"><Github className="w-3.5 h-3.5 mr-1" /> Code</Button>
                       </a>
                     )}
-                    <Button size="sm" variant="ghost" className="rounded-full" onClick={() => setSelectedProject(p)}>Details <ArrowRight className="w-3.5 h-3.5 ml-1" /></Button>
+                    <Button size="sm" variant="ghost" className="rounded-full" onClick={() => {
+                      setSelectedProject(p);
+                      logAnalyticsEvent("project_click", { project_title: p.title, link_type: "details" });
+                    }}>Details <ArrowRight className="w-3.5 h-3.5 ml-1" /></Button>
                   </div>
                 </div>
               </Card>
@@ -1445,10 +1452,12 @@ function Contact() {
         "XZAxDwdVdaqy2V4oi"
       );
       setStatus("success");
+      logAnalyticsEvent("contact_form_submit", { status: "success" });
       setFormData({ name: "", email: "", subject: "", message: "" });
       setTimeout(() => setStatus("idle"), 3000);
     } catch (error) {
       console.error(error);
+      logAnalyticsEvent("contact_form_submit", { status: "failed", error: error instanceof Error ? error.message : String(error) });
       setStatus("error");
     } finally {
       setIsSubmitting(false);

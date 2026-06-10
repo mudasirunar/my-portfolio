@@ -1,15 +1,18 @@
+import { useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
   Link,
   createRootRouteWithContext,
   useRouter,
+  useLocation,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
 import favicon from "../assets/favicon.png";
+import { logAnalyticsEvent } from "../lib/firebase";
 
 function NotFoundComponent() {
   return (
@@ -116,6 +119,14 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const location = useLocation();
+
+  useEffect(() => {
+    logAnalyticsEvent("page_view", {
+      page_path: location.pathname,
+      page_title: typeof document !== "undefined" ? document.title : "Portfolio",
+    });
+  }, [location.pathname]);
 
   return (
     <QueryClientProvider client={queryClient}>
