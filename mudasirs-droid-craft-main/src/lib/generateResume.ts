@@ -69,7 +69,7 @@ export const generateAndDownloadResume = () => {
 
   doc.setFont("helvetica", "normal");
   doc.setFontSize(10);
-  doc.text("Nov 2025 – Present", 195, currentY, { align: "right" });
+  doc.text("Nov 2025 – May 2026", 195, currentY, { align: "right" });
 
   currentY += 4.5;
   doc.setFont("helvetica", "italic");
@@ -126,9 +126,9 @@ export const generateAndDownloadResume = () => {
 
   const projects = [
     { title: "SmartLedger", tech: "Kotlin, Jetpack Compose, AI Integration, MVVM, Retrofit", desc: "AI-enhanced Android finance tracker featuring smart ledgers, behavioral analytics, and predictive insights for personal budgeting." },
+    { title: "ApplyTrack", tech: "Kotlin, Jetpack Compose, Room, Supabase, Firebase, WorkManager", desc: "Offline-first career tracker featuring background cloud sync, documents management, and a custom analytics dashboard." },
     { title: "BentoApp", tech: "Kotlin, Jetpack Compose, Room, Coroutines", desc: "Customizable Bento grid app for creating dynamic collections with flexible layouts, shapes, and media management." },
     { title: "PhoneInfo", tech: "Kotlin, Jetpack Compose, MVVM, System APIs, StateFlow,sensors", desc: "Real-time Android device information and hardware diagnostics tool built with Jetpack Compose." },
-    { title: "Weather App", tech: "Kotlin, Retrofit, REST APIs, Jetpack Compose", desc: "Real-time weather application supporting city search, GPS location, and detailed 24-hour forecasting using the OpenWeather API." },
     { title: "AI Todo App", tech: "Kotlin, AI Integration, Room, Firebase", desc: "Intelligent task manager incorporating AI for smart task categorization, organization, and productivity assistance." },
     { title: "AI Energy Management System", tech: "Random Forest, LSTM, Machine Learning, Python, HTML5, CSS3, Firebase", desc: "Advanced electricity bill prediction and load forecasting system employing hybrid machine learning and seasonal intelligence." }
   ];

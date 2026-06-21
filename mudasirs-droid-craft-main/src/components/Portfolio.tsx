@@ -32,10 +32,15 @@ import slAi from "@/assets/smartledger/ai_insigth_and_prediction.jpg";
 import slRestore from "@/assets/smartledger/restore_done_dialog.jpg";
 import slBackup from "@/assets/smartledger/backup_options_dialog.jpg";
 
-import waCover from "@/assets/weatherapp/cover.jpeg";
-import waScreen1 from "@/assets/weatherapp/screen_1.png";
-import waScreen2 from "@/assets/weatherapp/screen_2.png";
-import waSearchScreen from "@/assets/weatherapp/search_screen.png";
+import atCover from "@/assets/applytrack/cover.jpeg";
+import atAddEdit from "@/assets/applytrack/addeditscreen.png";
+import atApplication from "@/assets/applytrack/applictaionscreen.png";
+import atDashboard1 from "@/assets/applytrack/dashboard1.png";
+import atDashboard2 from "@/assets/applytrack/dashboard2.png";
+import atSetting from "@/assets/applytrack/settingscreen.png";
+import atView1 from "@/assets/applytrack/viewscreen1.png";
+import atView2 from "@/assets/applytrack/viewscreen2.png";
+import atView3 from "@/assets/applytrack/viewscreen3.png";
 
 import bgCover from "@/assets/bentoapp/cover.jpeg";
 import bgHome from "@/assets/bentoapp/home_screen.jpg";
@@ -84,10 +89,15 @@ const bentoAppImages = [
   bgImageViewer
 ];
 
-const weatherAppImages = [
-  waScreen1,
-  waScreen2,
-  waSearchScreen
+const applyTrackImages = [
+  atDashboard1,
+  atDashboard2,
+  atApplication,
+  atView1,
+  atView2,
+  atView3,
+  atAddEdit,
+  atSetting
 ];
 
 const smartLedgerImages = [
@@ -150,9 +160,9 @@ const PROJECT_LINKS = {
     github: "https://github.com/mudasirunar/PhoneInfo",
     apk: "https://github.com/mudasirunar/PhoneInfo/releases/tag/v1.0",
   },
-  weatherApp: {
-    github: "https://github.com/mudasirunar/WeatherApp",
-    apk: "https://github.com/mudasirunar/WeatherApp/releases/tag/v1.0",
+  applyTrack: {
+    github: "https://github.com/mudasirunar/ApplyTrack",
+    apk: "https://github.com/mudasirunar/ApplyTrack/releases/tag/v2.1.1",
   },
   billOptimizer: {
     github: "https://github.com/mudasirunar/bill-optimizer",
@@ -364,7 +374,7 @@ function About() {
                   <div>
                     <div className="text-xs uppercase tracking-wider text-muted-foreground">Experience</div>
                     <div className="font-semibold mt-1">Junior Android Developer</div>
-                    <div className="text-sm text-muted-foreground">AbaciLabs · Nov 1 – Present</div>
+                    <div className="text-sm text-muted-foreground">AbaciLabs · Nov 2025 – May 2026</div>
                   </div>
                 </div>
               </Card>
@@ -582,15 +592,15 @@ const SmartLedgerDesc = () => (
   </div>
 );
 
-const WeatherAppDesc = () => (
+const ApplyTrackDesc = () => (
   <div className="space-y-8 text-sm text-muted-foreground pb-6">
     <div>
-      <h3 className="text-3xl font-bold text-foreground mb-4">WeatherApp</h3>
+      <h3 className="text-3xl font-bold text-foreground mb-4">ApplyTrack - Offline-First Career Hunt Companion</h3>
       <p className="text-base leading-relaxed">
-        WeatherApp is a feature-rich Android application designed to deliver accurate, real-time weather data and 24-hour forecasts. Built with a focus on seamless user experience, the app dynamically changes its visual appearance based on the current weather conditions.
+        ApplyTrack is a modern Android application designed to help job seekers manage and track their career journey in one organized workspace. Built with an offline-first philosophy, the app allows users to save and manage job applications, interview stages, notes, and documents without relying on an internet connection.
       </p>
       <p className="text-base leading-relaxed mt-3">
-        It leverages the OpenWeather API for robust data fetching and integrates device location services to automatically display local weather information, while also allowing users to search and save their favorite cities globally.
+        When connectivity becomes available, all data seamlessly synchronizes in the background, ensuring a fast and reliable experience at all times.
       </p>
     </div>
 
@@ -598,39 +608,68 @@ const WeatherAppDesc = () => (
       <h4 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
         <Sparkles className="w-5 h-5 text-primary" /> Key Features
       </h4>
-      <ul className="space-y-3 list-none">
-        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>Real-Time Weather:</strong> Instant access to current temperature, "feels like", humidity, wind speed, visibility, and barometric pressure.</span></li>
-        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>24-Hour Forecast:</strong> Detailed hourly predictions to help plan your day, including temperature variances and expected peaks.</span></li>
-        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>Solar Metrics:</strong> Accurate sunrise and sunset times dynamically adjusted to the local timezone.</span></li>
-        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>Auto-Detect Location:</strong> Automatically fetches your current location's weather using GPS and Fused Location Provider.</span></li>
-        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>Global City Search:</strong> Find weather data for any city worldwide using the integrated geocoding search.</span></li>
-        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>Dynamic Animated Backgrounds:</strong> Custom Canvas-based animations for Clear, Cloudy, Rain, Snow, Thunderstorm, Mist, and Smoke.</span></li>
-        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>Save Favorite Cities:</strong> Persist your favorite searched locations locally for quick access using a swipeable pager interface.</span></li>
-      </ul>
+      <div className="space-y-4">
+        <div>
+          <strong className="text-foreground">Application Tracking & Organization</strong>
+          <ul className="mt-2 space-y-2 ml-1 text-sm list-none">
+            <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>Comprehensive Job Tracking:</strong> Manage company details, roles, application dates, statuses, and preparation notes.</span></li>
+            <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>Interview Pipeline Management:</strong> Keep track of applications through various stages, from applied to offer or rejection.</span></li>
+            <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>Document Management:</strong> Attach resumes, cover letters, and screenshots directly to applications.</span></li>
+            <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>Smart Search & Filtering:</strong> Quickly find applications and organize your job hunt efficiently.</span></li>
+          </ul>
+        </div>
+        <div>
+          <strong className="text-foreground">Dashboard & Analytics</strong>
+          <ul className="mt-2 space-y-2 ml-1 text-sm list-none">
+            <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>Interactive Analytics Dashboard:</strong> Visualize total applications, active interviews, offers, and rejection ratios.</span></li>
+            <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>Career Insights:</strong> Gain a clear overview of your progress with clean and informative statistics.</span></li>
+            <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>Real-Time Updates:</strong> Dashboard metrics update instantly as applications change.</span></li>
+          </ul>
+        </div>
+        <div>
+          <strong className="text-foreground">Offline-First Experience</strong>
+          <ul className="mt-2 space-y-2 ml-1 text-sm list-none">
+            <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>Local-First Architecture:</strong> All data is stored locally for instant access and zero-latency interactions.</span></li>
+            <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>Background Cloud Synchronization:</strong> Seamlessly sync applications and attachments whenever internet connectivity is restored.</span></li>
+            <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>Google Sign-In & Guest Mode:</strong> Start using the app immediately and optionally migrate to a cloud account later.</span></li>
+            <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>Data Backup & Restore:</strong> Export and import your entire application data, including documents and attachments, as a single ZIP archive for easy backups, device migration, and offline portability.</span></li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <div>
       <h4 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-        <Cloud className="w-5 h-5 text-purple" /> API Integration & Location
+        <Database className="w-5 h-5 text-purple" /> Architecture & Data Synchronization
       </h4>
-      <p className="mb-4 text-base">Powered by the <strong>OpenWeather API</strong> and <strong>Google Play Services Location</strong>:</p>
+      <p className="mb-4 text-base">ApplyTrack leverages Supabase and Cloud Firestore behind a secure offline caching layer:</p>
       <ul className="space-y-3">
-        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-purple mt-2 shrink-0" /><span><strong>Robust Fetching:</strong> Uses Current Weather, 5-Day/3-Hour Forecast, and Geocoding APIs via Retrofit with graceful error handling.</span></li>
-        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-purple mt-2 shrink-0" /><span><strong>Battery Efficient:</strong> Fetches highly accurate coordinate data using Fused Location Provider with minimal battery drain.</span></li>
-        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-purple mt-2 shrink-0" /><span><strong>Dynamic Permissions:</strong> Prompts users for location access gracefully with fallback manual search functionality.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-purple mt-2 shrink-0" /><span><strong>Supabase Storage:</strong> Secure cloud storage for document attachments like resumes and cover letters.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-purple mt-2 shrink-0" /><span><strong>Room Database Cache:</strong> Acts as the fast local source of truth, enabling immediate data read/writes with zero network latency.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-purple mt-2 shrink-0" /><span><strong>WorkManager Sync:</strong> Schedules background synchronization workers to push local updates to Firebase and Supabase.</span></li>
       </ul>
     </div>
 
     <div>
       <h4 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-        <Layers className="w-5 h-5 text-teal" /> Architecture & Tech Stack
+        <Layers className="w-5 h-5 text-teal" /> Tech Stack
       </h4>
-      <p className="mb-4 text-base">The project strictly adheres to the <strong>MVVM (Model-View-ViewModel)</strong> architectural pattern, ensuring a clean separation of concerns.</p>
       <div className="flex flex-wrap gap-2 mb-2">
-        {["Kotlin", "Jetpack Compose", "Material Design 3", "Coroutines & StateFlow", "Retrofit2 & Gson", "Room Database", "FusedLocationProviderClient", "ViewModel"].map(t => (
+        {["Kotlin", "Jetpack Compose", "Material Design 3", "Room Database", "Firebase Authentication", "Cloud Firestore", "Supabase Storage", "WorkManager", "Coroutines & Flow", "MVVM Architecture"].map(t => (
           <Badge key={t} variant="secondary" className="px-3 py-1 text-xs">{t}</Badge>
         ))}
       </div>
+    </div>
+
+    <div>
+      <h4 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
+        <Zap className="w-5 h-5 text-yellow-500" /> Future Improvements
+      </h4>
+      <ul className="space-y-3">
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-yellow-500 mt-2 shrink-0" /><span><strong>Resume Builder:</strong> Design and build resumes directly inside the app using premium templates.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-yellow-500 mt-2 shrink-0" /><span><strong>Interview Reminders:</strong> Push notifications and calendar integration for upcoming interview slots.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-yellow-500 mt-2 shrink-0" /><span><strong>PDF Export:</strong> Export the complete history and analytical dashboard of your job search to a PDF report.</span></li>
+      </ul>
     </div>
 
     <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10">
@@ -638,15 +677,15 @@ const WeatherAppDesc = () => (
         <Smartphone className="w-5 h-5 text-primary" /> Get the App
       </h4>
       <p className="text-base text-muted-foreground mb-6">
-        Check real-time weather and forecast data on the go. Download the installer APK directly for your Android device, or browse the clean MVVM & Jetpack Compose source code on GitHub.
+        Take control of your job search with ApplyTrack. Download the APK directly to your device or explore the source code on GitHub.
       </p>
       <div className="flex flex-wrap justify-center gap-4">
-        <a href={PROJECT_LINKS.weatherApp.apk} target="_blank" rel="noreferrer">
+        <a href={PROJECT_LINKS.applyTrack.apk} target="_blank" rel="noreferrer">
           <Button size="lg" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto">
             <Download className="w-5 h-5 mr-2" /> Download APK
           </Button>
         </a>
-        <a href={PROJECT_LINKS.weatherApp.github} target="_blank" rel="noreferrer">
+        <a href={PROJECT_LINKS.applyTrack.github} target="_blank" rel="noreferrer">
           <Button size="lg" variant="outline" className="rounded-full w-full sm:w-auto">
             <Github className="w-5 h-5 mr-2" /> View Source Code
           </Button>
@@ -1209,6 +1248,18 @@ function Projects() {
       coverImage: slCover,
     },
     {
+      title: "ApplyTrack",
+      tag: "Career & Job Hunt Cache",
+      desc: "Offline-first career tracker featuring background cloud sync, documents management, and a custom analytics dashboard.",
+      tech: ["Kotlin", "Compose", "Room DB", "Supabase", "Firebase", "WorkManager"],
+      gradient: "from-blue-500 to-teal",
+      githubLink: PROJECT_LINKS.applyTrack.github,
+      apkLink: PROJECT_LINKS.applyTrack.apk,
+      images: applyTrackImages,
+      longDesc: <ApplyTrackDesc />,
+      coverImage: atCover,
+    },
+    {
       title: "Bento Grid App",
       tag: "Dynamic Layouts",
       desc: "Modern Android app for creating highly customizable, aesthetic visual collections using a dynamic Bento-style grid system.",
@@ -1243,18 +1294,6 @@ function Projects() {
       images: phoneInfoImages,
       longDesc: <PhoneInfoDesc />,
       coverImage: piCover,
-    },
-    {
-      title: "WeatherApp",
-      tag: "Weather Forecasting",
-      desc: "Real-time weather forecasts powered by OpenWeather API with dynamic UI updates and location tracking.",
-      tech: ["Kotlin", "Compose", "MVVM", "Room DB", "Retrofit", "OpenWeather API"],
-      gradient: "from-teal to-primary",
-      githubLink: PROJECT_LINKS.weatherApp.github,
-      apkLink: PROJECT_LINKS.weatherApp.apk,
-      images: weatherAppImages,
-      longDesc: <WeatherAppDesc />,
-      coverImage: waCover,
     },
     {
       title: "AI Bill Optimizer",
@@ -1367,7 +1406,7 @@ function Experience() {
   const items = [
     {
       type: "work", icon: Briefcase, title: "Junior Android Developer",
-      org: "AbaciLabs", date: "Nov 2025 – Present",
+      org: "AbaciLabs", date: "Nov 2025 – May 2026",
       location: undefined,
       points: [
         "Develop Android features using Kotlin and XML layouts",
