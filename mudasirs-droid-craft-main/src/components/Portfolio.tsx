@@ -162,7 +162,7 @@ const PROJECT_LINKS = {
   },
   applyTrack: {
     github: "https://github.com/mudasirunar/ApplyTrack",
-    apk: "https://github.com/mudasirunar/ApplyTrack/releases/tag/v2.1.1",
+    apk: "https://github.com/mudasirunar/ApplyTrack/releases/tag/v2.2.0",
   },
   billOptimizer: {
     github: "https://github.com/mudasirunar/bill-optimizer",
