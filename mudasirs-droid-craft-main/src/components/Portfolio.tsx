@@ -41,6 +41,10 @@ import atSetting from "@/assets/applytrack/settingscreen.png";
 import atView1 from "@/assets/applytrack/viewscreen1.png";
 import atView2 from "@/assets/applytrack/viewscreen2.png";
 import atView3 from "@/assets/applytrack/viewscreen3.png";
+import atWebLogin from "@/assets/applytrack/webapp_login_screen.png";
+import atWebDashboard from "@/assets/applytrack/webapp_dashboard_screen.png";
+import atWebApplications from "@/assets/applytrack/webapp_applictaions_screen.png";
+import atWebDetail from "@/assets/applytrack/webapp_detail_screen.png";
 
 import bgCover from "@/assets/bentoapp/cover.jpeg";
 import bgHome from "@/assets/bentoapp/home_screen.jpg";
@@ -98,6 +102,11 @@ const applyTrackImages = [
   atView3,
   atAddEdit,
   atSetting
+  ,
+  atWebLogin,
+  atWebDashboard,
+  atWebApplications,
+  atWebDetail
 ];
 
 const smartLedgerImages = [
@@ -162,7 +171,8 @@ const PROJECT_LINKS = {
   },
   applyTrack: {
     github: "https://github.com/mudasirunar/ApplyTrack",
-    apk: "https://github.com/mudasirunar/ApplyTrack/releases/tag/v2.2.0",
+    apk: "https://github.com/mudasirunar/ApplyTrack/releases/tag/v3.0.0",
+    website: "https://apply-track-web.vercel.app",
   },
   billOptimizer: {
     github: "https://github.com/mudasirunar/bill-optimizer",
@@ -206,9 +216,7 @@ function Navbar() {
             </li>
           ))}
         </ul>
-        <a href="#contact">
-          <Button size="sm" className="rounded-full">Hire Me</Button>
-        </a>
+        <div className="hidden md:block w-[110px]" /> {/* Spacer matching logo width to keep menu centered */}
       </nav>
     </header>
   );
@@ -216,16 +224,12 @@ function Navbar() {
 
 function Hero() {
   const stack = [
-    { name: "Kotlin", icon: Code2 },
-    { name: "Compose", icon: Palette },
+    { name: "Kotlin & Android", icon: Smartphone },
+    { name: "iOS & Swift", icon: Smartphone },
+    { name: "Flutter & Dart", icon: Layers },
+    { name: "Jetpack Compose", icon: Palette },
+    { name: "React & Web Dev", icon: Code2 },
     { name: "Firebase", icon: Cloud },
-    { name: "Retrofit", icon: Zap },
-    { name: "Room", icon: Database },
-    { name: "MVVM", icon: Layers },
-    { name: "Coroutines", icon: Cpu },
-    { name: "GitHub", icon: GitBranch },
-    { name: "Testing", icon: TestTube },
-    { name: "Debugging", icon: Bug },
   ];
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
@@ -245,16 +249,24 @@ function Hero() {
             <span className="text-gradient">Mudasir Ali</span>
           </motion.h1>
           <motion.p variants={fadeUp} className="mt-4 text-xl md:text-2xl font-medium text-muted-foreground">
-            Android Developer | Specializing in Kotlin & Modern App Architecture
+            Software Engineer | Specializing in Mobile & Web Development
           </motion.p>
           <motion.p variants={fadeUp} className="mt-6 text-base md:text-lg text-muted-foreground max-w-xl">
-            Building modern Android applications with clean architecture, AI-powered features,
-            and intuitive user experiences.
+            Building high-performance mobile apps and modern web interfaces with clean architecture,
+            AI integration, and intuitive user experiences.
           </motion.p>
-          <motion.div variants={fadeUp} className="mt-8 flex flex-wrap gap-3">
-            <a href="#projects"><Button size="lg" className="rounded-full shadow-glow">View Projects <ArrowRight className="w-4 h-4 ml-1" /></Button></a>
-            <a href="#contact"><Button size="lg" variant="outline" className="rounded-full">Contact Me</Button></a>
-            <Button size="lg" variant="ghost" className="rounded-full" onClick={() => {
+          <motion.div variants={fadeUp} className="mt-8 flex flex-col sm:flex-row gap-3">
+            <a href="#projects" className="w-full sm:w-auto">
+              <Button size="lg" className="w-full sm:w-auto rounded-full shadow-glow">
+                View Projects <ArrowRight className="w-4 h-4 ml-1" />
+              </Button>
+            </a>
+            <a href="#contact" className="w-full sm:w-auto">
+              <Button size="lg" variant="outline" className="w-full sm:w-auto rounded-full">
+                Contact Me
+              </Button>
+            </a>
+            <Button size="lg" variant="ghost" className="w-full sm:w-auto rounded-full" onClick={() => {
               generateAndDownloadResume();
               logAnalyticsEvent("download_resume", { source: "hero" });
             }}><Download className="w-4 h-4 mr-1" /> Resume</Button>
@@ -291,7 +303,7 @@ function Hero() {
                 <Smartphone className="w-5 h-5 text-primary" />
                 <div>
                   <div className="text-xs text-muted-foreground">Building</div>
-                  <div className="text-sm font-semibold">Android Apps</div>
+                  <div className="text-sm font-semibold">Mobile Apps</div>
                 </div>
               </div>
             </div>
@@ -324,21 +336,21 @@ function SectionHeader({ eyebrow, title, subtitle }: { eyebrow: string; title: s
 
 function About() {
   const stats = [
-    { label: "Android Projects", value: "10+" },
-    { label: "Technologies", value: "15+" },
-    { label: "AI Integrations", value: "4" },
+    { label: "Mobile Projects", value: "10+" },
+    { label: "Web Projects", value: "5+" },
+    { label: "Technologies", value: "20+" },
   ];
   return (
     <section id="about" className="relative py-24 px-6">
       <div className="max-w-6xl mx-auto">
-        <SectionHeader eyebrow="About Me" title="Passionate about modern Android Development" />
+        <SectionHeader eyebrow="About Me" title="Passionate about modern mobile & web development" />
         <div className="grid lg:grid-cols-5 gap-8">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger} className="lg:col-span-3 space-y-4">
             <motion.p variants={fadeUp} className="text-lg text-muted-foreground leading-relaxed">
-              I’m a final-year Software Engineering student at <span className="text-foreground font-semibold">Sir Syed University of Engineering and Technology, Karachi</span>, passionate about building modern, high-performance Android applications.
+              I’m a Software Engineering graduate from <span className="text-foreground font-semibold">Sir Syed University of Engineering and Technology, Karachi</span>, passionate about building modern, high-performance Android applications, responsive web interfaces, and AI-powered solutions.
             </motion.p>
             <motion.p variants={fadeUp} className="text-lg text-muted-foreground leading-relaxed">
-              I am specializing in <span className="text-foreground font-semibold">Kotlin and Jetpack Compose</span>, focusing on clean UI design, scalable architecture, and AI-integrated mobile experiences. Currently, I’m working as a Junior Android Developer at AbaciLabs, where I contribute to real-world Android projects and continue strengthening my development skills in a professional environment.
+              I specialize in <span className="text-foreground font-semibold">mobile technologies across native & cross-platform frameworks</span> (Kotlin, Jetpack Compose, Flutter, iOS/Swift), alongside frontend and backend web development. Currently, I am working as a Web Development Intern at <span className="text-foreground font-semibold">GitXol</span>, enhancing indexing, sitemaps, SEO, and user experience.
             </motion.p>
             <motion.div variants={fadeUp} className="grid grid-cols-3 gap-4 pt-6">
               {stats.map((s) => (
@@ -360,7 +372,7 @@ function About() {
                   <div>
                     <div className="text-xs uppercase tracking-wider text-muted-foreground">Education</div>
                     <div className="font-semibold mt-1">BS Software Engineering</div>
-                    <div className="text-sm text-muted-foreground">Sir Syed University of Engineering & Technology, Karachi</div>
+                    <div className="text-sm text-muted-foreground">Sir Syed University & Technology (SSUET) · Oct 2022 – July 2026</div>
                   </div>
                 </div>
               </Card>
@@ -373,8 +385,8 @@ function About() {
                   </div>
                   <div>
                     <div className="text-xs uppercase tracking-wider text-muted-foreground">Experience</div>
-                    <div className="font-semibold mt-1">Junior Android Developer</div>
-                    <div className="text-sm text-muted-foreground">AbaciLabs · Nov 2025 – May 2026</div>
+                    <div className="font-semibold mt-1">Web Development Intern</div>
+                    <div className="text-sm text-muted-foreground">GitXol · June 2026 – Present</div>
                   </div>
                 </div>
               </Card>
@@ -402,19 +414,20 @@ function About() {
 
 function Skills() {
   const primary = [
-    { name: "Kotlin", level: 88 },
+    { name: "Kotlin", level: 90 },
     { name: "Jetpack Compose", level: 85 },
-    { name: "XML Layouts", level: 70 },
+    { name: "Room Database", level: 80 },
     { name: "MVVM Architecture", level: 78 },
     { name: "Retrofit / REST APIs", level: 75 },
-    { name: "Coroutines", level: 75 },
-    { name: "Room Database", level: 80 },
     { name: "Firebase", level: 75 },
+    { name: "Flutter & Dart", level: 65 },
+    { name: "React & Web Dev", level: 60 },
+    { name: "iOS & Swift", level: 55 },
   ];
   const additional = [
-    "Clean Architecture", "AI Integration", "Responsive UI",
-    "State Management", "Git & GitHub", "REST APIs", "Material 3",
-    "Dagger Hilt", "Android UI",
+    "XML Layouts", "Coroutines & Flow", "Clean Architecture", "AI Integration",
+    "Responsive UI", "State Management", "Git & GitHub", "Material 3",
+    "Dagger Hilt", "Android UI", "Vercel & Cloudflare", "SEO & Search Console",
   ];
   return (
     <section id="skills" className="relative py-24 px-6 bg-soft-gradient">
@@ -464,11 +477,11 @@ function Skills() {
               <h3 className="text-xl font-semibold mb-4">What I focus on</h3>
               <ul className="space-y-3 text-muted-foreground">
                 {[
-                  "Clean, scalable Android architecture",
-                  "Beautiful Compose UIs that feel native",
-                  "AI-enhanced mobile experiences",
-                  "Reliable API integration & state handling",
-                  "Robust testing and app performance optimization",
+                  "Clean, scalable mobile & web architectures",
+                  "Responsive & native UI/UX across devices",
+                  "Offline-first sync & robust local caching",
+                  "Reliable APIs & secure cloud databases",
+                  "Intelligent features & custom AI integrations",
                 ].map((t) => (
                   <li key={t} className="flex items-start gap-3">
                     <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
@@ -486,12 +499,12 @@ function Skills() {
 
 function Services() {
   const services = [
-    { icon: Smartphone, title: "Android App Development", desc: "Building complete, high-performance Android applications from initial concept and architecture to a fully polished user experience." },
-    { icon: Palette, title: "Jetpack Compose UI", desc: "Crafting beautiful, modern, and highly responsive user interfaces using declarative components and Material Design 3." },
-    { icon: Cloud, title: "Firebase Integration", desc: "Incorporating seamless backend services including secure authentication, real-time Firestore databases, and push notifications." },
-    { icon: Zap, title: "API Integration", desc: "Developing robust and efficient networking layers using Retrofit and Coroutines for seamless data fetching." },
-    { icon: Layers, title: "MVVM Architecture", desc: "Structuring applications with scalable, testable, and maintainable architectural patterns for long-term project success." },
-    { icon: Brain, title: "AI Service Integration", desc: "Implementing intelligent app features by seamlessly connecting to external AI APIs." },
+    { icon: Smartphone, title: "Mobile App Development", desc: "Building high-performance native Android and cross-platform mobile applications using Kotlin, Jetpack Compose, Swift, and Flutter." },
+    { icon: Code2, title: "Frontend Web Development", desc: "Creating beautiful, interactive, and responsive web interfaces using modern frameworks like React and Vite with clean styling." },
+    { icon: Layers, title: "Cloud & Deployment", desc: "Setting up production-ready deployment pipelines using Vercel hosting, Cloudflare DNS/caching, and DigitalOcean server management." },
+    { icon: Cloud, title: "Firebase Integration", desc: "Implementing secure authentication workflows, real-time Cloud Firestore databases, and push notifications for mobile and web." },
+    { icon: Zap, title: "API Integration & Backend", desc: "Building Python Flask REST APIs and developing robust networking layers for seamless data fetching and communication." },
+    { icon: Brain, title: "AI & Machine Learning", desc: "Integrating custom TensorFlow/Scikit-learn models and connecting external AI APIs like Groq or Gemini for smart forecasting." },
   ];
   return (
     <section id="services" className="relative py-24 px-6">
@@ -595,13 +608,17 @@ const SmartLedgerDesc = () => (
 const ApplyTrackDesc = () => (
   <div className="space-y-8 text-sm text-muted-foreground pb-6">
     <div>
-      <h3 className="text-3xl font-bold text-foreground mb-4">ApplyTrack - Offline-First Career Hunt Companion</h3>
+      <h3 className="text-3xl font-bold text-foreground mb-4">ApplyTrack — Job Application Tracker</h3>
       <p className="text-base leading-relaxed">
-        ApplyTrack is a modern Android application designed to help job seekers manage and track their career journey in one organized workspace. Built with an offline-first philosophy, the app allows users to save and manage job applications, interview stages, notes, and documents without relying on an internet connection.
+        ApplyTrack is an offline‑first job application tracker built for people who want a fast, reliable way to manage opportunities from both mobile and the browser.
       </p>
-      <p className="text-base leading-relaxed mt-3">
-        When connectivity becomes available, all data seamlessly synchronizes in the background, ensuring a fast and reliable experience at all times.
-      </p>
+      <ul className="mt-3 space-y-2 text-sm list-none">
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>Two clients:</strong> a native Android app (Kotlin + Jetpack Compose) and a React + Vite web companion.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>Offline‑first:</strong> local-first persistence with immediate reads/writes (Room on Android, local cache on web).</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>Attachments & previews:</strong> resumes, cover letters, screenshots and PDF/image viewers.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>Analytics & dashboard:</strong> status distribution, conversion rates, monthly activity and quick summaries.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 shrink-0" /> <span><strong>Cloud sync:</strong> metadata in Firebase Firestore, binary attachments in Supabase Storage; background/scheduled sync when online.</span></li>
+      </ul>
     </div>
 
     <div className="bg-muted/30 p-6 rounded-2xl border border-border/50">
@@ -655,7 +672,19 @@ const ApplyTrackDesc = () => (
         <Layers className="w-5 h-5 text-teal" /> Tech Stack
       </h4>
       <div className="flex flex-wrap gap-2 mb-2">
-        {["Kotlin", "Jetpack Compose", "Material Design 3", "Room Database", "Firebase Authentication", "Cloud Firestore", "Supabase Storage", "WorkManager", "Coroutines & Flow", "MVVM Architecture"].map(t => (
+        {[
+          "Kotlin",
+          "Jetpack Compose",
+          "Room Database",
+          "Firebase Authentication",
+          "Cloud Firestore",
+          "Supabase Storage",
+          "WorkManager",
+          "Coroutines & Flow",
+          "React 19",
+          "Vite 8",
+          "TypeScript",
+        ].map((t) => (
           <Badge key={t} variant="secondary" className="px-3 py-1 text-xs">{t}</Badge>
         ))}
       </div>
@@ -674,10 +703,10 @@ const ApplyTrackDesc = () => (
 
     <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10">
       <h4 className="text-xl font-semibold text-foreground mb-3 flex items-center gap-2">
-        <Smartphone className="w-5 h-5 text-primary" /> Get the App
+        <ExternalLink className="w-5 h-5 text-primary" /> Access ApplyTrack
       </h4>
       <p className="text-base text-muted-foreground mb-6">
-        Take control of your job search with ApplyTrack. Download the APK directly to your device or explore the source code on GitHub.
+        Access ApplyTrack as a native Android APK for an offline-first mobile experience, or open the web app in your browser for desktop access. Source code is available on GitHub.
       </p>
       <div className="flex flex-wrap justify-center gap-4">
         <a href={PROJECT_LINKS.applyTrack.apk} target="_blank" rel="noreferrer">
@@ -685,6 +714,13 @@ const ApplyTrackDesc = () => (
             <Download className="w-5 h-5 mr-2" /> Download APK
           </Button>
         </a>
+        {PROJECT_LINKS.applyTrack.website && (
+          <a href={PROJECT_LINKS.applyTrack.website} target="_blank" rel="noreferrer">
+            <Button size="lg" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto">
+              <ExternalLink className="w-5 h-5 mr-2" /> Visit Web App
+            </Button>
+          </a>
+        )}
         <a href={PROJECT_LINKS.applyTrack.github} target="_blank" rel="noreferrer">
           <Button size="lg" variant="outline" className="rounded-full w-full sm:w-auto">
             <Github className="w-5 h-5 mr-2" /> View Source Code
@@ -1250,11 +1286,12 @@ function Projects() {
     {
       title: "ApplyTrack",
       tag: "Career & Job Hunt Cache",
-      desc: "Offline-first career tracker featuring background cloud sync, documents management, and a custom analytics dashboard.",
-      tech: ["Kotlin", "Compose", "Room DB", "Supabase", "Firebase", "WorkManager"],
+      desc: "Offline-first career tracker with native Android and React+Vite web clients — local-first storage, background cloud sync, attachments, and an analytics dashboard.",
+      tech: ["Kotlin", "Compose", "Supabase", "Firebase", "React", "Vite", "MVVM"],
       gradient: "from-blue-500 to-teal",
       githubLink: PROJECT_LINKS.applyTrack.github,
       apkLink: PROJECT_LINKS.applyTrack.apk,
+      websiteLink: PROJECT_LINKS.applyTrack.website,
       images: applyTrackImages,
       longDesc: <ApplyTrackDesc />,
       coverImage: atCover,
@@ -1361,15 +1398,34 @@ function Projects() {
                     ))}
                   </div>
                   <div className="mt-5 flex flex-wrap gap-2">
-                    {p.websiteLink && (
-                      <a href={p.websiteLink} target="_blank" rel="noreferrer" onClick={() => logAnalyticsEvent("project_click", { project_title: p.title, link_type: "live_demo" })}>
-                        <Button size="sm" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground"><ExternalLink className="w-3.5 h-3.5 mr-1" /> Live Demo</Button>
-                      </a>
-                    )}
-                    {p.apkLink && (
-                      <a href={p.apkLink} target="_blank" rel="noreferrer" onClick={() => logAnalyticsEvent("project_click", { project_title: p.title, link_type: "apk" })}>
-                        <Button size="sm" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground"><Download className="w-3.5 h-3.5 mr-1" /> APK</Button>
-                      </a>
+                    {p.title === "ApplyTrack" ? (
+                      <>
+                        {p.apkLink && (
+                          <a href={p.apkLink} target="_blank" rel="noreferrer" onClick={() => logAnalyticsEvent("project_click", { project_title: p.title, link_type: "apk" })}>
+                            <Button size="sm" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground"><Download className="w-3.5 h-3.5 mr-1" /> APK</Button>
+                          </a>
+                        )}
+                        {p.websiteLink && (
+                          <a href={p.websiteLink} target="_blank" rel="noreferrer" onClick={() => logAnalyticsEvent("project_click", { project_title: p.title, link_type: "live_demo" })}>
+                            <Button size="sm" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground">
+                              <ExternalLink className="w-3.5 h-3.5 mr-1" /> Website
+                            </Button>
+                          </a>
+                        )}
+                      </>
+                    ) : (
+                      <>
+                        {p.websiteLink && (
+                          <a href={p.websiteLink} target="_blank" rel="noreferrer" onClick={() => logAnalyticsEvent("project_click", { project_title: p.title, link_type: "live_demo" })}>
+                            <Button size="sm" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground"><ExternalLink className="w-3.5 h-3.5 mr-1" /> Live Demo</Button>
+                          </a>
+                        )}
+                        {p.apkLink && (
+                          <a href={p.apkLink} target="_blank" rel="noreferrer" onClick={() => logAnalyticsEvent("project_click", { project_title: p.title, link_type: "apk" })}>
+                            <Button size="sm" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground"><Download className="w-3.5 h-3.5 mr-1" /> APK</Button>
+                          </a>
+                        )}
+                      </>
                     )}
                     {p.githubLink && (
                       <a href={p.githubLink} target="_blank" rel="noreferrer" onClick={() => logAnalyticsEvent("project_click", { project_title: p.title, link_type: "code" })}>
@@ -1405,19 +1461,20 @@ function Projects() {
 function Experience() {
   const items = [
     {
-      type: "work", icon: Briefcase, title: "Junior Android Developer",
-      org: "AbaciLabs", date: "Nov 2025 – May 2026",
+      type: "work", icon: Briefcase, title: "Web Development Intern",
+      org: "GitXol", date: "June 2026 - Present",
       location: undefined,
       points: [
-        "Develop Android features using Kotlin and XML layouts",
-        "Assist in building and refining Android UI components",
-        "Collaborate with senior developers on app architecture",
-        "Gain hands-on exposure to real-world development workflows",
+        "Assisted in website development and UI improvements using modern web technologies",
+        "Worked with Google Search Console to improve website indexing and search visibility",
+        "Learned and implemented SEO best practices, including sitemap generation and optimization",
+        "Contributed to content updates, page design improvements, and frontend development tasks",
+        "Collaborated with the development team to enhance website performance and user experience",
       ],
     },
     {
-      type: "edu", icon: GraduationCap, title: "BS Software Engineering",
-      org: "Sir Syed University of Engineering & Technology", date: "Oct 2022 - Present",
+      type: "edu", icon: GraduationCap, title: "Bachelor of Science in Software Engineering",
+      org: "Sir Syed University of Engineering & Technology, Karachi", date: "Oct 2022 – July 2026",
       location: "Karachi, Pakistan",
       points: [],
     },
@@ -1504,7 +1561,7 @@ function Contact() {
   };
 
   const cards = [
-    { icon: Mail, label: "Email", value: "unarmmudasir@gmail.com", href: "mailto:unarmmudasir@gmail.com" },
+    { icon: Mail, label: "Email", value: "unarmudasir@gmail.com", href: "mailto:unarmudasir@gmail.com" },
     { icon: Phone, label: "Phone", value: "+92 326 8920883", href: "tel:+923268920883" },
     { icon: Linkedin, label: "LinkedIn", value: "mudasir-ali", href: "https://www.linkedin.com/in/mudasir-ali-442196261" },
     { icon: Github, label: "GitHub", value: "mudasirunar", href: "https://github.com/mudasirunar" },
@@ -1603,14 +1660,14 @@ function Footer() {
     <footer className="border-t py-10 px-6">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         <div>
-          <div className="font-display font-bold text-lg"><span className="text-gradient">Mudasir</span>.dev</div>
-          <p className="text-sm text-muted-foreground mt-1">Building the future, one Android app at a time.</p>
+          <div className="font-display font-bold text-lg"><span className="text-gradient">Mudasir</span>.tech</div>
+          <p className="text-sm text-muted-foreground mt-1">Engineering high-performance mobile & web solutions.</p>
         </div>
         <div className="flex items-center gap-2">
           {[
             { icon: Github, href: "https://github.com/mudasirunar" },
             { icon: Linkedin, href: "https://www.linkedin.com/in/mudasir-ali-442196261" },
-            { icon: Mail, href: "mailto:unarmmudasir@gmail.com" },
+            { icon: Mail, href: "mailto:unarmudasir@gmail.com" },
           ].map((s, i) => (
             <a key={i} href={s.href} target="_blank" rel="noreferrer"
               className="w-10 h-10 rounded-full glass flex items-center justify-center hover:shadow-glow hover:-translate-y-0.5 transition-all">
