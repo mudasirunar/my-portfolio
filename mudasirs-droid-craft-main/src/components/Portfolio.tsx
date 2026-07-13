@@ -171,7 +171,7 @@ const PROJECT_LINKS = {
   },
   applyTrack: {
     github: "https://github.com/mudasirunar/ApplyTrack",
-    apk: "https://github.com/mudasirunar/ApplyTrack/releases/tag/v3.0.0",
+    apk: "https://github.com/mudasirunar/ApplyTrack/releases/tag/v3.0.1",
     website: "https://apply-track-web.vercel.app",
   },
   billOptimizer: {
