@@ -73,20 +73,12 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
+    title: "Mudasir Ali | Software Engineer - Mobile & Web Developer",
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Mudasir Ali | Software Engineer - Mobile & Web Developer" },
-      { name: "description", content: "Portfolio of Mudasir Ali, a Software Engineer specializing in mobile technologies across native & cross-platform frameworks (Kotlin, Flutter, iOS/Swift) and full-stack web solutions." },
       { name: "author", content: "Mudasir Ali" },
       { name: "keywords", content: "Mudasir Ali, Software Engineer, Android Developer, iOS Developer, Flutter Developer, React Developer, Kotlin, Jetpack Compose, Karachi, Pakistan, mudasir.tech" },
-      { property: "og:title", content: "Mudasir Ali | Software Engineer - Mobile & Web Developer" },
-      { property: "og:description", content: "Portfolio of Mudasir Ali, a Software Engineer specializing in native & cross-platform mobile apps and full-stack web solutions." },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://mudasir.tech" },
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Mudasir Ali | Software Engineer - Mobile & Web Developer" },
-      { name: "twitter:description", content: "Portfolio of Mudasir Ali, a Software Engineer specializing in native & cross-platform mobile apps and full-stack web solutions." },
     ],
     links: [
       {
@@ -97,6 +89,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "icon",
         type: "image/png",
         href: favicon,
+      },
+      {
+        rel: "canonical",
+        href: "https://mudasir.tech/",
       },
     ],
   }),
