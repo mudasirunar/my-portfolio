@@ -350,7 +350,7 @@ function About() {
               I’m a Software Engineering graduate from <span className="text-foreground font-semibold">Sir Syed University of Engineering and Technology, Karachi</span>, passionate about building modern, high-performance Android applications, responsive web interfaces, and AI-powered solutions.
             </motion.p>
             <motion.p variants={fadeUp} className="text-lg text-muted-foreground leading-relaxed">
-              I specialize in <span className="text-foreground font-semibold">mobile technologies across native & cross-platform frameworks</span> (Kotlin, Jetpack Compose, Flutter, iOS/Swift), alongside frontend and backend web development. Currently, I am working as a Web Development Intern at <span className="text-foreground font-semibold">GitXol</span>, enhancing indexing, sitemaps, SEO, and user experience.
+              I specialize in <span className="text-foreground font-semibold">mobile technologies across native & cross-platform frameworks</span> (Kotlin, Jetpack Compose, Flutter, iOS/Swift), alongside frontend and backend web development. Currently, I am working as a Flutter Developer Intern at <span className="text-foreground font-semibold">ANAS Technologies</span> and Web Development Intern at <span className="text-foreground font-semibold">GitXol</span>.
             </motion.p>
             <motion.div variants={fadeUp} className="grid grid-cols-3 gap-4 pt-6">
               {stats.map((s) => (
@@ -373,6 +373,20 @@ function About() {
                     <div className="text-xs uppercase tracking-wider text-muted-foreground">Education</div>
                     <div className="font-semibold mt-1">BS Software Engineering</div>
                     <div className="text-sm text-muted-foreground">Sir Syed University & Technology (SSUET) · Oct 2022 – July 2026</div>
+                  </div>
+                </div>
+              </Card>
+            </motion.div>
+            <motion.div variants={fadeUp}>
+              <Card className="p-6 rounded-2xl border-0 shadow-card hover:shadow-glow transition-shadow">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center shrink-0">
+                    <Briefcase className="w-6 h-6 text-blue-500" />
+                  </div>
+                  <div>
+                    <div className="text-xs uppercase tracking-wider text-muted-foreground">Experience</div>
+                    <div className="font-semibold mt-1">Flutter Developer Intern</div>
+                    <div className="text-sm text-muted-foreground">ANAS Technologies · Sept 2026 – Present</div>
                   </div>
                 </div>
               </Card>
@@ -1461,8 +1475,20 @@ function Projects() {
 function Experience() {
   const items = [
     {
+      type: "work", icon: Briefcase, title: "Flutter Developer Intern",
+      org: "ANAS Technologies", date: "Sept 2026 – Present",
+      location: "Remote",
+      points: [
+        "Developing cross-platform mobile applications using Flutter framework and Dart programming language",
+        "Designing and implementing responsive, modern mobile UIs adhering to best UI/UX practices",
+        "Integrating RESTful APIs and Firebase backend services for authentication, database, and real-time features",
+        "Implementing clean architecture and robust state management for scalable mobile apps",
+        "Collaborating on real-world mobile app features, debugging, and continuous performance optimization",
+      ],
+    },
+    {
       type: "work", icon: Briefcase, title: "Web Development Intern",
-      org: "GitXol", date: "June 2026 - Present",
+      org: "GitXol", date: "June 2026 – Present",
       location: undefined,
       points: [
         "Assisted in website development and UI improvements using modern web technologies",
@@ -1488,7 +1514,7 @@ function Experience() {
           <div className="space-y-8">
             {items.map((it, i) => (
               <motion.div
-                key={it.title}
+                key={`${it.title}-${it.org}`}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
