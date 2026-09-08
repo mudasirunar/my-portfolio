@@ -15,6 +15,11 @@ import profileImg from "@/assets/profile.jpeg";
 import { generateAndDownloadResume } from "@/lib/generateResume";
 import { logAnalyticsEvent } from "@/lib/firebase";
 
+import anasLogo from "@/assets/exp-edu-cert-logos/anas_tech_logo.png";
+import gitxolLogo from "@/assets/exp-edu-cert-logos/gitxol_logo.jpeg";
+import ibmLogo from "@/assets/exp-edu-cert-logos/ibm_logo.png";
+import ssuetLogo from "@/assets/exp-edu-cert-logos/ssuet_logo.jpeg";
+
 import slCover from "@/assets/smartledger/cover.jpeg";
 import slDashboard from "@/assets/smartledger/dashboard.jpg";
 import slDashboard2 from "@/assets/smartledger/dashboard_2.jpg";
@@ -372,22 +377,8 @@ function About() {
             <motion.div variants={fadeUp}>
               <Card className="p-6 rounded-2xl border-0 shadow-card hover:shadow-glow transition-shadow">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                    <GraduationCap className="w-6 h-6 text-primary" />
-                  </div>
-                  <div>
-                    <div className="text-xs uppercase tracking-wider text-muted-foreground">Education</div>
-                    <div className="font-semibold mt-1">BS Software Engineering</div>
-                    <div className="text-sm text-muted-foreground">Sir Syed University & Technology (SSUET) · Oct 2022 – July 2026</div>
-                  </div>
-                </div>
-              </Card>
-            </motion.div>
-            <motion.div variants={fadeUp}>
-              <Card className="p-6 rounded-2xl border-0 shadow-card hover:shadow-glow transition-shadow">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center shrink-0">
-                    <Briefcase className="w-6 h-6 text-blue-500" />
+                  <div className="w-12 h-12 rounded-2xl bg-white p-2 flex items-center justify-center shrink-0 shadow-sm border border-border/40 overflow-hidden ring-2 ring-primary/10">
+                    <img src={anasLogo} alt="ANAS Technologies" className="w-full h-full object-contain" />
                   </div>
                   <div>
                     <div className="text-xs uppercase tracking-wider text-muted-foreground">Experience</div>
@@ -400,8 +391,8 @@ function About() {
             <motion.div variants={fadeUp}>
               <Card className="p-6 rounded-2xl border-0 shadow-card hover:shadow-glow transition-shadow">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-purple/10 flex items-center justify-center shrink-0">
-                    <Briefcase className="w-6 h-6 text-purple" />
+                  <div className="w-12 h-12 rounded-2xl bg-white p-2 flex items-center justify-center shrink-0 shadow-sm border border-border/40 overflow-hidden ring-2 ring-primary/10">
+                    <img src={gitxolLogo} alt="GitXol" className="w-full h-full object-contain" />
                   </div>
                   <div>
                     <div className="text-xs uppercase tracking-wider text-muted-foreground">Experience</div>
@@ -420,8 +411,8 @@ function About() {
               >
                 <Card className="p-6 rounded-2xl border-0 shadow-card hover:shadow-glow transition-all">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center shrink-0">
-                      <Award className="w-6 h-6 text-amber-500" />
+                    <div className="w-12 h-12 rounded-2xl bg-white p-2 flex items-center justify-center shrink-0 shadow-sm border border-border/40 overflow-hidden ring-2 ring-primary/10">
+                      <img src={ibmLogo} alt="IBM" className="w-full h-full object-contain" />
                     </div>
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center justify-between">
@@ -436,6 +427,20 @@ function About() {
                   </div>
                 </Card>
               </a>
+            </motion.div>
+            <motion.div variants={fadeUp}>
+              <Card className="p-6 rounded-2xl border-0 shadow-card hover:shadow-glow transition-shadow">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-2xl bg-white p-2 flex items-center justify-center shrink-0 shadow-sm border border-border/40 overflow-hidden ring-2 ring-primary/10">
+                    <img src={ssuetLogo} alt="SSUET" className="w-full h-full object-contain" />
+                  </div>
+                  <div>
+                    <div className="text-xs uppercase tracking-wider text-muted-foreground">Education</div>
+                    <div className="font-semibold mt-1">BS Software Engineering</div>
+                    <div className="text-sm text-muted-foreground">Sir Syed University & Technology (SSUET) · Oct 2022 – July 2026</div>
+                  </div>
+                </div>
+              </Card>
             </motion.div>
           </motion.div>
         </div>
@@ -1493,7 +1498,7 @@ function Projects() {
 function Experience() {
   const items = [
     {
-      type: "work", icon: Briefcase, title: "Flutter Developer Intern",
+      type: "work", logo: anasLogo, title: "Flutter Developer Intern",
       org: "ANAS Technologies", date: "Sept 2026 – Present",
       location: undefined,
       points: [
@@ -1505,7 +1510,7 @@ function Experience() {
       ],
     },
     {
-      type: "work", icon: Briefcase, title: "Web Development Intern",
+      type: "work", logo: gitxolLogo, title: "Web Development Intern",
       org: "GitXol", date: "June 2026 – Present",
       location: undefined,
       points: [
@@ -1517,7 +1522,7 @@ function Experience() {
       ],
     },
     {
-      type: "cert", icon: Award, title: "IBM iOS and Android Mobile App Developer",
+      type: "cert", logo: ibmLogo, title: "IBM iOS and Android Mobile App Developer",
       org: "IBM · Coursera Professional Certificate", date: "August 2026",
       location: undefined,
       points: [
@@ -1530,7 +1535,7 @@ function Experience() {
       certificateUrl: "https://www.coursera.org/account/accomplishments/specialization/D2BYZFQ9ADK7",
     },
     {
-      type: "edu", icon: GraduationCap, title: "Bachelor of Science in Software Engineering",
+      type: "edu", logo: ssuetLogo, title: "Bachelor of Science in Software Engineering",
       org: "Sir Syed University of Engineering & Technology, Karachi", date: "Oct 2022 – July 2026",
       location: "Karachi, Pakistan",
       points: [],
@@ -1552,8 +1557,8 @@ function Experience() {
                 transition={{ delay: i * 0.1 }}
                 className="relative pl-20"
               >
-                <div className="absolute left-0 top-2 w-12 h-12 rounded-2xl bg-hero-gradient flex items-center justify-center shadow-glow">
-                  <it.icon className="w-6 h-6 text-white" />
+                <div className="absolute left-0 top-2 w-12 h-12 rounded-2xl bg-white p-2 flex items-center justify-center shadow-card border border-border/40 overflow-hidden ring-2 ring-primary/20">
+                  <img src={it.logo} alt={it.org} className="w-full h-full object-contain" />
                 </div>
                 <Card className="p-6 rounded-2xl border-0 shadow-card hover:shadow-glow transition-shadow">
                   <div className="flex flex-wrap items-baseline justify-between gap-2">
