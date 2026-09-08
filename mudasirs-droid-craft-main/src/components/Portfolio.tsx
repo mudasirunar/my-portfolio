@@ -155,7 +155,7 @@ const aiBillOptimizerImages = [
 const PROJECT_LINKS = {
   smartLedger: {
     github: "https://github.com/mudasirunar/SmartLedger",
-    apk: "https://github.com/mudasirunar/SmartLedger/releases/tag/v1.2",
+    apk: "https://github.com/mudasirunar/SmartLedger/releases/tag/v1.3.0",
   },
   bentoGrid: {
     github: "https://github.com/mudasirunar/BentoGridApp",
@@ -163,7 +163,7 @@ const PROJECT_LINKS = {
   },
   todoApp: {
     github: "https://github.com/mudasirunar/TodoApp",
-    apk: "https://github.com/mudasirunar/TodoApp/releases/tag/v2.2",
+    apk: "https://github.com/mudasirunar/TodoApp/releases/tag/v2.3",
   },
   phoneInfo: {
     github: "https://github.com/mudasirunar/PhoneInfo",
