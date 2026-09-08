@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Github, Linkedin, Mail, Phone, Download, ArrowRight, ArrowLeft, Code2, Smartphone,
   Database, Cloud, Cpu, Layers, GitBranch, Sparkles, Briefcase, GraduationCap,
-  Palette, Zap, Brain, Send, MapPin, Bug, TestTube, X, ChevronLeft, ChevronRight, ExternalLink
+  Palette, Zap, Brain, Send, MapPin, Bug, TestTube, X, ChevronLeft, ChevronRight, ExternalLink, Award
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -239,11 +239,6 @@ function Hero() {
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 grid md:grid-cols-2 gap-12 items-center">
         <motion.div initial="hidden" animate="show" variants={stagger}>
-          <motion.div variants={fadeUp}>
-            <Badge variant="secondary" className="rounded-full px-4 py-1.5 mb-6">
-              <Sparkles className="w-3.5 h-3.5 mr-1.5" /> Available for opportunities
-            </Badge>
-          </motion.div>
           <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05]">
             Hi, I'm <br />
             <span className="text-gradient">Mudasir Ali</span>
@@ -347,10 +342,10 @@ function About() {
         <div className="grid lg:grid-cols-5 gap-8">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger} className="lg:col-span-3 space-y-4">
             <motion.p variants={fadeUp} className="text-lg text-muted-foreground leading-relaxed">
-              I’m a Software Engineering graduate from <span className="text-foreground font-semibold">Sir Syed University of Engineering and Technology, Karachi</span>, passionate about building modern, high-performance Android applications, responsive web interfaces, and AI-powered solutions.
+              I am a Software Engineering graduate from <span className="text-foreground font-semibold">Sir Syed University of Engineering and Technology (SSUET), Karachi</span>, driven by a passion for engineering scalable, high-performance mobile applications, intuitive web platforms, and AI-powered digital solutions.
             </motion.p>
             <motion.p variants={fadeUp} className="text-lg text-muted-foreground leading-relaxed">
-              I specialize in <span className="text-foreground font-semibold">mobile technologies across native & cross-platform frameworks</span> (Kotlin, Jetpack Compose, Flutter, iOS/Swift), alongside frontend and backend web development. Currently, I am working as a Flutter Developer Intern at <span className="text-foreground font-semibold">ANAS Technologies</span> and Web Development Intern at <span className="text-foreground font-semibold">GitXol</span>.
+              My core expertise spans <span className="text-foreground font-semibold">mobile engineering across native and cross-platform ecosystems</span> (Kotlin, Jetpack Compose, Flutter/Dart, iOS/Swift), paired with clean architecture, RESTful API integration, and modern cloud workflows. Currently, I am expanding production mobile apps as a Flutter Developer Intern at <span className="text-foreground font-semibold">ANAS Technologies</span>, while enhancing web performance, SEO, and indexing as a Web Development Intern at <span className="text-foreground font-semibold">GitXol</span>.
             </motion.p>
             <motion.div variants={fadeUp} className="grid grid-cols-3 gap-4 pt-6">
               {stats.map((s) => (
@@ -359,6 +354,17 @@ function About() {
                   <div className="text-xs md:text-sm text-muted-foreground mt-1">{s.label}</div>
                 </Card>
               ))}
+            </motion.div>
+            <motion.div variants={fadeUp} className="pt-2">
+              <Card className="p-4 sm:p-5 rounded-2xl border-0 shadow-card glass hover:shadow-glow transition-shadow flex items-center gap-3.5">
+                <div className="w-10 h-10 rounded-xl bg-teal/10 flex items-center justify-center shrink-0">
+                  <MapPin className="w-5 h-5 text-teal" />
+                </div>
+                <div>
+                  <div className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Location & Availability</div>
+                  <div className="text-sm font-semibold text-foreground">Karachi, Pakistan <span className="text-muted-foreground font-normal">· Open to remote & hybrid roles.</span></div>
+                </div>
+              </Card>
             </motion.div>
           </motion.div>
 
@@ -406,18 +412,30 @@ function About() {
               </Card>
             </motion.div>
             <motion.div variants={fadeUp}>
-              <Card className="p-6 rounded-2xl border-0 shadow-card hover:shadow-glow transition-shadow">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-teal/10 flex items-center justify-center shrink-0">
-                    <MapPin className="w-6 h-6 text-teal" />
+              <a
+                href="https://www.coursera.org/account/accomplishments/specialization/D2BYZFQ9ADK7"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block group"
+              >
+                <Card className="p-6 rounded-2xl border-0 shadow-card hover:shadow-glow transition-all">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center shrink-0">
+                      <Award className="w-6 h-6 text-amber-500" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs uppercase tracking-wider text-muted-foreground">Certification</span>
+                        <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-colors" />
+                      </div>
+                      <div className="font-semibold mt-1 text-foreground group-hover:text-primary transition-colors">
+                        IBM iOS & Android Mobile App Developer
+                      </div>
+                      <div className="text-sm text-muted-foreground">Coursera · August 2026</div>
+                    </div>
                   </div>
-                  <div>
-                    <div className="text-xs uppercase tracking-wider text-muted-foreground">Based in</div>
-                    <div className="font-semibold mt-1">Karachi, Pakistan</div>
-                    <div className="text-sm text-muted-foreground">Open to remote roles</div>
-                  </div>
-                </div>
-              </Card>
+                </Card>
+              </a>
             </motion.div>
           </motion.div>
         </div>
@@ -1477,7 +1495,7 @@ function Experience() {
     {
       type: "work", icon: Briefcase, title: "Flutter Developer Intern",
       org: "ANAS Technologies", date: "Sept 2026 – Present",
-      location: "Remote",
+      location: undefined,
       points: [
         "Developing cross-platform mobile applications using Flutter framework and Dart programming language",
         "Designing and implementing responsive, modern mobile UIs adhering to best UI/UX practices",
@@ -1497,6 +1515,19 @@ function Experience() {
         "Contributed to content updates, page design improvements, and frontend development tasks",
         "Collaborated with the development team to enhance website performance and user experience",
       ],
+    },
+    {
+      type: "cert", icon: Award, title: "IBM iOS and Android Mobile App Developer",
+      org: "IBM · Coursera Professional Certificate", date: "August 2026",
+      location: undefined,
+      points: [
+        "Completed professional specialization covering native and cross-platform mobile app development",
+        "Built and deployed applications across Android (Kotlin/Java), iOS (Swift), Flutter & Dart, and React Native",
+        "Applied Generative AI techniques and prompt engineering to accelerate mobile development workflows and code quality",
+        "Implemented end-to-end SDLC workflows, responsive web interfaces with React, modern UI/UX design, and Git/GitHub",
+        "Gained hands-on proficiency in mobile app databases, push notifications, API integration, and app publishing",
+      ],
+      certificateUrl: "https://www.coursera.org/account/accomplishments/specialization/D2BYZFQ9ADK7",
     },
     {
       type: "edu", icon: GraduationCap, title: "Bachelor of Science in Software Engineering",
@@ -1539,6 +1570,20 @@ function Experience() {
                         <li key={p} className="flex gap-2"><span className="text-primary">▹</span>{p}</li>
                       ))}
                     </ul>
+                  )}
+                  {it.certificateUrl && (
+                    <div className="mt-4 pt-1">
+                      <a
+                        href={it.certificateUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex"
+                      >
+                        <Button size="sm" variant="outline" className="rounded-full gap-1.5 text-xs font-medium hover:text-primary hover:border-primary">
+                          View Certificate <ExternalLink className="w-3.5 h-3.5" />
+                        </Button>
+                      </a>
+                    </div>
                   )}
                 </Card>
               </motion.div>
