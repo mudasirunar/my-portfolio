@@ -11,7 +11,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import profileImg from "@/assets/profile.jpeg";
+import profileImg from "@/assets/profile.webp";
 import { generateAndDownloadResume } from "@/lib/generateResume";
 import { logAnalyticsEvent } from "@/lib/firebase";
 
@@ -296,7 +296,16 @@ function Hero() {
           <div className="relative animate-float">
             <div className="absolute -inset-6 bg-hero-gradient rounded-full blur-2xl opacity-50" />
             <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden ring-4 ring-background shadow-glow">
-              <img src={profileImg} alt="Mudasir Ali" width={768} height={768} className="w-full h-full object-cover" />
+              <img
+                src={profileImg}
+                alt="Mudasir Ali - Software Engineer & Mobile Developer"
+                width={768}
+                height={768}
+                fetchPriority="high"
+                loading="eager"
+                decoding="async"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div className="absolute -bottom-4 -right-2 glass rounded-2xl px-4 py-3 shadow-card">
               <div className="flex items-center gap-2">
@@ -1403,6 +1412,8 @@ function Projects() {
                       <img
                         src={p.coverImage}
                         alt={p.title}
+                        loading="lazy"
+                        decoding="async"
                         className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                         style={{
                           imageRendering: 'high-quality' as any,
