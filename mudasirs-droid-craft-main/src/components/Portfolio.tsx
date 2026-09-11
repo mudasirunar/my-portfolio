@@ -160,23 +160,23 @@ const aiBillOptimizerImages = [
 const PROJECT_LINKS = {
   smartLedger: {
     github: "https://github.com/mudasirunar/SmartLedger",
-    apk: "https://github.com/mudasirunar/SmartLedger/releases/tag/v1.3.1",
+    apk: "https://github.com/mudasirunar/SmartLedger/releases/latest",
   },
   bentoGrid: {
     github: "https://github.com/mudasirunar/BentoGridApp",
-    apk: "https://github.com/mudasirunar/BentoGridApp/releases/tag/v1.0",
+    apk: "https://github.com/mudasirunar/BentoGridApp/releases/latest",
   },
   todoApp: {
     github: "https://github.com/mudasirunar/TodoApp",
-    apk: "https://github.com/mudasirunar/TodoApp/releases/tag/v2.3",
+    apk: "https://github.com/mudasirunar/TodoApp/releases/latest",
   },
   phoneInfo: {
     github: "https://github.com/mudasirunar/PhoneInfo",
-    apk: "https://github.com/mudasirunar/PhoneInfo/releases/tag/v1.0",
+    apk: "https://github.com/mudasirunar/PhoneInfo/releases/latest",
   },
   applyTrack: {
     github: "https://github.com/mudasirunar/ApplyTrack",
-    apk: "https://github.com/mudasirunar/ApplyTrack/releases/tag/v3.0.1",
+    apk: "https://github.com/mudasirunar/ApplyTrack/releases/latest",
     website: "https://apply-track-web.vercel.app",
   },
   billOptimizer: {
