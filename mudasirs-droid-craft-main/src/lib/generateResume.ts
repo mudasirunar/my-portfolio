@@ -192,16 +192,19 @@ export const generateAndDownloadResume = () => {
   const projects = [
     {
       title: "AI-Powered Electricity Bill Optimizer (Final Year Project)",
+      github: "https://github.com/mudasirunar/bill-optimizer",
       tech: "Kotlin, Android SDK, Compose, Python, Flask, TensorFlow, Firebase, Docker, DigitalOcean, Vercel",
       desc: "Cross-platform energy management system. Built responsive Web app, native Android app using Kotlin and Jetpack Compose (MVVM), and Python Flask REST APIs with TensorFlow models for bill prediction. Deployed on DigitalOcean and Vercel."
     },
     {
       title: "ApplyTrack — Job Application Tracker",
+      github: "https://github.com/mudasirunar/ApplyTrack",
       tech: "Kotlin, Jetpack Compose, Room DB, React, Vite, Firebase, Supabase Storage, WorkManager",
       desc: "Offline-first tracking system with two clients: a native Android app and a React/Vite web companion. Built Room local caching for zero latency, Supabase storage for resume attachments, and scheduled WorkManager sync to Cloud Firestore."
     },
     {
       title: "SmartLedger — AI-Powered Personal Finance Tracker",
+      github: "https://github.com/mudasirunar/SmartLedger",
       tech: "Kotlin, Jetpack Compose, Room DB, Groq API (AI), MVVM, Retrofit, Coroutines, WorkManager",
       desc: "Native Android finance tracker featuring smart ledgers and local Room DB storage. Integrated Groq API to analyze spending patterns and generate monthly financial forecasts, and WorkManager to schedule intelligent reminders."
     }
@@ -212,6 +215,19 @@ export const generateAndDownloadResume = () => {
     doc.setFontSize(10);
     doc.setTextColor(33, 37, 41);
     doc.text(p.title, 15, currentY);
+
+    if (p.github) {
+      const titleWidth = doc.getTextWidth(p.title);
+      doc.setFont("helvetica", "normal");
+      doc.setTextColor(100, 116, 139);
+      const dot = " • ";
+      doc.text(dot, 15 + titleWidth, currentY);
+
+      const dotWidth = doc.getTextWidth(dot);
+      doc.setFont("helvetica", "bold");
+      doc.setTextColor(59, 130, 246);
+      doc.textWithLink("Link", 15 + titleWidth + dotWidth, currentY, { url: p.github });
+    }
 
     currentY += 3.8;
     doc.setFont("helvetica", "italic");
