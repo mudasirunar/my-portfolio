@@ -589,7 +589,7 @@ const SmartLedgerDesc = () => (
       </p>
     </div>
 
-    <div className="bg-muted/30 p-6 rounded-2xl border border-border/50">
+    <div className="bg-card/30 dark:bg-card/15 backdrop-blur-xl p-6 rounded-2xl border border-border/50 dark:border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
       <h4 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
         <Sparkles className="w-5 h-5 text-primary" /> Key Features
       </h4>
@@ -623,12 +623,12 @@ const SmartLedgerDesc = () => (
       <p className="mb-4 text-base">The application follows a <strong>modular layered architecture inspired by Clean Architecture principles</strong>, with separation between UI, data, and networking layers.</p>
       <div className="flex flex-wrap gap-2 mb-2">
         {["Kotlin", "Material Design 3", "Room Database (KSP)", "Retrofit2 & Gson", "Coroutines & Flow", "WorkManager", "MPAndroidChart", "Glide & PhotoView"].map(t => (
-          <Badge key={t} variant="secondary" className="px-3 py-1 text-xs">{t}</Badge>
+          <span key={t} className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-foreground/[0.05] dark:bg-white/[0.06] text-foreground/80 dark:text-foreground/85 border border-foreground/10 dark:border-white/10 backdrop-blur-md hover:bg-foreground/[0.09] dark:hover:bg-white/[0.12] hover:text-foreground transition-colors">{t}</span>
         ))}
       </div>
     </div>
 
-    <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10">
+    <div className="bg-primary/5 dark:bg-primary/[0.04] backdrop-blur-xl p-6 rounded-2xl border border-primary/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.03)]">
       <h4 className="text-xl font-semibold text-foreground mb-3 flex items-center gap-2">
         <Smartphone className="w-5 h-5 text-primary" /> Get the App
       </h4>
@@ -675,7 +675,7 @@ const ApplyTrackDesc = () => (
       </ul>
     </div>
 
-    <div className="bg-muted/30 p-6 rounded-2xl border border-border/50">
+    <div className="bg-card/30 dark:bg-card/15 backdrop-blur-xl p-6 rounded-2xl border border-border/50 dark:border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
       <h4 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
         <Sparkles className="w-5 h-5 text-primary" /> Key Features
       </h4>
@@ -739,7 +739,7 @@ const ApplyTrackDesc = () => (
           "Vite 8",
           "TypeScript",
         ].map((t) => (
-          <Badge key={t} variant="secondary" className="px-3 py-1 text-xs">{t}</Badge>
+          <span key={t} className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-foreground/[0.05] dark:bg-white/[0.06] text-foreground/80 dark:text-foreground/85 border border-foreground/10 dark:border-white/10 backdrop-blur-md hover:bg-foreground/[0.09] dark:hover:bg-white/[0.12] hover:text-foreground transition-colors">{t}</span>
         ))}
       </div>
     </div>
@@ -755,7 +755,7 @@ const ApplyTrackDesc = () => (
       </ul>
     </div>
 
-    <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10">
+    <div className="bg-primary/5 dark:bg-primary/[0.04] backdrop-blur-xl p-6 rounded-2xl border border-primary/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.03)]">
       <h4 className="text-xl font-semibold text-foreground mb-3 flex items-center gap-2">
         <ExternalLink className="w-5 h-5 text-primary" /> Access ApplyTrack
       </h4>
@@ -809,7 +809,7 @@ const BentoAppDesc = () => (
       </p>
     </div>
 
-    <div className="bg-muted/30 p-6 rounded-2xl border border-border/50">
+    <div className="bg-card/30 dark:bg-card/15 backdrop-blur-xl p-6 rounded-2xl border border-border/50 dark:border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
       <h4 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
         <Sparkles className="w-5 h-5 text-primary" /> Features
       </h4>
@@ -855,7 +855,7 @@ const BentoAppDesc = () => (
       </ul>
       <div className="flex flex-wrap gap-2 mb-2">
         {["Kotlin", "Jetpack Compose", "Material Design 3", "Room Database", "Coil", "ZoomImage", "Coroutines & StateFlow", "MVVM"].map(t => (
-          <Badge key={t} variant="secondary" className="px-3 py-1 text-xs">{t}</Badge>
+          <span key={t} className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-foreground/[0.05] dark:bg-white/[0.06] text-foreground/80 dark:text-foreground/85 border border-foreground/10 dark:border-white/10 backdrop-blur-md hover:bg-foreground/[0.09] dark:hover:bg-white/[0.12] hover:text-foreground transition-colors">{t}</span>
         ))}
       </div>
     </div>
@@ -871,7 +871,7 @@ const BentoAppDesc = () => (
       </ul>
     </div>
 
-    <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10">
+    <div className="bg-primary/5 dark:bg-primary/[0.04] backdrop-blur-xl p-6 rounded-2xl border border-primary/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.03)]">
       <h4 className="text-xl font-semibold text-foreground mb-3 flex items-center gap-2">
         <Smartphone className="w-5 h-5 text-primary" /> Get the App
       </h4>
@@ -911,7 +911,7 @@ const TodoAppDesc = () => (
       </p>
     </div>
 
-    <div className="bg-muted/30 p-6 rounded-2xl border border-border/50">
+    <div className="bg-card/30 dark:bg-card/15 backdrop-blur-xl p-6 rounded-2xl border border-border/50 dark:border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
       <h4 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
         <Sparkles className="w-5 h-5 text-primary" /> Key Features
       </h4>
@@ -934,7 +934,7 @@ const TodoAppDesc = () => (
       </h4>
       <div className="flex flex-wrap gap-2 mb-2">
         {["Kotlin", "Jetpack Compose", "MVVM Architecture", "Room Database", "Firebase Firestore", "Firebase Authentication", "Android Credential Manager", "WorkManager", "Retrofit", "Coroutines & Flow", "Gson"].map(t => (
-          <Badge key={t} variant="secondary" className="px-3 py-1 text-xs">{t}</Badge>
+          <span key={t} className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-foreground/[0.05] dark:bg-white/[0.06] text-foreground/80 dark:text-foreground/85 border border-foreground/10 dark:border-white/10 backdrop-blur-md hover:bg-foreground/[0.09] dark:hover:bg-white/[0.12] hover:text-foreground transition-colors">{t}</span>
         ))}
       </div>
     </div>
@@ -952,7 +952,7 @@ const TodoAppDesc = () => (
       </ul>
     </div>
 
-    <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10">
+    <div className="bg-primary/5 dark:bg-primary/[0.04] backdrop-blur-xl p-6 rounded-2xl border border-primary/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.03)]">
       <h4 className="text-xl font-semibold text-foreground mb-3 flex items-center gap-2">
         <Smartphone className="w-5 h-5 text-primary" /> Get the App
       </h4>
@@ -992,7 +992,7 @@ const PhoneInfoDesc = () => (
       </p>
     </div>
 
-    <div className="bg-muted/30 p-6 rounded-2xl border border-border/50">
+    <div className="bg-card/30 dark:bg-card/15 backdrop-blur-xl p-6 rounded-2xl border border-border/50 dark:border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
       <h4 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
         <Sparkles className="w-5 h-5 text-primary" /> Key Features
       </h4>
@@ -1036,7 +1036,7 @@ const PhoneInfoDesc = () => (
       </ul>
       <div className="flex flex-wrap gap-2 mb-2">
         {["Kotlin", "Jetpack Compose", "Navigation Compose", "MVVM", "Coroutines & StateFlow", "System APIs"].map(t => (
-          <Badge key={t} variant="secondary" className="px-3 py-1 text-xs">{t}</Badge>
+          <span key={t} className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-foreground/[0.05] dark:bg-white/[0.06] text-foreground/80 dark:text-foreground/85 border border-foreground/10 dark:border-white/10 backdrop-blur-md hover:bg-foreground/[0.09] dark:hover:bg-white/[0.12] hover:text-foreground transition-colors">{t}</span>
         ))}
       </div>
     </div>
@@ -1052,7 +1052,7 @@ const PhoneInfoDesc = () => (
       </ul>
     </div>
 
-    <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10">
+    <div className="bg-primary/5 dark:bg-primary/[0.04] backdrop-blur-xl p-6 rounded-2xl border border-primary/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.03)]">
       <h4 className="text-xl font-semibold text-foreground mb-3 flex items-center gap-2">
         <Smartphone className="w-5 h-5 text-primary" /> Get the App
       </h4>
@@ -1096,7 +1096,7 @@ const AiBillOptimizerDesc = () => (
       </p>
     </div>
 
-    <div className="bg-muted/30 p-6 rounded-2xl border border-border/50">
+    <div className="bg-card/30 dark:bg-card/15 backdrop-blur-xl p-6 rounded-2xl border border-border/50 dark:border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
       <h4 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
         <Brain className="w-5 h-5 text-primary" /> The AI Engine: Multi-Model Intelligence
       </h4>
@@ -1144,7 +1144,7 @@ const AiBillOptimizerDesc = () => (
       </ul>
       <div className="flex flex-wrap gap-2 mb-2">
         {["Python", "Flask", "TensorFlow / Keras", "Random Forest", "Bi-LSTM", "Firebase", "Chart.js", "PRECON Dataset"].map(t => (
-          <Badge key={t} variant="secondary" className="px-3 py-1 text-xs">{t}</Badge>
+          <span key={t} className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-foreground/[0.05] dark:bg-white/[0.06] text-foreground/80 dark:text-foreground/85 border border-foreground/10 dark:border-white/10 backdrop-blur-md hover:bg-foreground/[0.09] dark:hover:bg-white/[0.12] hover:text-foreground transition-colors">{t}</span>
         ))}
       </div>
     </div>
@@ -1160,7 +1160,7 @@ const AiBillOptimizerDesc = () => (
       </ul>
     </div>
 
-    <div className="bg-primary/5 p-6 rounded-2xl border border-primary/10">
+    <div className="bg-primary/5 dark:bg-primary/[0.04] backdrop-blur-xl p-6 rounded-2xl border border-primary/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.03)]">
       <h4 className="text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
         <Sparkles className="w-5 h-5 text-primary" /> Quick User Guide
       </h4>
@@ -1224,50 +1224,50 @@ function ProjectModal({ project, onClose, onNavigate }: { project: any, onClose:
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="absolute inset-0 bg-background/80 backdrop-blur-sm"
+          className="absolute inset-0 bg-black/35 backdrop-blur-sm"
         />
         <motion.div
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-          className="modal-scroll-area relative w-full max-w-6xl h-[90vh] glass shadow-card rounded-3xl overflow-y-auto md:overflow-hidden flex flex-col md:flex-row z-10"
+          className="modal-scroll-area relative w-full max-w-6xl h-[90vh] bg-white/20 dark:bg-slate-950/25 backdrop-blur-2xl rounded-3xl border border-white/35 dark:border-white/15 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.35),inset_0_-1px_1px_rgba(255,255,255,0.05)] overflow-y-auto md:overflow-hidden flex flex-col md:flex-row z-10"
         >
           <div className="absolute top-4 right-4 z-20 flex items-center gap-2">
             {onNavigate && (
               <>
                 <button
                   onClick={() => onNavigate('prev')}
-                  className="w-10 h-10 bg-background/60 hover:bg-background backdrop-blur-md rounded-full flex items-center justify-center border border-border/70 dark:border-white/10 hover:border-primary/50 shadow-sm hover:shadow-[0_0_12px_rgba(59,130,246,0.25)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 group/navprev text-foreground"
+                  className="w-10 h-10 bg-white/40 dark:bg-white/10 hover:bg-white/60 dark:hover:bg-white/20 backdrop-blur-xl rounded-full flex items-center justify-center border border-white/40 dark:border-white/15 shadow-sm hover:shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 group/navprev text-foreground"
                   title="Previous Project"
                 >
                   <ArrowLeft className="w-5 h-5 transition-transform duration-200 group-hover/navprev:-translate-x-0.5" />
                 </button>
                 <button
                   onClick={() => onNavigate('next')}
-                  className="w-10 h-10 bg-background/60 hover:bg-background backdrop-blur-md rounded-full flex items-center justify-center border border-border/70 dark:border-white/10 hover:border-primary/50 shadow-sm hover:shadow-[0_0_12px_rgba(59,130,246,0.25)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 group/navnext text-foreground"
+                  className="w-10 h-10 bg-white/40 dark:bg-white/10 hover:bg-white/60 dark:hover:bg-white/20 backdrop-blur-xl rounded-full flex items-center justify-center border border-white/40 dark:border-white/15 shadow-sm hover:shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 group/navnext text-foreground"
                   title="Next Project"
                 >
                   <ArrowRight className="w-5 h-5 transition-transform duration-200 group-hover/navnext:translate-x-0.5" />
                 </button>
-                <div className="w-px h-6 bg-border mx-1" />
+                <div className="w-px h-6 bg-white/20 dark:bg-white/10 mx-1" />
               </>
             )}
             <button
               onClick={onClose}
-              className="w-10 h-10 bg-background/60 hover:bg-background backdrop-blur-md rounded-full flex items-center justify-center border border-border/70 dark:border-white/10 hover:border-rose-500/50 hover:text-rose-500 shadow-sm hover:shadow-[0_0_12px_rgba(244,63,94,0.25)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 group/navclose text-foreground"
+              className="w-10 h-10 bg-white/40 dark:bg-white/10 hover:bg-white/60 dark:hover:bg-white/20 backdrop-blur-xl rounded-full flex items-center justify-center border border-white/40 dark:border-white/15 hover:border-rose-500/50 hover:text-rose-500 shadow-sm hover:shadow-[0_0_15px_rgba(244,63,94,0.3)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 group/navclose text-foreground"
               title="Close"
             >
               <X className="w-5 h-5 transition-transform duration-200 group-hover/navclose:rotate-90" />
             </button>
           </div>
 
-          {/* Image Slider - Clean, uncropped presentation */}
+          {/* Image Slider - Pure Translucent iOS Liquid Glass Stage */}
           {project.images && project.images.length > 0 && (() => {
             const isLandscape = Boolean(project.landscapeImages || (project.title === "ApplyTrack" && currentImage >= 8));
 
             return (
-              <div className={`group w-full ${isLandscape ? "md:w-[50%] lg:w-[52%]" : "md:w-[45%] lg:w-[40%]"} bg-muted/20 relative flex flex-col items-center justify-center p-4 sm:p-6 border-b md:border-b-0 md:border-r shrink-0 min-h-[50vh] md:min-h-0 select-none`}>
+              <div className={`group w-full ${isLandscape ? "md:w-[50%] lg:w-[52%]" : "md:w-[45%] lg:w-[40%]"} bg-white/10 dark:bg-white/[0.03] backdrop-blur-xl relative flex flex-col items-center justify-center p-4 sm:p-6 border-b md:border-b-0 md:border-r border-white/20 dark:border-white/10 shrink-0 min-h-[50vh] md:min-h-0 select-none`}>
                 <div className="relative w-full h-[45vh] md:h-[60vh] max-w-md flex items-center justify-center mx-auto">
                   <AnimatePresence mode="wait">
                     <motion.img
@@ -1277,7 +1277,7 @@ function ProjectModal({ project, onClose, onNavigate }: { project: any, onClose:
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.97 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute m-auto inset-0 max-w-full max-h-full object-contain border border-border/60 shadow-lg rounded-2xl bg-background"
+                      className="absolute m-auto inset-0 max-w-full max-h-full object-contain border border-white/30 dark:border-white/15 shadow-2xl rounded-2xl bg-white/10 dark:bg-black/20 backdrop-blur-md"
                       style={{
                         imageRendering: "high-quality" as any,
                         WebkitBackfaceVisibility: "hidden",
@@ -1289,21 +1289,21 @@ function ProjectModal({ project, onClose, onNavigate }: { project: any, onClose:
                 </div>
 
                 {/* Prev / Next Arrows */}
-                <div className="absolute inset-y-0 left-0 flex items-center justify-start pl-2 z-20 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:transition-opacity md:duration-200">
+                <div className="absolute inset-y-0 left-0 flex items-center justify-start pl-3 z-20 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:transition-opacity md:duration-200">
                   <Button
                     variant="outline"
                     size="icon"
-                    className="rounded-full shadow-md bg-background/80 hover:bg-background backdrop-blur-md w-9 h-9 border border-border/60 dark:border-white/10 hover:border-primary/50 text-foreground hover:shadow-[0_0_12px_rgba(59,130,246,0.3)] hover:scale-105 active:scale-95 transition-all duration-200 group/chevronl"
+                    className="rounded-full shadow-lg bg-white/50 hover:bg-white/80 dark:bg-slate-900/60 dark:hover:bg-slate-900/90 backdrop-blur-xl w-9 h-9 border border-white/40 dark:border-white/15 hover:border-primary/50 text-foreground hover:shadow-[0_0_15px_rgba(59,130,246,0.35)] hover:scale-105 active:scale-95 transition-all duration-200 group/chevronl"
                     onClick={() => setCurrentImage((prev) => (prev - 1 + project.images.length) % project.images.length)}
                   >
                     <ChevronLeft className="w-4 h-4 transition-transform duration-200 group-hover/chevronl:-translate-x-0.5" />
                   </Button>
                 </div>
-                <div className="absolute inset-y-0 right-0 flex items-center justify-end pr-2 z-20 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:transition-opacity md:duration-200">
+                <div className="absolute inset-y-0 right-0 flex items-center justify-end pr-3 z-20 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:transition-opacity md:duration-200">
                   <Button
                     variant="outline"
                     size="icon"
-                    className="rounded-full shadow-md bg-background/80 hover:bg-background backdrop-blur-md w-9 h-9 border border-border/60 dark:border-white/10 hover:border-primary/50 text-foreground hover:shadow-[0_0_12px_rgba(59,130,246,0.3)] hover:scale-105 active:scale-95 transition-all duration-200 group/chevronr"
+                    className="rounded-full shadow-lg bg-white/50 hover:bg-white/80 dark:bg-slate-900/60 dark:hover:bg-slate-900/90 backdrop-blur-xl w-9 h-9 border border-white/40 dark:border-white/15 hover:border-primary/50 text-foreground hover:shadow-[0_0_15px_rgba(59,130,246,0.35)] hover:scale-105 active:scale-95 transition-all duration-200 group/chevronr"
                     onClick={() => setCurrentImage((prev) => (prev + 1) % project.images.length)}
                   >
                     <ChevronRight className="w-4 h-4 transition-transform duration-200 group-hover/chevronr:translate-x-0.5" />
@@ -1312,15 +1312,17 @@ function ProjectModal({ project, onClose, onNavigate }: { project: any, onClose:
 
                 {/* Dot Indicators */}
                 <div className="mt-4 flex flex-wrap justify-center gap-1.5 w-full px-4 z-10">
-                  {project.images.map((_: any, i: number) => (
-                    <button
-                      key={i}
-                      onClick={() => setCurrentImage(i)}
-                      className={`h-1.5 rounded-full transition-all duration-300 ${
-                        i === currentImage ? "w-5 bg-primary" : "w-1.5 bg-muted-foreground/30 hover:bg-muted-foreground/50"
-                      }`}
-                    />
-                  ))}
+                  <div className="px-3.5 py-1.5 rounded-full bg-white/40 dark:bg-white/10 backdrop-blur-xl border border-white/30 dark:border-white/15 flex items-center gap-1.5 shadow-sm">
+                    {project.images.map((_: any, i: number) => (
+                      <button
+                        key={i}
+                        onClick={() => setCurrentImage(i)}
+                        className={`h-1.5 rounded-full transition-all duration-300 ${
+                          i === currentImage ? "w-5 bg-primary shadow-[0_0_10px_rgba(59,130,246,0.6)]" : "w-1.5 bg-muted-foreground/40 hover:bg-muted-foreground/70"
+                        }`}
+                      />
+                    ))}
+                  </div>
                 </div>
                 <div className="mt-2 text-xs text-muted-foreground font-medium z-10">
                   {currentImage + 1} / {project.images.length}
@@ -1329,8 +1331,8 @@ function ProjectModal({ project, onClose, onNavigate }: { project: any, onClose:
             );
           })()}
 
-          {/* Right panel: Details */}
-          <div className="modal-scroll-area w-full md:flex-1 p-6 md:p-10 md:overflow-y-auto">
+          {/* Right panel: Details - Pure Translucent iOS Liquid Glass Stage */}
+          <div className="modal-scroll-area relative w-full md:flex-1 p-6 md:p-10 md:overflow-y-auto bg-white/[0.05] dark:bg-white/[0.02] backdrop-blur-xl">
             {project.longDesc ? (
               project.longDesc
             ) : (
@@ -1707,13 +1709,12 @@ function Projects() {
 
                       <div className="flex flex-wrap gap-1.5 pt-1">
                         {p.tech.map((t) => (
-                          <Badge
+                          <span
                             key={t}
-                            variant="secondary"
-                            className="rounded-full text-xs font-medium px-3 py-1 border border-border/50 bg-secondary/60"
+                            className="rounded-full text-xs font-medium px-3 py-1 border border-foreground/10 dark:border-white/10 bg-foreground/[0.05] dark:bg-white/[0.06] text-foreground/80 dark:text-foreground/85 backdrop-blur-md"
                           >
                             {t}
-                          </Badge>
+                          </span>
                         ))}
                       </div>
 
