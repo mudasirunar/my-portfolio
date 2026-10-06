@@ -1195,9 +1195,28 @@ const AiBillOptimizerDesc = () => (
   </div>
 );
 
-function ProjectModal({ project, onClose, onNavigate }: { project: any, onClose: () => void, onNavigate?: (dir: 'next' | 'prev') => void }) {
+function ProjectModal({
+  project,
+  navDirection = 0,
+  onClose,
+  onNavigate
+}: {
+  project: any;
+  navDirection?: number;
+  onClose: () => void;
+  onNavigate?: (dir: 'next' | 'prev') => void;
+}) {
   const [currentImage, setCurrentImage] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [prevProjectTitle, setPrevProjectTitle] = useState(project?.title);
+
+  // Synchronously reset image index and direction when project changes
+  // to prevent old index bleed and aggressive jump transitions
+  if (project?.title !== prevProjectTitle) {
+    setPrevProjectTitle(project?.title);
+    setCurrentImage(0);
+    setDirection(0);
+  }
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -1206,15 +1225,13 @@ function ProjectModal({ project, onClose, onNavigate }: { project: any, onClose:
     };
   }, []);
 
-  // Reset scroll and image index when project changes
+  // Reset scroll when project changes
   useEffect(() => {
-    setCurrentImage(0);
-    setDirection(0);
     const scrollableElements = document.querySelectorAll('.modal-scroll-area');
     scrollableElements.forEach(el => {
       el.scrollTop = 0;
     });
-  }, [project]);
+  }, [project?.title]);
 
   // Predictive Image Preload Algorithm:
   // Proactively loads adjacent images into the browser cache
@@ -1239,32 +1256,37 @@ function ProjectModal({ project, onClose, onNavigate }: { project: any, onClose:
     setCurrentImage((prev) => (prev + newDirection + project.images.length) % project.images.length);
   };
 
-  const slideVariants = {
+  const slideVariants: any = {
     enter: (dir: number) => ({
-      x: dir > 0 ? 60 : dir < 0 ? -60 : 0,
+      x: dir > 0 ? 80 : dir < 0 ? -80 : 0,
       opacity: 0,
-      scale: 0.96,
+      scale: 0.94,
+      filter: "blur(4px)",
     }),
     center: {
       zIndex: 1,
       x: 0,
       opacity: 1,
       scale: 1,
+      filter: "blur(0px)",
       transition: {
-        x: { type: "spring" as const, stiffness: 340, damping: 32 },
-        opacity: { duration: 0.26 },
-        scale: { duration: 0.26 },
+        x: { duration: 0.42, ease: [0.16, 1, 0.3, 1] as const },
+        scale: { duration: 0.42, ease: [0.16, 1, 0.3, 1] as const },
+        opacity: { duration: 0.32, ease: "easeOut" },
+        filter: { duration: 0.32, ease: "easeOut" },
       },
     },
     exit: (dir: number) => ({
       zIndex: 0,
-      x: dir < 0 ? 60 : dir > 0 ? -60 : 0,
+      x: dir < 0 ? 80 : dir > 0 ? -80 : 0,
       opacity: 0,
-      scale: 0.96,
+      scale: 0.94,
+      filter: "blur(4px)",
       transition: {
-        x: { type: "spring" as const, stiffness: 340, damping: 32 },
-        opacity: { duration: 0.2 },
-        scale: { duration: 0.2 },
+        x: { duration: 0.38, ease: [0.16, 1, 0.3, 1] as const },
+        scale: { duration: 0.38, ease: [0.16, 1, 0.3, 1] as const },
+        opacity: { duration: 0.28, ease: "easeIn" },
+        filter: { duration: 0.28, ease: "easeIn" },
       },
     }),
   };
@@ -1315,85 +1337,113 @@ function ProjectModal({ project, onClose, onNavigate }: { project: any, onClose:
             </button>
           </div>
 
-          {/* Image Slider - Pure Translucent iOS Liquid Glass Stage */}
+          {/* Image Slider - Pure Translucent iOS Liquid Glass Stage with Fluid Width Transition */}
           {project.images && project.images.length > 0 && (() => {
             const isLandscape = Boolean(project.landscapeImages || (project.title === "ApplyTrack" && currentImage >= 8));
 
             return (
-              <div className={`group w-full ${isLandscape ? "md:w-[50%] lg:w-[52%]" : "md:w-[45%] lg:w-[40%]"} bg-white/10 dark:bg-white/[0.03] backdrop-blur-xl relative flex flex-col items-center justify-center p-4 sm:p-6 border-b md:border-b-0 md:border-r border-white/20 dark:border-white/10 shrink-0 min-h-[50vh] md:min-h-0 select-none overflow-hidden`}>
-                <div className="relative w-full h-[45vh] md:h-[60vh] max-w-md flex items-center justify-center mx-auto px-10 sm:px-12 overflow-hidden">
-                  <AnimatePresence initial={false} custom={direction}>
-                    <motion.img
-                      key={currentImage}
-                      custom={direction}
-                      variants={slideVariants}
-                      initial="enter"
-                      animate="center"
-                      exit="exit"
-                      drag="x"
-                      dragConstraints={{ left: 0, right: 0 }}
-                      dragElastic={0.2}
-                      onDragEnd={(_e, { offset, velocity }) => {
-                        const swipe = Math.abs(offset.x) * velocity.x;
-                        if (offset.x < -40 || swipe < -800) {
-                          paginate(1);
-                        } else if (offset.x > 40 || swipe > 800) {
-                          paginate(-1);
-                        }
+              <div className={`group w-full ${isLandscape ? "md:w-[50%] lg:w-[52%]" : "md:w-[45%] lg:w-[40%]"} bg-white/10 dark:bg-white/[0.03] backdrop-blur-xl relative flex flex-col items-center justify-center p-4 sm:p-6 border-b md:border-b-0 md:border-r border-white/20 dark:border-white/10 shrink-0 min-h-[50vh] md:min-h-0 select-none overflow-hidden transition-[width] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]`}>
+                <div className={`relative w-full h-[45vh] md:h-[60vh] ${isLandscape ? "max-w-xl lg:max-w-2xl px-2 sm:px-4" : "max-w-md px-2 sm:px-4"} flex items-center justify-center mx-auto`}>
+                  <AnimatePresence mode="wait" initial={false}>
+                    <motion.div
+                      key={project.title}
+                      initial={{
+                        opacity: 0,
+                        scale: 0.94,
+                        filter: "blur(6px)",
+                        y: navDirection !== 0 ? 10 : 0,
                       }}
-                      src={project.images[currentImage]}
-                      loading="eager"
-                      fetchPriority="high"
-                      decoding="async"
-                      className="absolute m-auto inset-0 max-w-full max-h-full object-contain border border-white/30 dark:border-white/15 shadow-2xl rounded-2xl bg-white/10 dark:bg-black/20 backdrop-blur-md cursor-grab active:cursor-grabbing"
-                      style={{
-                        imageRendering: "high-quality" as any,
-                        WebkitBackfaceVisibility: "hidden",
-                        transform: "translateZ(0)",
+                      animate={{
+                        opacity: 1,
+                        scale: 1,
+                        filter: "blur(0px)",
+                        y: 0,
                       }}
-                      alt={`${project.title} - High-resolution application screenshot ${currentImage + 1} of ${project.images.length}`}
-                    />
+                      exit={{
+                        opacity: 0,
+                        scale: 0.94,
+                        filter: "blur(6px)",
+                        y: navDirection !== 0 ? -10 : 0,
+                      }}
+                      transition={{
+                        duration: 0.38,
+                        ease: [0.16, 1, 0.3, 1],
+                      }}
+                      className="w-full h-full flex items-center justify-center relative"
+                    >
+                      <AnimatePresence initial={false} custom={direction}>
+                        <motion.img
+                          key={currentImage}
+                          custom={direction}
+                          variants={slideVariants}
+                          initial="enter"
+                          animate="center"
+                          exit="exit"
+                          drag="x"
+                          dragConstraints={{ left: 0, right: 0 }}
+                          dragElastic={0.2}
+                          onDragEnd={(_e, { offset, velocity }) => {
+                            const swipe = Math.abs(offset.x) * velocity.x;
+                            if (offset.x < -40 || swipe < -800) {
+                              paginate(1);
+                            } else if (offset.x > 40 || swipe > 800) {
+                              paginate(-1);
+                            }
+                          }}
+                          src={project.images[currentImage]}
+                          loading="eager"
+                          fetchPriority="high"
+                          decoding="async"
+                          className="absolute m-auto inset-0 max-w-full max-h-full object-contain border border-white/40 dark:border-white/15 rounded-2xl shadow-[0_4px_6px_-1px_rgba(0,0,0,0.08),0_10px_20px_-3px_rgba(0,0,0,0.18),0_18px_24px_-6px_rgba(0,0,0,0.12)] dark:shadow-[0_4px_8px_-1px_rgba(0,0,0,0.35),0_12px_24px_-3px_rgba(0,0,0,0.65),0_20px_28px_-6px_rgba(0,0,0,0.45)] cursor-grab active:cursor-grabbing"
+                          style={{
+                            imageRendering: "high-quality" as any,
+                            WebkitBackfaceVisibility: "hidden",
+                            transform: "translateZ(0)",
+                            willChange: "transform, opacity, filter",
+                          }}
+                          alt={`${project.title} - High-resolution application screenshot ${currentImage + 1} of ${project.images.length}`}
+                        />
+                      </AnimatePresence>
+                    </motion.div>
                   </AnimatePresence>
                 </div>
 
-                {/* Prev / Next Arrows */}
-                <div className="absolute inset-y-0 left-0 flex items-center justify-start pl-1.5 sm:pl-3 z-20 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:transition-opacity md:duration-200">
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="rounded-full shadow-lg bg-white/50 hover:bg-white/80 dark:bg-slate-900/60 dark:hover:bg-slate-900/90 backdrop-blur-xl w-9 h-9 border border-white/40 dark:border-white/15 hover:border-primary/50 text-foreground hover:shadow-[0_0_15px_rgba(59,130,246,0.35)] hover:scale-105 active:scale-95 transition-all duration-200 group/chevronl"
+                {/* Unified Bottom Controls Bar: Prev Button, Dot Indicators, Next Button */}
+                <div className="mt-4 flex items-center justify-center gap-2.5 w-full px-4 z-20">
+                  <button
+                    type="button"
+                    className="w-8 h-8 min-w-[32px] min-h-[32px] p-0 rounded-full shadow-sm bg-white/60 hover:bg-white/90 dark:bg-slate-900/70 dark:hover:bg-slate-900/95 backdrop-blur-xl border border-white/50 dark:border-white/20 hover:border-primary/50 text-foreground hover:shadow-[0_0_12px_rgba(59,130,246,0.35)] hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center cursor-pointer"
                     onClick={() => paginate(-1)}
+                    title="Previous screenshot"
                   >
-                    <ChevronLeft className="w-4 h-4 transition-transform duration-200 group-hover/chevronl:-translate-x-0.5" />
-                  </Button>
-                </div>
-                <div className="absolute inset-y-0 right-0 flex items-center justify-end pr-1.5 sm:pr-3 z-20 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:transition-opacity md:duration-200">
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="rounded-full shadow-lg bg-white/50 hover:bg-white/80 dark:bg-slate-900/60 dark:hover:bg-slate-900/90 backdrop-blur-xl w-9 h-9 border border-white/40 dark:border-white/15 hover:border-primary/50 text-foreground hover:shadow-[0_0_15px_rgba(59,130,246,0.35)] hover:scale-105 active:scale-95 transition-all duration-200 group/chevronr"
-                    onClick={() => paginate(1)}
-                  >
-                    <ChevronRight className="w-4 h-4 transition-transform duration-200 group-hover/chevronr:translate-x-0.5" />
-                  </Button>
-                </div>
+                    <ChevronLeft className="w-4 h-4 transition-transform duration-200 hover:-translate-x-0.5" />
+                  </button>
 
-                {/* Dot Indicators */}
-                <div className="mt-4 flex flex-wrap justify-center gap-1.5 w-full px-4 z-10">
-                  <div className="px-3.5 py-1.5 rounded-full bg-white/40 dark:bg-white/10 backdrop-blur-xl border border-white/30 dark:border-white/15 flex items-center gap-1.5 shadow-sm">
+                  <div className="h-8 min-h-[32px] px-3.5 rounded-full bg-white/50 dark:bg-white/10 backdrop-blur-xl border border-white/40 dark:border-white/20 flex items-center gap-1.5 shadow-sm">
                     {project.images.map((_: any, i: number) => (
                       <button
                         key={i}
+                        type="button"
                         onClick={() => {
                           setDirection(i > currentImage ? 1 : -1);
                           setCurrentImage(i);
                         }}
-                        className={`h-1.5 rounded-full transition-all duration-300 ${
-                          i === currentImage ? "w-5 bg-primary shadow-[0_0_10px_rgba(59,130,246,0.6)]" : "w-1.5 bg-muted-foreground/40 hover:bg-muted-foreground/70"
+                        className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                          i === currentImage ? "w-5 bg-primary shadow-[0_0_10px_rgba(59,130,246,0.6)]" : "w-2 bg-muted-foreground/40 hover:bg-muted-foreground/70"
                         }`}
+                        title={`Go to slide ${i + 1}`}
                       />
                     ))}
                   </div>
+
+                  <button
+                    type="button"
+                    className="w-8 h-8 min-w-[32px] min-h-[32px] p-0 rounded-full shadow-sm bg-white/60 hover:bg-white/90 dark:bg-slate-900/70 dark:hover:bg-slate-900/95 backdrop-blur-xl border border-white/50 dark:border-white/20 hover:border-primary/50 text-foreground hover:shadow-[0_0_12px_rgba(59,130,246,0.35)] hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center cursor-pointer"
+                    onClick={() => paginate(1)}
+                    title="Next screenshot"
+                  >
+                    <ChevronRight className="w-4 h-4 transition-transform duration-200 hover:translate-x-0.5" />
+                  </button>
                 </div>
                 <div className="mt-2 text-xs text-muted-foreground font-medium z-10">
                   {currentImage + 1} / {project.images.length}
@@ -1402,17 +1452,46 @@ function ProjectModal({ project, onClose, onNavigate }: { project: any, onClose:
             );
           })()}
 
-          {/* Right panel: Details - Pure Translucent iOS Liquid Glass Stage */}
+          {/* Right panel: Details - Pure Translucent iOS Liquid Glass Stage with Directional Reveal */}
           <div className="modal-scroll-area relative w-full md:flex-1 p-6 md:p-10 md:overflow-y-auto bg-white/[0.05] dark:bg-white/[0.02] backdrop-blur-xl">
-            {project.longDesc ? (
-              project.longDesc
-            ) : (
-              <div className="flex flex-col items-center justify-center h-full text-center text-muted-foreground py-12">
-                <Code2 className="w-12 h-12 mb-4 opacity-20" />
-                <h3 className="text-xl font-semibold mb-2 text-foreground">{project.title}</h3>
-                <p>More detailed case study coming soon.</p>
-              </div>
-            )}
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={project.title}
+                initial={{
+                  opacity: 0,
+                  x: 30,
+                  y: 10,
+                  filter: "blur(4px)",
+                }}
+                animate={{
+                  opacity: 1,
+                  x: 0,
+                  y: 0,
+                  filter: "blur(0px)",
+                }}
+                exit={{
+                  opacity: 0,
+                  x: -30,
+                  y: -10,
+                  filter: "blur(4px)",
+                }}
+                transition={{
+                  duration: 0.38,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="w-full min-h-full"
+              >
+                {project.longDesc ? (
+                  project.longDesc
+                ) : (
+                  <div className="flex flex-col items-center justify-center h-full text-center text-muted-foreground py-12">
+                    <Code2 className="w-12 h-12 mb-4 opacity-20" />
+                    <h3 className="text-xl font-semibold mb-2 text-foreground">{project.title}</h3>
+                    <p>More detailed case study coming soon.</p>
+                  </div>
+                )}
+              </motion.div>
+            </AnimatePresence>
           </div>
         </motion.div>
       </div>
@@ -1472,6 +1551,7 @@ function ProjectSpotlightCard({
 
 function Projects() {
   const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [projectNavDir, setProjectNavDir] = useState<number>(0);
 
   const projects = [
     {
@@ -1706,6 +1786,7 @@ function Projects() {
         variant="ghost"
         className="relative rounded-full text-muted-foreground hover:text-foreground hover:bg-muted/70 dark:hover:bg-white/10 border border-transparent hover:border-border/60 dark:hover:border-white/10 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 group/details font-medium"
         onClick={() => {
+          setProjectNavDir(0);
           setSelectedProject(p);
           logAnalyticsEvent("project_click", { project_title: p.title, link_type: "details" });
         }}
@@ -1776,6 +1857,7 @@ function Projects() {
                       <div>
                         <h3
                           onClick={() => {
+                            setProjectNavDir(0);
                             setSelectedProject(p);
                             logAnalyticsEvent("project_click", { project_title: p.title, link_type: "details" });
                           }}
@@ -1812,6 +1894,7 @@ function Projects() {
                     {/* 3D Depth Visual Showcase Stage */}
                     <div
                       onClick={() => {
+                        setProjectNavDir(0);
                         setSelectedProject(p);
                         logAnalyticsEvent("project_click", { project_title: p.title, link_type: "details" });
                       }}
@@ -1888,8 +1971,14 @@ function Projects() {
       {selectedProject && (
         <ProjectModal
           project={selectedProject}
-          onClose={() => setSelectedProject(null)}
+          navDirection={projectNavDir}
+          onClose={() => {
+            setSelectedProject(null);
+            setProjectNavDir(0);
+          }}
           onNavigate={(dir) => {
+            const dirVal = dir === 'next' ? 1 : -1;
+            setProjectNavDir(dirVal);
             const idx = projects.findIndex(p => p.title === selectedProject.title);
             if (dir === 'next') setSelectedProject(projects[(idx + 1) % projects.length]);
             else setSelectedProject(projects[(idx - 1 + projects.length) % projects.length]);
