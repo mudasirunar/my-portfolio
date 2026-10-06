@@ -34,7 +34,6 @@ import slViewExp from "@/assets/smartledger/view_expense_screen.webp";
 import slAna1 from "@/assets/smartledger/analytics_screen.webp";
 import slAna2 from "@/assets/smartledger/analytic_screen_2.webp";
 import slAi from "@/assets/smartledger/ai_insigth_and_prediction.webp";
-import slRestore from "@/assets/smartledger/restore_done_dialog.webp";
 import slBackup from "@/assets/smartledger/backup_options_dialog.webp";
 
 import atCover from "@/assets/applytrack/cover.webp";
@@ -128,7 +127,6 @@ const smartLedgerImages = [
   slAna1,
   slAna2,
   slAi,
-  slRestore,
   slBackup
 ];
 
