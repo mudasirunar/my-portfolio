@@ -1306,32 +1306,32 @@ function ProjectModal({
           transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
           className="modal-scroll-area relative w-full max-w-6xl h-[90vh] bg-white/20 dark:bg-slate-950/25 backdrop-blur-2xl rounded-3xl border border-white/35 dark:border-white/15 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.35),inset_0_-1px_1px_rgba(255,255,255,0.05)] overflow-y-auto md:overflow-hidden flex flex-col md:flex-row z-10"
         >
-          <div className="absolute top-4 right-4 z-20 flex items-center gap-2">
+          <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 flex items-center gap-1.5 sm:gap-2">
             {onNavigate && (
               <>
                 <button
                   onClick={() => onNavigate('prev')}
-                  className="w-10 h-10 bg-white/40 dark:bg-white/10 hover:bg-white/60 dark:hover:bg-white/20 backdrop-blur-xl rounded-full flex items-center justify-center border border-white/40 dark:border-white/15 shadow-sm hover:shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 group/navprev text-foreground"
+                  className="w-8 h-8 sm:w-10 sm:h-10 bg-white/40 dark:bg-white/10 hover:bg-white/60 dark:hover:bg-white/20 backdrop-blur-xl rounded-full flex items-center justify-center border border-white/40 dark:border-white/15 shadow-sm hover:shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 group/navprev text-foreground"
                   title="Previous Project"
                 >
-                  <ArrowLeft className="w-5 h-5 transition-transform duration-200 group-hover/navprev:-translate-x-0.5" />
+                  <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-200 group-hover/navprev:-translate-x-0.5" />
                 </button>
                 <button
                   onClick={() => onNavigate('next')}
-                  className="w-10 h-10 bg-white/40 dark:bg-white/10 hover:bg-white/60 dark:hover:bg-white/20 backdrop-blur-xl rounded-full flex items-center justify-center border border-white/40 dark:border-white/15 shadow-sm hover:shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 group/navnext text-foreground"
+                  className="w-8 h-8 sm:w-10 sm:h-10 bg-white/40 dark:bg-white/10 hover:bg-white/60 dark:hover:bg-white/20 backdrop-blur-xl rounded-full flex items-center justify-center border border-white/40 dark:border-white/15 shadow-sm hover:shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 group/navnext text-foreground"
                   title="Next Project"
                 >
-                  <ArrowRight className="w-5 h-5 transition-transform duration-200 group-hover/navnext:translate-x-0.5" />
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-200 group-hover/navnext:translate-x-0.5" />
                 </button>
-                <div className="w-px h-6 bg-white/20 dark:bg-white/10 mx-1" />
+                <div className="w-px h-5 sm:h-6 bg-white/20 dark:bg-white/10 mx-0.5 sm:mx-1" />
               </>
             )}
             <button
               onClick={onClose}
-              className="w-10 h-10 bg-white/40 dark:bg-white/10 hover:bg-white/60 dark:hover:bg-white/20 backdrop-blur-xl rounded-full flex items-center justify-center border border-white/40 dark:border-white/15 hover:border-rose-500/50 hover:text-rose-500 shadow-sm hover:shadow-[0_0_15px_rgba(244,63,94,0.3)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 group/navclose text-foreground"
+              className="w-8 h-8 sm:w-10 sm:h-10 bg-white/40 dark:bg-white/10 hover:bg-white/60 dark:hover:bg-white/20 backdrop-blur-xl rounded-full flex items-center justify-center border border-white/40 dark:border-white/15 hover:border-rose-500/50 hover:text-rose-500 shadow-sm hover:shadow-[0_0_15px_rgba(244,63,94,0.3)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 group/navclose text-foreground"
               title="Close"
             >
-              <X className="w-5 h-5 transition-transform duration-200 group-hover/navclose:rotate-90" />
+              <X className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-200 group-hover/navclose:rotate-90" />
             </button>
           </div>
 
@@ -1340,8 +1340,8 @@ function ProjectModal({
             const isLandscape = Boolean(project.landscapeImages || (project.title === "ApplyTrack" && currentImage >= 8));
 
             return (
-              <div className={`group w-full ${isLandscape ? "md:w-[50%] lg:w-[52%]" : "md:w-[45%] lg:w-[40%]"} bg-white/10 dark:bg-white/[0.03] backdrop-blur-xl relative flex flex-col items-center justify-center p-4 sm:p-6 border-b md:border-b-0 md:border-r border-white/20 dark:border-white/10 shrink-0 min-h-[50vh] md:min-h-0 select-none overflow-hidden transition-[width] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]`}>
-                <div className={`relative w-full h-[45vh] md:h-[60vh] ${isLandscape ? "max-w-xl lg:max-w-2xl px-2 sm:px-4" : "max-w-md px-2 sm:px-4"} flex items-center justify-center mx-auto`}>
+              <div className={`group w-full ${isLandscape ? "md:w-[50%] lg:w-[52%] min-h-[220px] pt-12 pb-3" : "md:w-[45%] lg:w-[40%] min-h-[46vh] pt-14 pb-3"} bg-white/10 dark:bg-white/[0.03] backdrop-blur-xl relative flex flex-col items-center justify-center px-3 sm:px-6 md:p-6 md:min-h-0 border-b md:border-b-0 md:border-r border-white/20 dark:border-white/10 shrink-0 select-none overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]`}>
+                <div className={`relative w-full ${isLandscape ? "h-[22vh] min-h-[175px] max-w-xl lg:max-w-2xl px-2 sm:px-4" : "h-[42vh] min-h-[300px] max-w-md px-2 sm:px-4"} md:h-[60vh] flex items-center justify-center mx-auto transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]`}>
                   <AnimatePresence mode="wait" initial={false}>
                     <motion.div
                       key={project.title}
@@ -1407,45 +1407,51 @@ function ProjectModal({
                 </div>
 
                 {/* Unified Bottom Controls Bar: Prev Button, Dot Indicators, Next Button */}
-                <div className="mt-4 flex items-center justify-center gap-2.5 w-full px-4 z-20">
-                  <button
-                    type="button"
-                    className="w-8 h-8 min-w-[32px] min-h-[32px] p-0 rounded-full shadow-sm bg-white/60 hover:bg-white/90 dark:bg-slate-900/70 dark:hover:bg-slate-900/95 backdrop-blur-xl border border-white/50 dark:border-white/20 hover:border-primary/50 text-foreground hover:shadow-[0_0_12px_rgba(59,130,246,0.35)] hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center cursor-pointer"
-                    onClick={() => paginate(-1)}
-                    title="Previous screenshot"
-                  >
-                    <ChevronLeft className="w-4 h-4 transition-transform duration-200 hover:-translate-x-0.5" />
-                  </button>
+                <motion.div
+                  layout
+                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  className="mt-2.5 sm:mt-4 flex flex-col items-center justify-center w-full z-20"
+                >
+                  <div className="flex items-center justify-center gap-2.5 w-full px-4">
+                    <button
+                      type="button"
+                      className="w-8 h-8 min-w-[32px] min-h-[32px] p-0 rounded-full shadow-sm bg-white/60 hover:bg-white/90 dark:bg-slate-900/70 dark:hover:bg-slate-900/95 backdrop-blur-xl border border-white/50 dark:border-white/20 hover:border-primary/50 text-foreground hover:shadow-[0_0_12px_rgba(59,130,246,0.35)] hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center cursor-pointer"
+                      onClick={() => paginate(-1)}
+                      title="Previous screenshot"
+                    >
+                      <ChevronLeft className="w-4 h-4 transition-transform duration-200 hover:-translate-x-0.5" />
+                    </button>
 
-                  <div className="h-8 min-h-[32px] px-3.5 rounded-full bg-white/50 dark:bg-white/10 backdrop-blur-xl border border-white/40 dark:border-white/20 flex items-center gap-1.5 shadow-sm">
-                    {project.images.map((_: any, i: number) => (
-                      <button
-                        key={i}
-                        type="button"
-                        onClick={() => {
-                          setDirection(i > currentImage ? 1 : -1);
-                          setCurrentImage(i);
-                        }}
-                        className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                          i === currentImage ? "w-5 bg-primary shadow-[0_0_10px_rgba(59,130,246,0.6)]" : "w-2 bg-muted-foreground/40 hover:bg-muted-foreground/70"
-                        }`}
-                        title={`Go to slide ${i + 1}`}
-                      />
-                    ))}
+                    <div className="h-8 min-h-[32px] px-3.5 rounded-full bg-white/50 dark:bg-white/10 backdrop-blur-xl border border-white/40 dark:border-white/20 flex items-center gap-1.5 shadow-sm transition-[width] duration-300">
+                      {project.images.map((_: any, i: number) => (
+                        <button
+                          key={i}
+                          type="button"
+                          onClick={() => {
+                            setDirection(i > currentImage ? 1 : -1);
+                            setCurrentImage(i);
+                          }}
+                          className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                            i === currentImage ? "w-5 bg-primary shadow-[0_0_10px_rgba(59,130,246,0.6)]" : "w-2 bg-muted-foreground/40 hover:bg-muted-foreground/70"
+                          }`}
+                          title={`Go to slide ${i + 1}`}
+                        />
+                      ))}
+                    </div>
+
+                    <button
+                      type="button"
+                      className="w-8 h-8 min-w-[32px] min-h-[32px] p-0 rounded-full shadow-sm bg-white/60 hover:bg-white/90 dark:bg-slate-900/70 dark:hover:bg-slate-900/95 backdrop-blur-xl border border-white/50 dark:border-white/20 hover:border-primary/50 text-foreground hover:shadow-[0_0_12px_rgba(59,130,246,0.35)] hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center cursor-pointer"
+                      onClick={() => paginate(1)}
+                      title="Next screenshot"
+                    >
+                      <ChevronRight className="w-4 h-4 transition-transform duration-200 hover:translate-x-0.5" />
+                    </button>
                   </div>
-
-                  <button
-                    type="button"
-                    className="w-8 h-8 min-w-[32px] min-h-[32px] p-0 rounded-full shadow-sm bg-white/60 hover:bg-white/90 dark:bg-slate-900/70 dark:hover:bg-slate-900/95 backdrop-blur-xl border border-white/50 dark:border-white/20 hover:border-primary/50 text-foreground hover:shadow-[0_0_12px_rgba(59,130,246,0.35)] hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center cursor-pointer"
-                    onClick={() => paginate(1)}
-                    title="Next screenshot"
-                  >
-                    <ChevronRight className="w-4 h-4 transition-transform duration-200 hover:translate-x-0.5" />
-                  </button>
-                </div>
-                <div className="mt-2 text-xs text-muted-foreground font-medium z-10">
-                  {currentImage + 1} / {project.images.length}
-                </div>
+                  <div className="mt-1 sm:mt-2 text-xs text-muted-foreground font-medium">
+                    {currentImage + 1} / {project.images.length}
+                  </div>
+                </motion.div>
               </div>
             );
           })()}
