@@ -47,7 +47,7 @@ import atView1 from "@/assets/applytrack/viewscreen1.png";
 import atView2 from "@/assets/applytrack/viewscreen2.png";
 import atView3 from "@/assets/applytrack/viewscreen3.png";
 import atWebLogin from "@/assets/applytrack/webapp_login_screen.png";
-import atWebDashboard from "@/assets/applytrack/webapp_dashboard_screen.png";
+import atWebDashboard from "@/assets/applytrack/web_dashboard.png";
 import atWebApplications from "@/assets/applytrack/webapp_applictaions_screen.png";
 import atWebDetail from "@/assets/applytrack/webapp_detail_screen.png";
 
@@ -1210,12 +1210,13 @@ function ProjectModal({ project, onClose, onNavigate }: { project: any, onClose:
             </button>
           </div>
 
-          {/* Image Slider - portrait (phone) or landscape (web app) */}
-          {project.images && project.images.length > 0 && (
-            project.landscapeImages ? (
-              // Wider side-panel for landscape/web app screenshots
-              <div className="group w-full md:w-[50%] lg:w-[50%] bg-muted/20 relative flex flex-col items-center justify-center p-5 border-b md:border-b-0 md:border-r shrink-0 min-h-[50vh] md:min-h-0">
-                <div className="relative w-full h-[45vh] md:h-[60vh] flex items-center justify-center mx-auto">
+          {/* Image Slider - Clean, uncropped presentation */}
+          {project.images && project.images.length > 0 && (() => {
+            const isLandscape = Boolean(project.landscapeImages || (project.title === "ApplyTrack" && currentImage >= 8));
+
+            return (
+              <div className={`group w-full ${isLandscape ? "md:w-[50%] lg:w-[52%]" : "md:w-[45%] lg:w-[40%]"} bg-muted/20 relative flex flex-col items-center justify-center p-4 sm:p-6 border-b md:border-b-0 md:border-r shrink-0 min-h-[50vh] md:min-h-0 select-none`}>
+                <div className="relative w-full h-[45vh] md:h-[60vh] max-w-md flex items-center justify-center mx-auto">
                   <AnimatePresence mode="wait">
                     <motion.img
                       key={currentImage}
@@ -1224,76 +1225,57 @@ function ProjectModal({ project, onClose, onNavigate }: { project: any, onClose:
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.97 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute inset-0 m-auto max-w-full max-h-full w-full object-contain rounded-xl border border-border/60 shadow-lg bg-background"
+                      className="absolute m-auto inset-0 max-w-full max-h-full object-contain border border-border/60 shadow-lg rounded-2xl bg-background"
+                      style={{
+                        imageRendering: "high-quality" as any,
+                        WebkitBackfaceVisibility: "hidden",
+                        transform: "translateZ(0)",
+                      }}
                       alt={`${project.title} screenshot ${currentImage + 1}`}
                     />
                   </AnimatePresence>
                 </div>
 
-                <div className="absolute inset-y-0 left-0 flex items-center justify-start pl-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:transition-opacity md:duration-200">
-                  <Button variant="outline" size="icon" className="rounded-full shadow-md bg-background/80 backdrop-blur w-9 h-9 border-border/50 text-foreground" onClick={() => setCurrentImage((prev) => (prev - 1 + project.images.length) % project.images.length)}>
+                {/* Prev / Next Arrows */}
+                <div className="absolute inset-y-0 left-0 flex items-center justify-start pl-2 z-20 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:transition-opacity md:duration-200">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="rounded-full shadow-md bg-background/80 backdrop-blur w-9 h-9 border-border/50 text-foreground"
+                    onClick={() => setCurrentImage((prev) => (prev - 1 + project.images.length) % project.images.length)}
+                  >
                     <ChevronLeft className="w-4 h-4" />
                   </Button>
                 </div>
-                <div className="absolute inset-y-0 right-0 flex items-center justify-end pr-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:transition-opacity md:duration-200">
-                  <Button variant="outline" size="icon" className="rounded-full shadow-md bg-background/80 backdrop-blur w-9 h-9 border-border/50 text-foreground" onClick={() => setCurrentImage((prev) => (prev + 1) % project.images.length)}>
+                <div className="absolute inset-y-0 right-0 flex items-center justify-end pr-2 z-20 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:transition-opacity md:duration-200">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="rounded-full shadow-md bg-background/80 backdrop-blur w-9 h-9 border-border/50 text-foreground"
+                    onClick={() => setCurrentImage((prev) => (prev + 1) % project.images.length)}
+                  >
                     <ChevronRight className="w-4 h-4" />
                   </Button>
                 </div>
 
-                <div className="mt-4 flex flex-wrap justify-center gap-2 w-full px-4">
-                  {project.images.map((_: any, i: number) => (
-                    <button key={i} onClick={() => setCurrentImage(i)} className={`h-1.5 rounded-full transition-all duration-300 ${i === currentImage ? "w-5 bg-primary" : "w-1.5 bg-muted-foreground/30 hover:bg-muted-foreground/50"}`} />
-                  ))}
-                </div>
-                <div className="mt-2 text-xs text-muted-foreground font-medium">
-                  {currentImage + 1} / {project.images.length}
-                </div>
-              </div>
-            ) : (
-              // Portrait layout: side panel for phone screenshots
-              <div className="group w-full md:w-[45%] lg:w-[40%] bg-muted/20 relative flex flex-col items-center justify-center p-6 border-b md:border-b-0 md:border-r shrink-0 min-h-[50vh] md:min-h-0">
-                <div className="relative w-full h-[45vh] md:h-[60vh] max-w-md flex items-center justify-center mx-auto">
-                  <AnimatePresence mode="wait">
-                    <motion.img
-                      key={currentImage}
-                      src={project.images[currentImage]}
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.95 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute m-auto inset-0 max-w-full max-h-full object-contain border border-border/60 shadow-lg rounded-xl bg-background"
-                      alt={`${project.title} screenshot ${currentImage + 1}`}
-                    />
-                  </AnimatePresence>
-                </div>
-
-                <div className="absolute inset-y-0 left-0 flex items-center justify-start pl-2 md:pl-4 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:transition-opacity md:duration-200">
-                  <Button variant="outline" size="icon" className="rounded-full shadow-md bg-background/80 backdrop-blur w-10 h-10 border-border/50 text-foreground" onClick={() => setCurrentImage((prev) => (prev - 1 + project.images.length) % project.images.length)}>
-                    <ChevronLeft className="w-5 h-5" />
-                  </Button>
-                </div>
-                <div className="absolute inset-y-0 right-0 flex items-center justify-end pr-2 md:pr-4 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:transition-opacity md:duration-200">
-                  <Button variant="outline" size="icon" className="rounded-full shadow-md bg-background/80 backdrop-blur w-10 h-10 border-border/50 text-foreground" onClick={() => setCurrentImage((prev) => (prev + 1) % project.images.length)}>
-                    <ChevronRight className="w-5 h-5" />
-                  </Button>
-                </div>
-
-                <div className="mt-8 flex flex-wrap justify-center gap-2 w-full px-4">
+                {/* Dot Indicators */}
+                <div className="mt-4 flex flex-wrap justify-center gap-1.5 w-full px-4 z-10">
                   {project.images.map((_: any, i: number) => (
                     <button
                       key={i}
                       onClick={() => setCurrentImage(i)}
-                      className={`h-2 rounded-full transition-all duration-300 ${i === currentImage ? "w-6 bg-primary" : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"}`}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                        i === currentImage ? "w-5 bg-primary" : "w-1.5 bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                      }`}
                     />
                   ))}
                 </div>
-                <div className="mt-3 text-xs text-muted-foreground font-medium">
+                <div className="mt-2 text-xs text-muted-foreground font-medium z-10">
                   {currentImage + 1} / {project.images.length}
                 </div>
               </div>
-            )
-          )}
+            );
+          })()}
 
           {/* Right panel: Details */}
           <div className="modal-scroll-area w-full md:flex-1 p-6 md:p-10 md:overflow-y-auto">
@@ -1313,6 +1295,51 @@ function ProjectModal({ project, onClose, onNavigate }: { project: any, onClose:
   );
 }
 
+function ProjectSpotlightCard({
+  children,
+  className = "",
+  onClick,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  onClick?: () => void;
+}) {
+  const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    });
+  };
+
+  return (
+    <div
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => {
+        setIsHovered(false);
+        setMousePos({ x: -1000, y: -1000 });
+      }}
+      onClick={onClick}
+      className={`group relative rounded-3xl border border-border/70 dark:border-white/10 bg-card/95 dark:bg-card/50 backdrop-blur-xl transition-all duration-500 ease-out hover:-translate-y-2.5 hover:shadow-[0_28px_60px_-15px_rgba(0,0,0,0.2)] dark:hover:shadow-[0_32px_75px_-15px_rgba(0,0,0,0.8)] hover:border-primary/50 dark:hover:border-primary/50 overflow-hidden flex flex-col ${className}`}
+    >
+      {/* Subtle, refined ambient arrow tracker glow (luminous clean sky/slate light, zero harsh neon purple/pink) */}
+      <div
+        className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
+        style={{
+          background: isHovered
+            ? `radial-gradient(650px circle at ${mousePos.x}px ${mousePos.y}px, rgba(56, 189, 248, 0.12), rgba(148, 163, 184, 0.05) 45%, transparent 75%)`
+            : "none",
+        }}
+      />
+      {children}
+    </div>
+  );
+}
+
 function Projects() {
   const [selectedProject, setSelectedProject] = useState<any>(null);
 
@@ -1320,7 +1347,14 @@ function Projects() {
     {
       title: "SmartLedger",
       tag: "Finance & AI Analytics",
+      tagStyles: {
+        bg: "bg-teal-500/10 dark:bg-teal-500/15",
+        border: "border-teal-500/30",
+        text: "text-teal-700 dark:text-teal-400",
+        dot: "bg-teal-500 dark:bg-teal-400",
+      },
       desc: "AI-powered Android finance tracker with smart ledger management, analytics, budgeting, and predictive insights.",
+      desktopDesc: "An intelligent personal finance and ledger tracking platform built with Kotlin and Room Database. Combines dynamic single, monthly, and custom date-range ledgers with Groq API AI models for predictive seasonal expense forecasting. Features multi-receipt photo attachments, smart reminders with quick-replies, interactive financial charts, automated Google Drive backups, and a 15-day safe-deletion trash bin.",
       tech: ["Kotlin", "XML Layouts", "Room DB", "AI", "Retrofit"],
       gradient: "from-primary to-purple",
       githubLink: PROJECT_LINKS.smartLedger.github,
@@ -1328,11 +1362,20 @@ function Projects() {
       images: smartLedgerImages,
       longDesc: <SmartLedgerDesc />,
       coverImage: slCover,
+      previewScreen: slDashboard,
+      deviceType: "phone",
     },
     {
       title: "ApplyTrack",
       tag: "Career & Job Hunt Cache",
+      tagStyles: {
+        bg: "bg-blue-500/10 dark:bg-blue-500/15",
+        border: "border-blue-500/30",
+        text: "text-blue-700 dark:text-blue-400",
+        dot: "bg-blue-500 dark:bg-blue-400",
+      },
       desc: "Offline-first career tracker with native Android and React+Vite web clients — local-first storage, background cloud sync, attachments, and an analytics dashboard.",
+      desktopDesc: "An offline-first career application tracking ecosystem featuring dual clients: a native Kotlin & Jetpack Compose Android app and a React 19 + Vite web companion. Employs local-first persistence with zero-latency Room DB reads, background cloud sync via WorkManager to Firebase Firestore, Supabase Storage for resume and letter attachments, and an interactive conversion pipeline analytics dashboard.",
       tech: ["Kotlin", "Compose", "Supabase", "Firebase", "React", "Vite", "MVVM"],
       gradient: "from-blue-500 to-teal",
       githubLink: PROJECT_LINKS.applyTrack.github,
@@ -1341,11 +1384,20 @@ function Projects() {
       images: applyTrackImages,
       longDesc: <ApplyTrackDesc />,
       coverImage: atCover,
+      previewScreen: atDashboard1,
+      deviceType: "phone",
     },
     {
       title: "Bento Grid App",
       tag: "Dynamic Layouts",
+      tagStyles: {
+        bg: "bg-purple-500/10 dark:bg-purple-500/15",
+        border: "border-purple-500/30",
+        text: "text-purple-700 dark:text-purple-400",
+        dot: "bg-purple-500 dark:bg-purple-400",
+      },
       desc: "Modern Android app for creating highly customizable, aesthetic visual collections using a dynamic Bento-style grid system.",
+      desktopDesc: "A modern Android application for curating aesthetic visual collections with a dynamic 4-column Bento grid system. Powered by an intelligent first-fit packing algorithm that auto-aligns Rectangular (Square, Tall, Wide, Small) and Clipped shapes to eliminate wasted space, featuring automated 800px image optimization, Room DB persistence, and an interactive full-screen pinch-to-zoom viewer.",
       tech: ["Kotlin", "Compose", "Room DB", "MVVM", "Coil"],
       gradient: "from-purple to-pink",
       githubLink: PROJECT_LINKS.bentoGrid.github,
@@ -1353,11 +1405,20 @@ function Projects() {
       images: bentoAppImages,
       longDesc: <BentoAppDesc />,
       coverImage: bgCover,
+      previewScreen: bgHome,
+      deviceType: "phone",
     },
     {
       title: "AI Todo App",
       tag: "Productivity",
+      tagStyles: {
+        bg: "bg-indigo-500/10 dark:bg-indigo-500/15",
+        border: "border-indigo-500/30",
+        text: "text-indigo-700 dark:text-indigo-400",
+        dot: "bg-indigo-500 dark:bg-indigo-400",
+      },
       desc: "Task manager enhanced with AI-powered task rewriting and smart productivity assistance.",
+      desktopDesc: "A feature-rich productivity suite combining Jetpack Compose with the Groq API (LLaMA-3.3-70B) for context-aware task rewriting across Standard, Professional, and Casual styles. Features real-time multi-device cloud synchronization via Firebase Firestore, hands-free voice-to-text input, dynamic in-line search highlighting, visual progress indicators, and custom PDF preview and export.",
       tech: ["Kotlin", "Compose", "Firebase", "MVVM", "Room DB", "Groq API"],
       gradient: "from-purple to-teal",
       githubLink: PROJECT_LINKS.todoApp.github,
@@ -1365,11 +1426,20 @@ function Projects() {
       images: todoAppImages,
       longDesc: <TodoAppDesc />,
       coverImage: taCover,
+      previewScreen: taHome,
+      deviceType: "phone",
     },
     {
       title: "PhoneInfo",
       tag: "System Diagnostics",
+      tagStyles: {
+        bg: "bg-cyan-500/10 dark:bg-cyan-500/15",
+        border: "border-cyan-500/30",
+        text: "text-cyan-700 dark:text-cyan-400",
+        dot: "bg-cyan-500 dark:bg-cyan-400",
+      },
       desc: "Comprehensive Android utility for real-time hardware diagnostics, sensor data, and system metrics.",
+      desktopDesc: "A professional-grade hardware and system diagnostics utility built with Jetpack Compose and Kotlin StateFlow. Delivers real-time monitoring of CPU core frequencies, thermal loads, RAM and VM heap allocation, battery health and charging metrics, display refresh rates, categorized app storage footprint analysis, and an integrated Speakeasy Wi-Fi speed test.",
       tech: ["Kotlin", "Compose", "StateFlow", "Hardware APIs"],
       gradient: "from-blue-600 to-indigo-800",
       githubLink: PROJECT_LINKS.phoneInfo.github,
@@ -1377,118 +1447,268 @@ function Projects() {
       images: phoneInfoImages,
       longDesc: <PhoneInfoDesc />,
       coverImage: piCover,
+      previewScreen: piHome,
+      deviceType: "phone",
     },
     {
       title: "AI Bill Optimizer",
       tag: "Energy Intelligence · FYP",
+      tagStyles: {
+        bg: "bg-emerald-500/10 dark:bg-emerald-500/15",
+        border: "border-emerald-500/30",
+        text: "text-emerald-700 dark:text-emerald-400",
+        dot: "bg-emerald-500 dark:bg-emerald-400",
+      },
       desc: "AI-powered electricity bill optimizer using PRECON dataset — Seasonal bill prediction with Random Forest & 24-hour load forecasting with Bi-LSTM.",
+      desktopDesc: "A Final Year Project (FYP at SSUET) energy intelligence system developed to combat Pakistan's slab tariff bill shock using the real-world PRECON residential dataset. Combines Random Forest regression with KNN 'Energy Twin' archetype matching for long-term seasonal forecasting, a Bidirectional LSTM neural network for 24-hour load forecasting, and a digital twin consumption simulator with NEPRA tariff logic.",
       tech: ["Python", "Flask", "TensorFlow", "Bi-LSTM", "Firebase"],
-      gradient: "from-yellow-500 to-orange-600",
+      gradient: "from-emerald-500 to-teal-700",
       githubLink: PROJECT_LINKS.billOptimizer.github,
       websiteLink: PROJECT_LINKS.billOptimizer.website,
       images: aiBillOptimizerImages,
       longDesc: <AiBillOptimizerDesc />,
       coverImage: aboCover,
+      previewScreen: aboHome1,
+      deviceType: "browser",
       landscapeImages: true,
     },
   ];
-  return (
-    <section id="projects" className="relative py-24 px-6 bg-soft-gradient">
-      <div className="max-w-6xl mx-auto">
-        <SectionHeader eyebrow="Projects" title="Selected work" subtitle="A snapshot of apps and systems I've built." />
-        <motion.div
-          initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}
-          className="grid md:grid-cols-2 gap-6"
+
+  const renderProjectActions = (p: any) => (
+    <div className="flex flex-wrap items-center gap-2 pt-2">
+      {p.title === "ApplyTrack" ? (
+        <>
+          {p.apkLink && (
+            <a
+              href={p.apkLink}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => logAnalyticsEvent("project_click", { project_title: p.title, link_type: "apk" })}
+            >
+              <Button size="sm" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground font-medium">
+                <Download className="w-3.5 h-3.5 mr-1" /> APK
+              </Button>
+            </a>
+          )}
+          {p.websiteLink && (
+            <a
+              href={p.websiteLink}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => logAnalyticsEvent("project_click", { project_title: p.title, link_type: "live_demo" })}
+            >
+              <Button size="sm" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground font-medium">
+                <ExternalLink className="w-3.5 h-3.5 mr-1" /> Website
+              </Button>
+            </a>
+          )}
+        </>
+      ) : (
+        <>
+          {p.websiteLink && (
+            <a
+              href={p.websiteLink}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => logAnalyticsEvent("project_click", { project_title: p.title, link_type: "live_demo" })}
+            >
+              <Button size="sm" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground font-medium">
+                <ExternalLink className="w-3.5 h-3.5 mr-1" /> Live Demo
+              </Button>
+            </a>
+          )}
+          {p.apkLink && (
+            <a
+              href={p.apkLink}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => logAnalyticsEvent("project_click", { project_title: p.title, link_type: "apk" })}
+            >
+              <Button size="sm" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground font-medium">
+                <Download className="w-3.5 h-3.5 mr-1" /> APK
+              </Button>
+            </a>
+          )}
+        </>
+      )}
+      {p.githubLink && (
+        <a
+          href={p.githubLink}
+          target="_blank"
+          rel="noreferrer"
+          onClick={() => logAnalyticsEvent("project_click", { project_title: p.title, link_type: "code" })}
         >
-          {projects.map((p) => (
-            <motion.div key={p.title} variants={fadeUp}>
-              <Card className="group rounded-3xl border-0 shadow-card hover:shadow-glow transition-all duration-300 overflow-hidden h-full">
-                <div
-                  className={`relative h-48 overflow-hidden cursor-pointer ${p.coverImage ? 'bg-black' : 'bg-gradient-to-br ' + p.gradient}`}
-                  onClick={() => setSelectedProject(p)}
-                >
-                  {p.coverImage ? (
-                    <>
-                      <img
-                        src={p.coverImage}
-                        alt={p.title}
-                        loading="lazy"
-                        decoding="async"
-                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                        style={{
-                          imageRendering: 'high-quality' as any,
-                          WebkitBackfaceVisibility: 'hidden',
-                          transform: 'translateZ(0)',
-                          willChange: 'transform'
-                        }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent pointer-events-none" />
-                    </>
-                  ) : (
-                    <>
-                      <div className="absolute inset-0 opacity-30" style={{
-                        backgroundImage: "radial-gradient(circle at 30% 30%, white 1px, transparent 1px)",
-                        backgroundSize: "24px 24px",
-                      }} />
-                      <Smartphone className="absolute top-6 right-6 w-10 h-10 text-white/40 group-hover:scale-110 transition-transform" />
-                    </>
-                  )}
-                  <div className="absolute bottom-4 right-6 text-white z-10 text-right">
-                    <div className="text-xs uppercase tracking-wider opacity-90">{p.tag}</div>
-                    <div className="text-2xl font-bold mt-1">{p.title}</div>
+          <Button size="sm" variant="outline" className="rounded-full border-border/80 dark:border-white/10 hover:border-primary/50 hover:bg-primary/10 transition-colors">
+            <Github className="w-3.5 h-3.5 mr-1" /> Code
+          </Button>
+        </a>
+      )}
+      <Button
+        size="sm"
+        variant="ghost"
+        className="rounded-full group/btn hover:bg-primary/10 hover:text-primary transition-colors"
+        onClick={() => {
+          setSelectedProject(p);
+          logAnalyticsEvent("project_click", { project_title: p.title, link_type: "details" });
+        }}
+      >
+        Details <ArrowRight className="w-3.5 h-3.5 ml-1 transition-transform group-hover/btn:translate-x-1" />
+      </Button>
+    </div>
+  );
+
+  return (
+    <section id="projects" className="relative py-20 sm:py-24 px-4 sm:px-6 bg-soft-gradient">
+      <div className="max-w-6xl mx-auto space-y-12">
+        <div className="text-center space-y-3">
+          <SectionHeader
+            eyebrow="Projects"
+            title="Selected Work"
+            subtitle="A curated showcase of high-performance mobile apps, AI integrations, and full-stack systems."
+          />
+        </div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          variants={stagger}
+          className="space-y-8 sm:space-y-10"
+        >
+          {projects.map((p, idx) => {
+            const isEven = idx % 2 === 0;
+            return (
+              <motion.div key={p.title} variants={fadeUp}>
+                <ProjectSpotlightCard className="p-6 sm:p-8 lg:p-10">
+                  <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                    {/* Story / Details Column */}
+                    <div
+                      className={`lg:col-span-7 flex flex-col justify-center space-y-5 ${
+                        !isEven ? "lg:order-2" : "lg:order-1"
+                      }`}
+                    >
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span
+                          className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border ${
+                            p.tagStyles?.bg || "bg-primary/10"
+                          } ${p.tagStyles?.text || "text-primary"} ${
+                            p.tagStyles?.border || "border-primary/20"
+                          }`}
+                        >
+                          <span
+                            className={`w-1.5 h-1.5 rounded-full animate-pulse ${
+                              p.tagStyles?.dot || "bg-primary"
+                            }`}
+                          />
+                          {p.tag}
+                        </span>
+                      </div>
+
+                      <div>
+                        <h3
+                          onClick={() => {
+                            setSelectedProject(p);
+                            logAnalyticsEvent("project_click", { project_title: p.title, link_type: "details" });
+                          }}
+                          className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-foreground hover:text-primary cursor-pointer transition-colors"
+                        >
+                          {p.title}
+                        </h3>
+                        {/* Mobile concise description (< lg screens) */}
+                        <p className="mt-3 text-muted-foreground text-sm sm:text-base leading-relaxed lg:hidden">
+                          {p.desc}
+                        </p>
+                        {/* Desktop rich expanded description (lg+ screens) to fill space */}
+                        <p className="mt-3 text-muted-foreground text-sm lg:text-[15px] leading-relaxed hidden lg:block">
+                          {p.desktopDesc || p.desc}
+                        </p>
+                      </div>
+
+                      <div className="flex flex-wrap gap-1.5 pt-1">
+                        {p.tech.map((t) => (
+                          <Badge
+                            key={t}
+                            variant="secondary"
+                            className="rounded-full text-xs font-medium px-3 py-1 border border-border/50 bg-secondary/60"
+                          >
+                            {t}
+                          </Badge>
+                        ))}
+                      </div>
+
+                      <div className="pt-2">
+                        {renderProjectActions(p)}
+                      </div>
+                    </div>
+
+                    {/* 3D Depth Visual Showcase Stage */}
+                    <div
+                      onClick={() => {
+                        setSelectedProject(p);
+                        logAnalyticsEvent("project_click", { project_title: p.title, link_type: "details" });
+                      }}
+                      className={`lg:col-span-5 relative aspect-[16/11] sm:aspect-[4/3] w-full rounded-2xl overflow-hidden bg-slate-950 cursor-pointer flex items-center justify-center p-4 border border-border/60 dark:border-white/10 group-hover:shadow-2xl transition-all ${
+                        !isEven ? "lg:order-1" : "lg:order-2"
+                      }`}
+                    >
+                      {/* Atmospheric Blurred Backdrop */}
+                      {p.coverImage ? (
+                        <img
+                          src={p.coverImage}
+                          alt={`${p.title} Backdrop`}
+                          className="absolute inset-0 w-full h-full object-cover blur-sm opacity-40 scale-110 group-hover:scale-115 transition-transform duration-700 ease-out"
+                        />
+                      ) : (
+                        <div className={`absolute inset-0 bg-gradient-to-tr ${p.gradient} opacity-20`} />
+                      )}
+                      <div className="absolute inset-0 bg-black/40" />
+
+                      {/* Foreground Device Chassis */}
+                      {p.deviceType === "browser" ? (
+                        /* Desktop Browser Mockup for Web Apps */
+                        <div className="relative z-10 w-[94%] sm:w-[90%] rounded-xl overflow-hidden shadow-2xl border border-white/20 bg-slate-950 transform group-hover:scale-105 transition-all duration-500 ease-out">
+                          <div className="h-6 sm:h-7 bg-slate-900/95 px-3 flex items-center justify-between border-b border-white/10">
+                            <div className="flex items-center gap-1.5">
+                              <div className="w-2 h-2 rounded-full bg-rose-500/80" />
+                              <div className="w-2 h-2 rounded-full bg-amber-500/80" />
+                              <div className="w-2 h-2 rounded-full bg-emerald-500/80" />
+                            </div>
+                            <span className="text-[10px] text-slate-400 font-mono truncate max-w-[180px]">
+                              {p.title.toLowerCase().replace(/\s+/g, "-")}.web
+                            </span>
+                            <div className="w-6" />
+                          </div>
+                          <div className="relative aspect-[16/10] w-full overflow-hidden bg-black">
+                            <img
+                              src={p.previewScreen || p.coverImage}
+                              alt={`${p.title} Live Screen`}
+                              className="w-full h-full object-cover object-top"
+                            />
+                          </div>
+                        </div>
+                      ) : (
+                        /* Sleek 3D Phone Chassis for Native Mobile Apps */
+                        <div
+                          className={`relative z-10 w-[140px] sm:w-[165px] md:w-[175px] aspect-[9/18.5] rounded-[2rem] p-[5px] bg-gradient-to-b from-slate-600 via-slate-800 to-slate-950 shadow-2xl border border-white/20 transform ${
+                            isEven ? "-rotate-3" : "rotate-3"
+                          } group-hover:rotate-0 group-hover:scale-105 transition-all duration-500 ease-out`}
+                        >
+                          <div className="w-full h-full rounded-[1.7rem] overflow-hidden bg-black relative">
+                            <img
+                              src={p.previewScreen || p.coverImage}
+                              alt={`${p.title} Live Screen`}
+                              className="w-full h-full object-cover object-top"
+                            />
+                            <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent" />
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
-                <div className="p-6">
-                  <p className="text-muted-foreground text-sm leading-relaxed">{p.desc}</p>
-                  <div className="mt-4 flex flex-wrap gap-1.5">
-                    {p.tech.map((t) => (
-                      <Badge key={t} variant="secondary" className="rounded-full text-xs">{t}</Badge>
-                    ))}
-                  </div>
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {p.title === "ApplyTrack" ? (
-                      <>
-                        {p.apkLink && (
-                          <a href={p.apkLink} target="_blank" rel="noreferrer" onClick={() => logAnalyticsEvent("project_click", { project_title: p.title, link_type: "apk" })}>
-                            <Button size="sm" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground"><Download className="w-3.5 h-3.5 mr-1" /> APK</Button>
-                          </a>
-                        )}
-                        {p.websiteLink && (
-                          <a href={p.websiteLink} target="_blank" rel="noreferrer" onClick={() => logAnalyticsEvent("project_click", { project_title: p.title, link_type: "live_demo" })}>
-                            <Button size="sm" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground">
-                              <ExternalLink className="w-3.5 h-3.5 mr-1" /> Website
-                            </Button>
-                          </a>
-                        )}
-                      </>
-                    ) : (
-                      <>
-                        {p.websiteLink && (
-                          <a href={p.websiteLink} target="_blank" rel="noreferrer" onClick={() => logAnalyticsEvent("project_click", { project_title: p.title, link_type: "live_demo" })}>
-                            <Button size="sm" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground"><ExternalLink className="w-3.5 h-3.5 mr-1" /> Live Demo</Button>
-                          </a>
-                        )}
-                        {p.apkLink && (
-                          <a href={p.apkLink} target="_blank" rel="noreferrer" onClick={() => logAnalyticsEvent("project_click", { project_title: p.title, link_type: "apk" })}>
-                            <Button size="sm" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground"><Download className="w-3.5 h-3.5 mr-1" /> APK</Button>
-                          </a>
-                        )}
-                      </>
-                    )}
-                    {p.githubLink && (
-                      <a href={p.githubLink} target="_blank" rel="noreferrer" onClick={() => logAnalyticsEvent("project_click", { project_title: p.title, link_type: "code" })}>
-                        <Button size="sm" variant="outline" className="rounded-full"><Github className="w-3.5 h-3.5 mr-1" /> Code</Button>
-                      </a>
-                    )}
-                    <Button size="sm" variant="ghost" className="rounded-full" onClick={() => {
-                      setSelectedProject(p);
-                      logAnalyticsEvent("project_click", { project_title: p.title, link_type: "details" });
-                    }}>Details <ArrowRight className="w-3.5 h-3.5 ml-1" /></Button>
-                  </div>
-                </div>
-              </Card>
-            </motion.div>
-          ))}
+                </ProjectSpotlightCard>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
       {selectedProject && (
