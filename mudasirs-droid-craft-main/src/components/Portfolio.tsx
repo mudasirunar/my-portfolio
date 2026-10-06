@@ -637,13 +637,21 @@ const SmartLedgerDesc = () => (
       </p>
       <div className="flex flex-wrap justify-center gap-4">
         <a href={PROJECT_LINKS.smartLedger.apk} target="_blank" rel="noreferrer">
-          <Button size="lg" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto">
-            <Download className="w-5 h-5 mr-2" /> Download APK
+          <Button
+            size="lg"
+            className="relative overflow-hidden group/modalbtn rounded-full shadow-glow bg-primary hover:bg-primary/95 text-primary-foreground font-medium transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 hover:shadow-[0_6px_25px_rgba(59,130,246,0.4)] w-full sm:w-auto"
+          >
+            <span className="pointer-events-none absolute inset-0 -translate-x-full group-hover/modalbtn:translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 ease-out" />
+            <Download className="w-5 h-5 mr-2 transition-transform duration-200 group-hover/modalbtn:translate-y-0.5" /> Download APK
           </Button>
         </a>
         <a href={PROJECT_LINKS.smartLedger.github} target="_blank" rel="noreferrer">
-          <Button size="lg" variant="outline" className="rounded-full w-full sm:w-auto">
-            <Github className="w-5 h-5 mr-2" /> View Source Code
+          <Button
+            size="lg"
+            variant="outline"
+            className="relative rounded-full border border-border/80 dark:border-white/15 bg-secondary/30 hover:bg-primary/10 text-foreground hover:text-primary hover:border-primary/50 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 hover:shadow-[0_0_18px_rgba(59,130,246,0.2)] group/modalcode font-medium w-full sm:w-auto"
+          >
+            <Github className="w-5 h-5 mr-2 transition-transform duration-300 ease-out group-hover/modalcode:rotate-12 group-hover/modalcode:scale-110" /> View Source Code
           </Button>
         </a>
       </div>
@@ -756,20 +764,32 @@ const ApplyTrackDesc = () => (
       </p>
       <div className="flex flex-wrap justify-center gap-4">
         <a href={PROJECT_LINKS.applyTrack.apk} target="_blank" rel="noreferrer">
-          <Button size="lg" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto">
-            <Download className="w-5 h-5 mr-2" /> Download APK
+          <Button
+            size="lg"
+            className="relative overflow-hidden group/modalbtn rounded-full shadow-glow bg-primary hover:bg-primary/95 text-primary-foreground font-medium transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 hover:shadow-[0_6px_25px_rgba(59,130,246,0.4)] w-full sm:w-auto"
+          >
+            <span className="pointer-events-none absolute inset-0 -translate-x-full group-hover/modalbtn:translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 ease-out" />
+            <Download className="w-5 h-5 mr-2 transition-transform duration-200 group-hover/modalbtn:translate-y-0.5" /> Download APK
           </Button>
         </a>
         {PROJECT_LINKS.applyTrack.website && (
           <a href={PROJECT_LINKS.applyTrack.website} target="_blank" rel="noreferrer">
-            <Button size="lg" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto">
-              <ExternalLink className="w-5 h-5 mr-2" /> Visit Web App
+            <Button
+              size="lg"
+              className="relative overflow-hidden group/modalbtn rounded-full shadow-glow bg-primary hover:bg-primary/95 text-primary-foreground font-medium transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 hover:shadow-[0_6px_25px_rgba(59,130,246,0.4)] w-full sm:w-auto"
+            >
+              <span className="pointer-events-none absolute inset-0 -translate-x-full group-hover/modalbtn:translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 ease-out" />
+              <ExternalLink className="w-5 h-5 mr-2 transition-transform duration-200 group-hover/modalbtn:-translate-y-0.5 group-hover/modalbtn:translate-x-0.5" /> Visit Web App
             </Button>
           </a>
         )}
         <a href={PROJECT_LINKS.applyTrack.github} target="_blank" rel="noreferrer">
-          <Button size="lg" variant="outline" className="rounded-full w-full sm:w-auto">
-            <Github className="w-5 h-5 mr-2" /> View Source Code
+          <Button
+            size="lg"
+            variant="outline"
+            className="relative rounded-full border border-border/80 dark:border-white/15 bg-secondary/30 hover:bg-primary/10 text-foreground hover:text-primary hover:border-primary/50 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 hover:shadow-[0_0_18px_rgba(59,130,246,0.2)] group/modalcode font-medium w-full sm:w-auto"
+          >
+            <Github className="w-5 h-5 mr-2 transition-transform duration-300 ease-out group-hover/modalcode:rotate-12 group-hover/modalcode:scale-110" /> View Source Code
           </Button>
         </a>
       </div>
@@ -860,13 +880,21 @@ const BentoAppDesc = () => (
       </p>
       <div className="flex flex-wrap justify-center gap-4">
         <a href={PROJECT_LINKS.bentoGrid.apk} target="_blank" rel="noreferrer">
-          <Button size="lg" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto">
-            <Download className="w-5 h-5 mr-2" /> Download APK
+          <Button
+            size="lg"
+            className="relative overflow-hidden group/modalbtn rounded-full shadow-glow bg-primary hover:bg-primary/95 text-primary-foreground font-medium transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 hover:shadow-[0_6px_25px_rgba(59,130,246,0.4)] w-full sm:w-auto"
+          >
+            <span className="pointer-events-none absolute inset-0 -translate-x-full group-hover/modalbtn:translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 ease-out" />
+            <Download className="w-5 h-5 mr-2 transition-transform duration-200 group-hover/modalbtn:translate-y-0.5" /> Download APK
           </Button>
         </a>
         <a href={PROJECT_LINKS.bentoGrid.github} target="_blank" rel="noreferrer">
-          <Button size="lg" variant="outline" className="rounded-full w-full sm:w-auto">
-            <Github className="w-5 h-5 mr-2" /> View Source Code
+          <Button
+            size="lg"
+            variant="outline"
+            className="relative rounded-full border border-border/80 dark:border-white/15 bg-secondary/30 hover:bg-primary/10 text-foreground hover:text-primary hover:border-primary/50 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 hover:shadow-[0_0_18px_rgba(59,130,246,0.2)] group/modalcode font-medium w-full sm:w-auto"
+          >
+            <Github className="w-5 h-5 mr-2 transition-transform duration-300 ease-out group-hover/modalcode:rotate-12 group-hover/modalcode:scale-110" /> View Source Code
           </Button>
         </a>
       </div>
@@ -933,13 +961,21 @@ const TodoAppDesc = () => (
       </p>
       <div className="flex flex-wrap justify-center gap-4">
         <a href={PROJECT_LINKS.todoApp.apk} target="_blank" rel="noreferrer">
-          <Button size="lg" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto">
-            <Download className="w-5 h-5 mr-2" /> Download APK
+          <Button
+            size="lg"
+            className="relative overflow-hidden group/modalbtn rounded-full shadow-glow bg-primary hover:bg-primary/95 text-primary-foreground font-medium transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 hover:shadow-[0_6px_25px_rgba(59,130,246,0.4)] w-full sm:w-auto"
+          >
+            <span className="pointer-events-none absolute inset-0 -translate-x-full group-hover/modalbtn:translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 ease-out" />
+            <Download className="w-5 h-5 mr-2 transition-transform duration-200 group-hover/modalbtn:translate-y-0.5" /> Download APK
           </Button>
         </a>
         <a href={PROJECT_LINKS.todoApp.github} target="_blank" rel="noreferrer">
-          <Button size="lg" variant="outline" className="rounded-full w-full sm:w-auto">
-            <Github className="w-5 h-5 mr-2" /> View Source Code
+          <Button
+            size="lg"
+            variant="outline"
+            className="relative rounded-full border border-border/80 dark:border-white/15 bg-secondary/30 hover:bg-primary/10 text-foreground hover:text-primary hover:border-primary/50 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 hover:shadow-[0_0_18px_rgba(59,130,246,0.2)] group/modalcode font-medium w-full sm:w-auto"
+          >
+            <Github className="w-5 h-5 mr-2 transition-transform duration-300 ease-out group-hover/modalcode:rotate-12 group-hover/modalcode:scale-110" /> View Source Code
           </Button>
         </a>
       </div>
@@ -1025,13 +1061,21 @@ const PhoneInfoDesc = () => (
       </p>
       <div className="flex flex-wrap justify-center gap-4">
         <a href={PROJECT_LINKS.phoneInfo.apk} target="_blank" rel="noreferrer">
-          <Button size="lg" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground w-full sm:w-auto">
-            <Download className="w-5 h-5 mr-2" /> Download APK
+          <Button
+            size="lg"
+            className="relative overflow-hidden group/modalbtn rounded-full shadow-glow bg-primary hover:bg-primary/95 text-primary-foreground font-medium transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 hover:shadow-[0_6px_25px_rgba(59,130,246,0.4)] w-full sm:w-auto"
+          >
+            <span className="pointer-events-none absolute inset-0 -translate-x-full group-hover/modalbtn:translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 ease-out" />
+            <Download className="w-5 h-5 mr-2 transition-transform duration-200 group-hover/modalbtn:translate-y-0.5" /> Download APK
           </Button>
         </a>
         <a href={PROJECT_LINKS.phoneInfo.github} target="_blank" rel="noreferrer">
-          <Button size="lg" variant="outline" className="rounded-full w-full sm:w-auto">
-            <Github className="w-5 h-5 mr-2" /> View Source Code
+          <Button
+            size="lg"
+            variant="outline"
+            className="relative rounded-full border border-border/80 dark:border-white/15 bg-secondary/30 hover:bg-primary/10 text-foreground hover:text-primary hover:border-primary/50 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 hover:shadow-[0_0_18px_rgba(59,130,246,0.2)] group/modalcode font-medium w-full sm:w-auto"
+          >
+            <Github className="w-5 h-5 mr-2 transition-transform duration-300 ease-out group-hover/modalcode:rotate-12 group-hover/modalcode:scale-110" /> View Source Code
           </Button>
         </a>
       </div>
@@ -1129,13 +1173,21 @@ const AiBillOptimizerDesc = () => (
       </ol>
       <div className="mt-6 pt-6 border-t border-primary/10 flex items-center justify-center gap-4 flex-wrap">
         <a href={PROJECT_LINKS.billOptimizer.website} target="_blank" rel="noreferrer">
-          <Button size="lg" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground">
-            <ExternalLink className="w-5 h-5 mr-2" /> Open Website
+          <Button
+            size="lg"
+            className="relative overflow-hidden group/modalbtn rounded-full shadow-glow bg-primary hover:bg-primary/95 text-primary-foreground font-medium transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 hover:shadow-[0_6px_25px_rgba(59,130,246,0.4)]"
+          >
+            <span className="pointer-events-none absolute inset-0 -translate-x-full group-hover/modalbtn:translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 ease-out" />
+            <ExternalLink className="w-5 h-5 mr-2 transition-transform duration-200 group-hover/modalbtn:-translate-y-0.5 group-hover/modalbtn:translate-x-0.5" /> Open Website
           </Button>
         </a>
         <a href={PROJECT_LINKS.billOptimizer.github} target="_blank" rel="noreferrer">
-          <Button size="lg" variant="outline" className="rounded-full">
-            <Github className="w-5 h-5 mr-2" /> View Source Code
+          <Button
+            size="lg"
+            variant="outline"
+            className="relative rounded-full border border-border/80 dark:border-white/15 bg-secondary/30 hover:bg-primary/10 text-foreground hover:text-primary hover:border-primary/50 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 hover:shadow-[0_0_18px_rgba(59,130,246,0.2)] group/modalcode font-medium"
+          >
+            <Github className="w-5 h-5 mr-2 transition-transform duration-300 ease-out group-hover/modalcode:rotate-12 group-hover/modalcode:scale-110" /> View Source Code
           </Button>
         </a>
       </div>
@@ -1186,27 +1238,27 @@ function ProjectModal({ project, onClose, onNavigate }: { project: any, onClose:
               <>
                 <button
                   onClick={() => onNavigate('prev')}
-                  className="w-10 h-10 bg-background/50 backdrop-blur rounded-full flex items-center justify-center hover:bg-background transition-colors border shadow-sm text-foreground"
+                  className="w-10 h-10 bg-background/60 hover:bg-background backdrop-blur-md rounded-full flex items-center justify-center border border-border/70 dark:border-white/10 hover:border-primary/50 shadow-sm hover:shadow-[0_0_12px_rgba(59,130,246,0.25)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 group/navprev text-foreground"
                   title="Previous Project"
                 >
-                  <ArrowLeft className="w-5 h-5" />
+                  <ArrowLeft className="w-5 h-5 transition-transform duration-200 group-hover/navprev:-translate-x-0.5" />
                 </button>
                 <button
                   onClick={() => onNavigate('next')}
-                  className="w-10 h-10 bg-background/50 backdrop-blur rounded-full flex items-center justify-center hover:bg-background transition-colors border shadow-sm text-foreground"
+                  className="w-10 h-10 bg-background/60 hover:bg-background backdrop-blur-md rounded-full flex items-center justify-center border border-border/70 dark:border-white/10 hover:border-primary/50 shadow-sm hover:shadow-[0_0_12px_rgba(59,130,246,0.25)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 group/navnext text-foreground"
                   title="Next Project"
                 >
-                  <ArrowRight className="w-5 h-5" />
+                  <ArrowRight className="w-5 h-5 transition-transform duration-200 group-hover/navnext:translate-x-0.5" />
                 </button>
                 <div className="w-px h-6 bg-border mx-1" />
               </>
             )}
             <button
               onClick={onClose}
-              className="w-10 h-10 bg-background/50 backdrop-blur rounded-full flex items-center justify-center hover:bg-background transition-colors border shadow-sm"
+              className="w-10 h-10 bg-background/60 hover:bg-background backdrop-blur-md rounded-full flex items-center justify-center border border-border/70 dark:border-white/10 hover:border-rose-500/50 hover:text-rose-500 shadow-sm hover:shadow-[0_0_12px_rgba(244,63,94,0.25)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 group/navclose text-foreground"
               title="Close"
             >
-              <X className="w-5 h-5 text-foreground" />
+              <X className="w-5 h-5 transition-transform duration-200 group-hover/navclose:rotate-90" />
             </button>
           </div>
 
@@ -1241,20 +1293,20 @@ function ProjectModal({ project, onClose, onNavigate }: { project: any, onClose:
                   <Button
                     variant="outline"
                     size="icon"
-                    className="rounded-full shadow-md bg-background/80 backdrop-blur w-9 h-9 border-border/50 text-foreground"
+                    className="rounded-full shadow-md bg-background/80 hover:bg-background backdrop-blur-md w-9 h-9 border border-border/60 dark:border-white/10 hover:border-primary/50 text-foreground hover:shadow-[0_0_12px_rgba(59,130,246,0.3)] hover:scale-105 active:scale-95 transition-all duration-200 group/chevronl"
                     onClick={() => setCurrentImage((prev) => (prev - 1 + project.images.length) % project.images.length)}
                   >
-                    <ChevronLeft className="w-4 h-4" />
+                    <ChevronLeft className="w-4 h-4 transition-transform duration-200 group-hover/chevronl:-translate-x-0.5" />
                   </Button>
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center justify-end pr-2 z-20 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:transition-opacity md:duration-200">
                   <Button
                     variant="outline"
                     size="icon"
-                    className="rounded-full shadow-md bg-background/80 backdrop-blur w-9 h-9 border-border/50 text-foreground"
+                    className="rounded-full shadow-md bg-background/80 hover:bg-background backdrop-blur-md w-9 h-9 border border-border/60 dark:border-white/10 hover:border-primary/50 text-foreground hover:shadow-[0_0_12px_rgba(59,130,246,0.3)] hover:scale-105 active:scale-95 transition-all duration-200 group/chevronr"
                     onClick={() => setCurrentImage((prev) => (prev + 1) % project.images.length)}
                   >
-                    <ChevronRight className="w-4 h-4" />
+                    <ChevronRight className="w-4 h-4 transition-transform duration-200 group-hover/chevronr:translate-x-0.5" />
                   </Button>
                 </div>
 
@@ -1475,7 +1527,9 @@ function Projects() {
   ];
 
   const renderProjectActions = (p: any) => (
-    <div className="flex flex-wrap items-center gap-2 pt-2">
+    <div className="flex flex-wrap items-center gap-2.5 pt-2">
+      {/* Button Style 1: Primary Action (APK / Live Demo / Website) */}
+      {/* Features Micro-Lift, Shimmer Sweep, and Dynamic Icon Movement */}
       {p.title === "ApplyTrack" ? (
         <>
           {p.apkLink && (
@@ -1485,8 +1539,12 @@ function Projects() {
               rel="noreferrer"
               onClick={() => logAnalyticsEvent("project_click", { project_title: p.title, link_type: "apk" })}
             >
-              <Button size="sm" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground font-medium">
-                <Download className="w-3.5 h-3.5 mr-1" /> APK
+              <Button
+                size="sm"
+                className="relative overflow-hidden group/primary rounded-full shadow-glow bg-primary hover:bg-primary/95 text-primary-foreground font-medium transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 hover:shadow-[0_4px_20px_rgba(59,130,246,0.35)]"
+              >
+                <span className="pointer-events-none absolute inset-0 -translate-x-full group-hover/primary:translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 ease-out" />
+                <Download className="w-3.5 h-3.5 mr-1.5 transition-transform duration-200 group-hover/primary:translate-y-0.5" /> APK
               </Button>
             </a>
           )}
@@ -1497,8 +1555,12 @@ function Projects() {
               rel="noreferrer"
               onClick={() => logAnalyticsEvent("project_click", { project_title: p.title, link_type: "live_demo" })}
             >
-              <Button size="sm" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground font-medium">
-                <ExternalLink className="w-3.5 h-3.5 mr-1" /> Website
+              <Button
+                size="sm"
+                className="relative overflow-hidden group/primary rounded-full shadow-glow bg-primary hover:bg-primary/95 text-primary-foreground font-medium transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 hover:shadow-[0_4px_20px_rgba(59,130,246,0.35)]"
+              >
+                <span className="pointer-events-none absolute inset-0 -translate-x-full group-hover/primary:translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 ease-out" />
+                <ExternalLink className="w-3.5 h-3.5 mr-1.5 transition-transform duration-200 group-hover/primary:-translate-y-0.5 group-hover/primary:translate-x-0.5" /> Website
               </Button>
             </a>
           )}
@@ -1512,8 +1574,12 @@ function Projects() {
               rel="noreferrer"
               onClick={() => logAnalyticsEvent("project_click", { project_title: p.title, link_type: "live_demo" })}
             >
-              <Button size="sm" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground font-medium">
-                <ExternalLink className="w-3.5 h-3.5 mr-1" /> Live Demo
+              <Button
+                size="sm"
+                className="relative overflow-hidden group/primary rounded-full shadow-glow bg-primary hover:bg-primary/95 text-primary-foreground font-medium transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 hover:shadow-[0_4px_20px_rgba(59,130,246,0.35)]"
+              >
+                <span className="pointer-events-none absolute inset-0 -translate-x-full group-hover/primary:translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 ease-out" />
+                <ExternalLink className="w-3.5 h-3.5 mr-1.5 transition-transform duration-200 group-hover/primary:-translate-y-0.5 group-hover/primary:translate-x-0.5" /> Live Demo
               </Button>
             </a>
           )}
@@ -1524,13 +1590,20 @@ function Projects() {
               rel="noreferrer"
               onClick={() => logAnalyticsEvent("project_click", { project_title: p.title, link_type: "apk" })}
             >
-              <Button size="sm" className="rounded-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground font-medium">
-                <Download className="w-3.5 h-3.5 mr-1" /> APK
+              <Button
+                size="sm"
+                className="relative overflow-hidden group/primary rounded-full shadow-glow bg-primary hover:bg-primary/95 text-primary-foreground font-medium transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 hover:shadow-[0_4px_20px_rgba(59,130,246,0.35)]"
+              >
+                <span className="pointer-events-none absolute inset-0 -translate-x-full group-hover/primary:translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 ease-out" />
+                <Download className="w-3.5 h-3.5 mr-1.5 transition-transform duration-200 group-hover/primary:translate-y-0.5" /> APK
               </Button>
             </a>
           )}
         </>
       )}
+
+      {/* Button Style 2: Secondary Developer Action (Code / GitHub) */}
+      {/* Features Luminous Border Glow, Micro-Lift, and GitHub Icon Tilt */}
       {p.githubLink && (
         <a
           href={p.githubLink}
@@ -1538,21 +1611,29 @@ function Projects() {
           rel="noreferrer"
           onClick={() => logAnalyticsEvent("project_click", { project_title: p.title, link_type: "code" })}
         >
-          <Button size="sm" variant="outline" className="rounded-full border-border/80 dark:border-white/10 hover:border-primary/50 hover:bg-primary/10 transition-colors">
-            <Github className="w-3.5 h-3.5 mr-1" /> Code
+          <Button
+            size="sm"
+            variant="outline"
+            className="relative rounded-full border border-border/80 dark:border-white/15 bg-secondary/30 hover:bg-primary/10 text-foreground hover:text-primary hover:border-primary/50 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] group/code font-medium"
+          >
+            <Github className="w-3.5 h-3.5 mr-1.5 transition-transform duration-300 ease-out group-hover/code:rotate-12 group-hover/code:scale-110" /> Code
           </Button>
         </a>
       )}
+
+      {/* Button Style 3: Tertiary Exploration Action (Details / Deep Dive) */}
+      {/* Features Framed Pill Slide, Micro-Lift, and Kinetic Arrow Spring */}
       <Button
         size="sm"
         variant="ghost"
-        className="rounded-full group/btn hover:bg-primary/10 hover:text-primary transition-colors"
+        className="relative rounded-full text-muted-foreground hover:text-foreground hover:bg-muted/70 dark:hover:bg-white/10 border border-transparent hover:border-border/60 dark:hover:border-white/10 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0 group/details font-medium"
         onClick={() => {
           setSelectedProject(p);
           logAnalyticsEvent("project_click", { project_title: p.title, link_type: "details" });
         }}
       >
-        Details <ArrowRight className="w-3.5 h-3.5 ml-1 transition-transform group-hover/btn:translate-x-1" />
+        <span>Details</span>
+        <ArrowRight className="w-3.5 h-3.5 ml-1.5 transition-transform duration-300 ease-out group-hover/details:translate-x-1.5" />
       </Button>
     </div>
   );
