@@ -15,63 +15,63 @@ import profileImg from "@/assets/profile.webp";
 import { generateAndDownloadResume } from "@/lib/generateResume";
 import { logAnalyticsEvent } from "@/lib/firebase";
 
-import anasLogo from "@/assets/exp-edu-cert-logos/anas_tech_logo.png";
-import gitxolLogo from "@/assets/exp-edu-cert-logos/gitxol_logo.jpeg";
-import ibmLogo from "@/assets/exp-edu-cert-logos/ibm_logo.png";
-import ssuetLogo from "@/assets/exp-edu-cert-logos/ssuet_logo.jpeg";
+import anasLogo from "@/assets/exp-edu-cert-logos/anas_tech_logo.webp";
+import gitxolLogo from "@/assets/exp-edu-cert-logos/gitxol_logo.webp";
+import ibmLogo from "@/assets/exp-edu-cert-logos/ibm_logo.webp";
+import ssuetLogo from "@/assets/exp-edu-cert-logos/ssuet_logo.webp";
 
-import slCover from "@/assets/smartledger/cover.jpeg";
-import slDashboard from "@/assets/smartledger/dashboard.jpg";
-import slDashboard2 from "@/assets/smartledger/dashboard_2.jpg";
-import slCreate1 from "@/assets/smartledger/create_new_ledger_step1.jpg";
-import slCreate2 from "@/assets/smartledger/create_new_ledger_step2.jpg";
-import slCreate3 from "@/assets/smartledger/create_new_ledger_step3.jpg";
-import slMilk from "@/assets/smartledger/milk_record_screen.jpg";
-import slAddElec from "@/assets/smartledger/add_electricty_record_screen.jpg";
-import slElec from "@/assets/smartledger/electricity_record_screen.jpg";
-import slViewElec from "@/assets/smartledger/view_electricity_screen.jpg";
-import slViewExp from "@/assets/smartledger/view_expense_screen.jpg";
-import slAna1 from "@/assets/smartledger/analytics_screen.jpg";
-import slAna2 from "@/assets/smartledger/analytic_screen_2.jpg";
-import slAi from "@/assets/smartledger/ai_insigth_and_prediction.jpg";
-import slRestore from "@/assets/smartledger/restore_done_dialog.jpg";
-import slBackup from "@/assets/smartledger/backup_options_dialog.jpg";
+import slCover from "@/assets/smartledger/cover.webp";
+import slDashboard from "@/assets/smartledger/dashboard.webp";
+import slDashboard2 from "@/assets/smartledger/dashboard_2.webp";
+import slCreate1 from "@/assets/smartledger/create_new_ledger_step1.webp";
+import slCreate2 from "@/assets/smartledger/create_new_ledger_step2.webp";
+import slCreate3 from "@/assets/smartledger/create_new_ledger_step3.webp";
+import slMilk from "@/assets/smartledger/milk_record_screen.webp";
+import slAddElec from "@/assets/smartledger/add_electricty_record_screen.webp";
+import slElec from "@/assets/smartledger/electricity_record_screen.webp";
+import slViewElec from "@/assets/smartledger/view_electricity_screen.webp";
+import slViewExp from "@/assets/smartledger/view_expense_screen.webp";
+import slAna1 from "@/assets/smartledger/analytics_screen.webp";
+import slAna2 from "@/assets/smartledger/analytic_screen_2.webp";
+import slAi from "@/assets/smartledger/ai_insigth_and_prediction.webp";
+import slRestore from "@/assets/smartledger/restore_done_dialog.webp";
+import slBackup from "@/assets/smartledger/backup_options_dialog.webp";
 
-import atCover from "@/assets/applytrack/cover.jpeg";
-import atAddEdit from "@/assets/applytrack/addeditscreen.png";
-import atApplication from "@/assets/applytrack/applictaionscreen.png";
-import atDashboard1 from "@/assets/applytrack/dashboard1.png";
-import atDashboard2 from "@/assets/applytrack/dashboard2.png";
-import atSetting from "@/assets/applytrack/settingscreen.png";
-import atView1 from "@/assets/applytrack/viewscreen1.png";
-import atView2 from "@/assets/applytrack/viewscreen2.png";
-import atView3 from "@/assets/applytrack/viewscreen3.png";
-import atWebLogin from "@/assets/applytrack/webapp_login_screen.png";
-import atWebDashboard from "@/assets/applytrack/web_dashboard.png";
-import atWebApplications from "@/assets/applytrack/webapp_applictaions_screen.png";
-import atWebDetail from "@/assets/applytrack/webapp_detail_screen.png";
+import atCover from "@/assets/applytrack/cover.webp";
+import atAddEdit from "@/assets/applytrack/addeditscreen.webp";
+import atApplication from "@/assets/applytrack/applictaionscreen.webp";
+import atDashboard1 from "@/assets/applytrack/dashboard1.webp";
+import atDashboard2 from "@/assets/applytrack/dashboard2.webp";
+import atSetting from "@/assets/applytrack/settingscreen.webp";
+import atView1 from "@/assets/applytrack/viewscreen1.webp";
+import atView2 from "@/assets/applytrack/viewscreen2.webp";
+import atView3 from "@/assets/applytrack/viewscreen3.webp";
+import atWebLogin from "@/assets/applytrack/webapp_login_screen.webp";
+import atWebDashboard from "@/assets/applytrack/web_dashboard.webp";
+import atWebApplications from "@/assets/applytrack/webapp_applictaions_screen.webp";
+import atWebDetail from "@/assets/applytrack/webapp_detail_screen.webp";
 
-import bgCover from "@/assets/bentoapp/cover.jpeg";
-import bgHome from "@/assets/bentoapp/home_screen.jpg";
-import bgAddDialog from "@/assets/bentoapp/add_collection_dialog.jpg";
-import bgCustomize1 from "@/assets/bentoapp/customize_tile_screen.jpg";
-import bgCustomize2 from "@/assets/bentoapp/customize_tile_screen_2.jpeg";
-import bgCollection from "@/assets/bentoapp/collection_screen.jpg";
-import bgImageViewer from "@/assets/bentoapp/image_viewer_overlay.jpg";
+import bgCover from "@/assets/bentoapp/cover.webp";
+import bgHome from "@/assets/bentoapp/home_screen.webp";
+import bgAddDialog from "@/assets/bentoapp/add_collection_dialog.webp";
+import bgCustomize1 from "@/assets/bentoapp/customize_tile_screen.webp";
+import bgCustomize2 from "@/assets/bentoapp/customize_tile_screen_2.webp";
+import bgCollection from "@/assets/bentoapp/collection_screen.webp";
+import bgImageViewer from "@/assets/bentoapp/image_viewer_overlay.webp";
 
-import taCover from "@/assets/todoapp/cover.jpeg";
-import taHome from "@/assets/todoapp/home_screen.png";
-import taTasks from "@/assets/todoapp/tasks_screen.png";
-import taSearchHighlight from "@/assets/todoapp/search_highligth.png";
-import taAiRewrite from "@/assets/todoapp/ai_rewrite_styling_dialog.png";
-import taVoiceInput from "@/assets/todoapp/voice_input_bottom_sheet.png";
-import taPdfPreview from "@/assets/todoapp/pdf_preview_screen.png";
+import taCover from "@/assets/todoapp/cover.webp";
+import taHome from "@/assets/todoapp/home_screen.webp";
+import taTasks from "@/assets/todoapp/tasks_screen.webp";
+import taSearchHighlight from "@/assets/todoapp/search_highligth.webp";
+import taAiRewrite from "@/assets/todoapp/ai_rewrite_styling_dialog.webp";
+import taVoiceInput from "@/assets/todoapp/voice_input_bottom_sheet.webp";
+import taPdfPreview from "@/assets/todoapp/pdf_preview_screen.webp";
 
-import piCover from "@/assets/phoneinfo/cover.jpeg";
-import piHome from "@/assets/phoneinfo/home_screen.png";
-import piAdvance1 from "@/assets/phoneinfo/advance_detail_screen.png";
-import piApps from "@/assets/phoneinfo/apps_screen.png";
-import piAdvance2 from "@/assets/phoneinfo/advance_detail_screen_2.png";
+import piCover from "@/assets/phoneinfo/cover.webp";
+import piHome from "@/assets/phoneinfo/home_screen.webp";
+import piAdvance1 from "@/assets/phoneinfo/advance_detail_screen.webp";
+import piApps from "@/assets/phoneinfo/apps_screen.webp";
+import piAdvance2 from "@/assets/phoneinfo/advance_detail_screen_2.webp";
 
 const phoneInfoImages = [
   piHome,
@@ -132,17 +132,17 @@ const smartLedgerImages = [
   slBackup
 ];
 
-import aboCover from "@/assets/aibilloptimizer/cover.jpeg";
-import aboLogin from "@/assets/aibilloptimizer/login_page.png";
-import aboHome1 from "@/assets/aibilloptimizer/home_screen.png";
-import aboHome2 from "@/assets/aibilloptimizer/home_screen_2.png";
-import aboSetup from "@/assets/aibilloptimizer/setup_profile.png";
-import aboPred1 from "@/assets/aibilloptimizer/prediction_screen_1.png";
-import aboPred2 from "@/assets/aibilloptimizer/prediction_screen_2.png";
-import aboLoad1 from "@/assets/aibilloptimizer/load_forecaster_screen_1.png";
-import aboLoad2 from "@/assets/aibilloptimizer/load_forecaster_screen_2.png";
-import aboNepra from "@/assets/aibilloptimizer/nepra_tarif_screen.png";
-import aboSim from "@/assets/aibilloptimizer/simulator_screen.png";
+import aboCover from "@/assets/aibilloptimizer/cover.webp";
+import aboLogin from "@/assets/aibilloptimizer/login_page.webp";
+import aboHome1 from "@/assets/aibilloptimizer/home_screen.webp";
+import aboHome2 from "@/assets/aibilloptimizer/home_screen_2.webp";
+import aboSetup from "@/assets/aibilloptimizer/setup_profile.webp";
+import aboPred1 from "@/assets/aibilloptimizer/prediction_screen_1.webp";
+import aboPred2 from "@/assets/aibilloptimizer/prediction_screen_2.webp";
+import aboLoad1 from "@/assets/aibilloptimizer/load_forecaster_screen_1.webp";
+import aboLoad2 from "@/assets/aibilloptimizer/load_forecaster_screen_2.webp";
+import aboNepra from "@/assets/aibilloptimizer/nepra_tarif_screen.webp";
+import aboSim from "@/assets/aibilloptimizer/simulator_screen.webp";
 
 const aiBillOptimizerImages = [
   aboLogin,
@@ -1197,6 +1197,7 @@ const AiBillOptimizerDesc = () => (
 
 function ProjectModal({ project, onClose, onNavigate }: { project: any, onClose: () => void, onNavigate?: (dir: 'next' | 'prev') => void }) {
   const [currentImage, setCurrentImage] = useState(0);
+  const [direction, setDirection] = useState(0);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -1208,13 +1209,65 @@ function ProjectModal({ project, onClose, onNavigate }: { project: any, onClose:
   // Reset scroll and image index when project changes
   useEffect(() => {
     setCurrentImage(0);
+    setDirection(0);
     const scrollableElements = document.querySelectorAll('.modal-scroll-area');
     scrollableElements.forEach(el => {
       el.scrollTop = 0;
     });
   }, [project]);
 
+  // Predictive Image Preload Algorithm:
+  // Proactively loads adjacent images into the browser cache
+  useEffect(() => {
+    if (!project?.images || project.images.length === 0) return;
+    const total = project.images.length;
+    const toPreload = [
+      (currentImage + 1) % total,
+      (currentImage + 2) % total,
+      (currentImage - 1 + total) % total,
+    ];
+    toPreload.forEach((idx) => {
+      const img = new Image();
+      img.src = project.images[idx];
+    });
+  }, [currentImage, project]);
+
   if (!project) return null;
+
+  const paginate = (newDirection: number) => {
+    setDirection(newDirection);
+    setCurrentImage((prev) => (prev + newDirection + project.images.length) % project.images.length);
+  };
+
+  const slideVariants = {
+    enter: (dir: number) => ({
+      x: dir > 0 ? 60 : dir < 0 ? -60 : 0,
+      opacity: 0,
+      scale: 0.96,
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+      scale: 1,
+      transition: {
+        x: { type: "spring" as const, stiffness: 340, damping: 32 },
+        opacity: { duration: 0.26 },
+        scale: { duration: 0.26 },
+      },
+    },
+    exit: (dir: number) => ({
+      zIndex: 0,
+      x: dir < 0 ? 60 : dir > 0 ? -60 : 0,
+      opacity: 0,
+      scale: 0.96,
+      transition: {
+        x: { type: "spring" as const, stiffness: 340, damping: 32 },
+        opacity: { duration: 0.2 },
+        scale: { duration: 0.2 },
+      },
+    }),
+  };
 
   return (
     <AnimatePresence>
@@ -1267,44 +1320,59 @@ function ProjectModal({ project, onClose, onNavigate }: { project: any, onClose:
             const isLandscape = Boolean(project.landscapeImages || (project.title === "ApplyTrack" && currentImage >= 8));
 
             return (
-              <div className={`group w-full ${isLandscape ? "md:w-[50%] lg:w-[52%]" : "md:w-[45%] lg:w-[40%]"} bg-white/10 dark:bg-white/[0.03] backdrop-blur-xl relative flex flex-col items-center justify-center p-4 sm:p-6 border-b md:border-b-0 md:border-r border-white/20 dark:border-white/10 shrink-0 min-h-[50vh] md:min-h-0 select-none`}>
-                <div className="relative w-full h-[45vh] md:h-[60vh] max-w-md flex items-center justify-center mx-auto">
-                  <AnimatePresence mode="wait">
+              <div className={`group w-full ${isLandscape ? "md:w-[50%] lg:w-[52%]" : "md:w-[45%] lg:w-[40%]"} bg-white/10 dark:bg-white/[0.03] backdrop-blur-xl relative flex flex-col items-center justify-center p-4 sm:p-6 border-b md:border-b-0 md:border-r border-white/20 dark:border-white/10 shrink-0 min-h-[50vh] md:min-h-0 select-none overflow-hidden`}>
+                <div className="relative w-full h-[45vh] md:h-[60vh] max-w-md flex items-center justify-center mx-auto px-10 sm:px-12 overflow-hidden">
+                  <AnimatePresence initial={false} custom={direction}>
                     <motion.img
                       key={currentImage}
+                      custom={direction}
+                      variants={slideVariants}
+                      initial="enter"
+                      animate="center"
+                      exit="exit"
+                      drag="x"
+                      dragConstraints={{ left: 0, right: 0 }}
+                      dragElastic={0.2}
+                      onDragEnd={(_e, { offset, velocity }) => {
+                        const swipe = Math.abs(offset.x) * velocity.x;
+                        if (offset.x < -40 || swipe < -800) {
+                          paginate(1);
+                        } else if (offset.x > 40 || swipe > 800) {
+                          paginate(-1);
+                        }
+                      }}
                       src={project.images[currentImage]}
-                      initial={{ opacity: 0, scale: 0.97 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.97 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute m-auto inset-0 max-w-full max-h-full object-contain border border-white/30 dark:border-white/15 shadow-2xl rounded-2xl bg-white/10 dark:bg-black/20 backdrop-blur-md"
+                      loading="eager"
+                      fetchPriority="high"
+                      decoding="async"
+                      className="absolute m-auto inset-0 max-w-full max-h-full object-contain border border-white/30 dark:border-white/15 shadow-2xl rounded-2xl bg-white/10 dark:bg-black/20 backdrop-blur-md cursor-grab active:cursor-grabbing"
                       style={{
                         imageRendering: "high-quality" as any,
                         WebkitBackfaceVisibility: "hidden",
                         transform: "translateZ(0)",
                       }}
-                      alt={`${project.title} screenshot ${currentImage + 1}`}
+                      alt={`${project.title} - High-resolution application screenshot ${currentImage + 1} of ${project.images.length}`}
                     />
                   </AnimatePresence>
                 </div>
 
                 {/* Prev / Next Arrows */}
-                <div className="absolute inset-y-0 left-0 flex items-center justify-start pl-3 z-20 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:transition-opacity md:duration-200">
+                <div className="absolute inset-y-0 left-0 flex items-center justify-start pl-1.5 sm:pl-3 z-20 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:transition-opacity md:duration-200">
                   <Button
                     variant="outline"
                     size="icon"
                     className="rounded-full shadow-lg bg-white/50 hover:bg-white/80 dark:bg-slate-900/60 dark:hover:bg-slate-900/90 backdrop-blur-xl w-9 h-9 border border-white/40 dark:border-white/15 hover:border-primary/50 text-foreground hover:shadow-[0_0_15px_rgba(59,130,246,0.35)] hover:scale-105 active:scale-95 transition-all duration-200 group/chevronl"
-                    onClick={() => setCurrentImage((prev) => (prev - 1 + project.images.length) % project.images.length)}
+                    onClick={() => paginate(-1)}
                   >
                     <ChevronLeft className="w-4 h-4 transition-transform duration-200 group-hover/chevronl:-translate-x-0.5" />
                   </Button>
                 </div>
-                <div className="absolute inset-y-0 right-0 flex items-center justify-end pr-3 z-20 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:transition-opacity md:duration-200">
+                <div className="absolute inset-y-0 right-0 flex items-center justify-end pr-1.5 sm:pr-3 z-20 opacity-100 md:opacity-0 md:group-hover:opacity-100 md:transition-opacity md:duration-200">
                   <Button
                     variant="outline"
                     size="icon"
                     className="rounded-full shadow-lg bg-white/50 hover:bg-white/80 dark:bg-slate-900/60 dark:hover:bg-slate-900/90 backdrop-blur-xl w-9 h-9 border border-white/40 dark:border-white/15 hover:border-primary/50 text-foreground hover:shadow-[0_0_15px_rgba(59,130,246,0.35)] hover:scale-105 active:scale-95 transition-all duration-200 group/chevronr"
-                    onClick={() => setCurrentImage((prev) => (prev + 1) % project.images.length)}
+                    onClick={() => paginate(1)}
                   >
                     <ChevronRight className="w-4 h-4 transition-transform duration-200 group-hover/chevronr:translate-x-0.5" />
                   </Button>
@@ -1316,7 +1384,10 @@ function ProjectModal({ project, onClose, onNavigate }: { project: any, onClose:
                     {project.images.map((_: any, i: number) => (
                       <button
                         key={i}
-                        onClick={() => setCurrentImage(i)}
+                        onClick={() => {
+                          setDirection(i > currentImage ? 1 : -1);
+                          setCurrentImage(i);
+                        }}
                         className={`h-1.5 rounded-full transition-all duration-300 ${
                           i === currentImage ? "w-5 bg-primary shadow-[0_0_10px_rgba(59,130,246,0.6)]" : "w-1.5 bg-muted-foreground/40 hover:bg-muted-foreground/70"
                         }`}
@@ -1353,10 +1424,12 @@ function ProjectSpotlightCard({
   children,
   className = "",
   onClick,
+  onMouseEnter,
 }: {
   children: React.ReactNode;
   className?: string;
   onClick?: () => void;
+  onMouseEnter?: () => void;
 }) {
   const [mousePos, setMousePos] = useState({ x: -1000, y: -1000 });
   const [isHovered, setIsHovered] = useState(false);
@@ -1372,7 +1445,10 @@ function ProjectSpotlightCard({
   return (
     <div
       onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
+      onMouseEnter={() => {
+        setIsHovered(true);
+        if (onMouseEnter) onMouseEnter();
+      }}
       onMouseLeave={() => {
         setIsHovered(false);
         setMousePos({ x: -1000, y: -1000 });
@@ -1662,7 +1738,17 @@ function Projects() {
             const isEven = idx % 2 === 0;
             return (
               <motion.div key={p.title} variants={fadeUp}>
-                <ProjectSpotlightCard className="p-6 sm:p-8 lg:p-10">
+                <ProjectSpotlightCard
+                  className="p-6 sm:p-8 lg:p-10"
+                  onMouseEnter={() => {
+                    if (p.images && p.images.length > 0) {
+                      p.images.slice(0, 3).forEach((src: string) => {
+                        const img = new Image();
+                        img.src = src;
+                      });
+                    }
+                  }}
+                >
                   <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                     {/* Story / Details Column */}
                     <div
@@ -1737,7 +1823,9 @@ function Projects() {
                       {p.coverImage ? (
                         <img
                           src={p.coverImage}
-                          alt={`${p.title} Backdrop`}
+                          alt={`${p.title} atmospheric background UI`}
+                          loading="lazy"
+                          decoding="async"
                           className="absolute inset-0 w-full h-full object-cover blur-sm opacity-40 scale-110 group-hover:scale-115 transition-transform duration-700 ease-out"
                         />
                       ) : (
@@ -1763,7 +1851,9 @@ function Projects() {
                           <div className="relative aspect-[16/10] w-full overflow-hidden bg-black">
                             <img
                               src={p.previewScreen || p.coverImage}
-                              alt={`${p.title} Live Screen`}
+                              alt={`${p.title} live interface preview`}
+                              loading="lazy"
+                              decoding="async"
                               className="w-full h-full object-cover object-top"
                             />
                           </div>
@@ -1778,7 +1868,9 @@ function Projects() {
                           <div className="w-full h-full rounded-[1.7rem] overflow-hidden bg-black relative">
                             <img
                               src={p.previewScreen || p.coverImage}
-                              alt={`${p.title} Live Screen`}
+                              alt={`${p.title} live mobile application preview`}
+                              loading="lazy"
+                              decoding="async"
                               className="w-full h-full object-cover object-top"
                             />
                             <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent" />
@@ -1871,7 +1963,15 @@ function Experience() {
                 className="relative pl-20"
               >
                 <div className="absolute left-0 top-2 w-12 h-12 rounded-2xl bg-white p-2 flex items-center justify-center shadow-card border border-border/40 overflow-hidden ring-2 ring-primary/20">
-                  <img src={it.logo} alt={it.org} className="w-full h-full object-contain" />
+                  <img
+                    src={it.logo}
+                    alt={`${it.org} organization logo`}
+                    loading="lazy"
+                    decoding="async"
+                    width={48}
+                    height={48}
+                    className="w-full h-full object-contain"
+                  />
                 </div>
                 <Card className="p-6 rounded-2xl border-0 shadow-card hover:shadow-glow transition-shadow">
                   <div className="flex flex-wrap items-baseline justify-between gap-2">

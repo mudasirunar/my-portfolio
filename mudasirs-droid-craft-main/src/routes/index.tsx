@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Portfolio } from "@/components/Portfolio";
-import previewImg from "../assets/preview.png";
+import previewImg from "../assets/preview.webp";
 import profileImg from "../assets/profile.webp";
 
 export const Route = createFileRoute("/")({
