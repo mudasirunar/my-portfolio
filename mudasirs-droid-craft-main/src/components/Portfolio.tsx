@@ -601,72 +601,107 @@ function SectionHeader({ eyebrow, title, subtitle }: { eyebrow: string; title: s
 
 function About() {
   const stats = [
-    { label: "Mobile Projects", value: "10+" },
-    { label: "Web Projects", value: "5+" },
-    { label: "Technologies", value: "20+" },
+    { label: "Mobile Projects", value: "15+", icon: Smartphone, color: "text-blue-500" },
+    { label: "Web Projects", value: "5+", icon: Code2, color: "text-indigo-500" },
+    { label: "Technologies", value: "20+", icon: Layers, color: "text-teal-500" },
   ];
+
   return (
-    <section id="about" className="relative py-24 px-6">
+    <section id="about" className="relative py-20 sm:py-24 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         <SectionHeader eyebrow="About Me" title="Passionate about modern mobile & web development" />
         <div className="grid lg:grid-cols-5 gap-8">
-          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger} className="lg:col-span-3 space-y-4">
-            <motion.p variants={fadeUp} className="text-lg text-muted-foreground leading-relaxed">
+          {/* Left Column: Bio, Stats, Location */}
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger} className="lg:col-span-3 space-y-5">
+            <motion.p variants={fadeUp} className="text-base sm:text-lg text-muted-foreground leading-relaxed">
               I am a Software Engineering graduate from <span className="text-foreground font-semibold">Sir Syed University of Engineering and Technology (SSUET), Karachi</span>, driven by a passion for engineering scalable, high-performance mobile applications, intuitive web platforms, and AI-powered digital solutions.
             </motion.p>
-            <motion.p variants={fadeUp} className="text-lg text-muted-foreground leading-relaxed">
+            <motion.p variants={fadeUp} className="text-base sm:text-lg text-muted-foreground leading-relaxed">
               My core expertise spans <span className="text-foreground font-semibold">mobile engineering across native and cross-platform ecosystems</span> (Kotlin, Jetpack Compose, Flutter/Dart, iOS/Swift), paired with clean architecture, RESTful API integration, and modern cloud workflows. Currently, I am expanding production mobile apps as a Flutter Developer Intern at <span className="text-foreground font-semibold">ANAS Technologies</span>, while enhancing web performance, SEO, and indexing as a Web Development Intern at <span className="text-foreground font-semibold">GitXol</span>.
             </motion.p>
-            <motion.div variants={fadeUp} className="grid grid-cols-3 gap-4 pt-6">
+
+            {/* Metric Bento Cards */}
+            <motion.div variants={fadeUp} className="grid grid-cols-3 gap-3 sm:gap-4 pt-4">
               {stats.map((s) => (
-                <Card key={s.label} className="p-5 rounded-2xl border-0 shadow-card glass">
-                  <div className="text-3xl font-bold text-gradient">{s.value}</div>
-                  <div className="text-xs md:text-sm text-muted-foreground mt-1">{s.label}</div>
+                <Card
+                  key={s.label}
+                  className="p-4 sm:p-5 rounded-2xl border border-border/70 bg-card/60 shadow-sm hover:shadow-card hover:-translate-y-1 transition-all duration-200 cursor-default group"
+                >
+                  <div className="flex items-center justify-between mb-1.5">
+                    <s.icon className={`w-4 h-4 ${s.color} opacity-80 group-hover:scale-110 group-hover:opacity-100 transition-all`} />
+                  </div>
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gradient tracking-tight">{s.value}</div>
+                  <div className="text-xs sm:text-sm text-muted-foreground mt-1 font-medium">{s.label}</div>
                 </Card>
               ))}
             </motion.div>
-            <motion.div variants={fadeUp} className="pt-2">
-              <Card className="p-4 sm:p-5 rounded-2xl border-0 shadow-card glass hover:shadow-glow transition-shadow flex items-center gap-3.5">
+
+            {/* Location & Availability Badge */}
+            <motion.div variants={fadeUp} className="pt-1">
+              <Card className="p-4 sm:p-5 rounded-2xl border border-border/70 bg-card/60 shadow-sm hover:shadow-card hover:-translate-y-0.5 transition-all flex items-center gap-3.5">
                 <div className="w-10 h-10 rounded-xl bg-teal/10 flex items-center justify-center shrink-0">
                   <MapPin className="w-5 h-5 text-teal" />
                 </div>
-                <div>
-                  <div className="text-xs uppercase tracking-wider text-muted-foreground font-medium">Location & Availability</div>
-                  <div className="text-sm font-semibold text-foreground">Karachi, Pakistan <span className="text-muted-foreground font-normal">· Open to remote & hybrid roles.</span></div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs uppercase tracking-wider text-muted-foreground font-semibold">Location & Availability</span>
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-teal"></span>
+                    </span>
+                  </div>
+                  <div className="text-sm font-semibold text-foreground mt-0.5">
+                    Karachi, Pakistan <span className="text-muted-foreground font-normal">· Open to remote & hybrid roles.</span>
+                  </div>
                 </div>
               </Card>
             </motion.div>
           </motion.div>
 
-          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger} className="lg:col-span-2 space-y-4">
+          {/* Right Column: Experience & Credentials Quick Previews */}
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger} className="lg:col-span-2 space-y-3.5">
             <motion.div variants={fadeUp}>
-              <Card className="p-6 rounded-2xl border-0 shadow-card hover:shadow-glow transition-shadow">
+              <Card className="p-5 rounded-2xl border border-border/70 bg-card/60 shadow-sm hover:shadow-card hover:-translate-y-1 transition-all duration-200 group">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-white p-2 flex items-center justify-center shrink-0 shadow-sm border border-border/40 overflow-hidden ring-2 ring-primary/10">
+                  <div className="w-12 h-12 rounded-xl bg-white p-2 flex items-center justify-center shrink-0 shadow-sm border border-border/40 overflow-hidden ring-2 ring-primary/10 group-hover:ring-primary/30 transition-all">
                     <img src={anasLogo} alt="ANAS Technologies" className="w-full h-full object-contain" />
                   </div>
-                  <div>
-                    <div className="text-xs uppercase tracking-wider text-muted-foreground">Experience</div>
-                    <div className="font-semibold mt-1">Flutter Developer Intern</div>
-                    <div className="text-sm text-muted-foreground">ANAS Technologies · Sept 2026 – Present</div>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full border border-orange-500/20 bg-orange-500/10 text-orange-600 dark:text-orange-400">
+                        Internship
+                      </span>
+                    </div>
+                    <div className="font-semibold text-sm sm:text-base mt-1.5 text-foreground">
+                      Flutter Developer Intern
+                    </div>
+                    <div className="text-xs sm:text-sm text-muted-foreground mt-0.5">ANAS Technologies · Sept 2026 – Present</div>
                   </div>
                 </div>
               </Card>
             </motion.div>
+
             <motion.div variants={fadeUp}>
-              <Card className="p-6 rounded-2xl border-0 shadow-card hover:shadow-glow transition-shadow">
+              <Card className="p-5 rounded-2xl border border-border/70 bg-card/60 shadow-sm hover:shadow-card hover:-translate-y-1 transition-all duration-200 group">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-white p-2 flex items-center justify-center shrink-0 shadow-sm border border-border/40 overflow-hidden ring-2 ring-primary/10">
+                  <div className="w-12 h-12 rounded-xl bg-white p-2 flex items-center justify-center shrink-0 shadow-sm border border-border/40 overflow-hidden ring-2 ring-primary/10 group-hover:ring-primary/30 transition-all">
                     <img src={gitxolLogo} alt="GitXol" className="w-full h-full object-contain" />
                   </div>
-                  <div>
-                    <div className="text-xs uppercase tracking-wider text-muted-foreground">Experience</div>
-                    <div className="font-semibold mt-1">Web Development Intern</div>
-                    <div className="text-sm text-muted-foreground">GitXol · June 2026 – Present</div>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full border border-red-500/20 bg-red-500/10 text-red-600 dark:text-red-400">
+                        Internship
+                      </span>
+                    </div>
+                    <div className="font-semibold text-sm sm:text-base mt-1.5 text-foreground">
+                      Web Development Intern
+                    </div>
+                    <div className="text-xs sm:text-sm text-muted-foreground mt-0.5">GitXol · June 2026 – Present</div>
                   </div>
                 </div>
               </Card>
             </motion.div>
+
             <motion.div variants={fadeUp}>
               <a
                 href="https://www.coursera.org/account/accomplishments/specialization/D2BYZFQ9ADK7"
@@ -674,35 +709,44 @@ function About() {
                 rel="noopener noreferrer"
                 className="block group"
               >
-                <Card className="p-6 rounded-2xl border-0 shadow-card hover:shadow-glow transition-all">
+                <Card className="p-5 rounded-2xl border border-border/70 bg-card/60 shadow-sm hover:shadow-card hover:-translate-y-1 transition-all duration-200">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-2xl bg-white p-2 flex items-center justify-center shrink-0 shadow-sm border border-border/40 overflow-hidden ring-2 ring-primary/10">
+                    <div className="w-12 h-12 rounded-xl bg-white p-2 flex items-center justify-center shrink-0 shadow-sm border border-border/40 overflow-hidden ring-2 ring-primary/10 group-hover:ring-primary/30 transition-all">
                       <img src={ibmLogo} alt="IBM" className="w-full h-full object-contain" />
                     </div>
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center justify-between">
-                        <span className="text-xs uppercase tracking-wider text-muted-foreground">Certification</span>
+                        <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full border border-sky-500/20 bg-sky-500/10 text-sky-600 dark:text-sky-400">
+                          Certification
+                        </span>
                         <ExternalLink className="w-3.5 h-3.5 text-muted-foreground group-hover:text-primary transition-colors" />
                       </div>
-                      <div className="font-semibold mt-1 text-foreground group-hover:text-primary transition-colors">
+                      <div className="font-semibold text-sm sm:text-base mt-1.5 text-foreground">
                         IBM iOS & Android Mobile App Developer
                       </div>
-                      <div className="text-sm text-muted-foreground">Coursera · August 2026</div>
+                      <div className="text-xs sm:text-sm text-muted-foreground mt-0.5">Coursera · August 2026</div>
                     </div>
                   </div>
                 </Card>
               </a>
             </motion.div>
+
             <motion.div variants={fadeUp}>
-              <Card className="p-6 rounded-2xl border-0 shadow-card hover:shadow-glow transition-shadow">
+              <Card className="p-5 rounded-2xl border border-border/70 bg-card/60 shadow-sm hover:shadow-card hover:-translate-y-1 transition-all duration-200 group">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-2xl bg-white p-2 flex items-center justify-center shrink-0 shadow-sm border border-border/40 overflow-hidden ring-2 ring-primary/10">
+                  <div className="w-12 h-12 rounded-xl bg-white p-2 flex items-center justify-center shrink-0 shadow-sm border border-border/40 overflow-hidden ring-2 ring-primary/10 group-hover:ring-primary/30 transition-all">
                     <img src={ssuetLogo} alt="SSUET" className="w-full h-full object-contain" />
                   </div>
-                  <div>
-                    <div className="text-xs uppercase tracking-wider text-muted-foreground">Education</div>
-                    <div className="font-semibold mt-1">BS Software Engineering</div>
-                    <div className="text-sm text-muted-foreground">Sir Syed University & Technology (SSUET) · Oct 2022 – July 2026</div>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full border border-teal-500/20 bg-teal-500/10 text-teal-600 dark:text-teal-400">
+                        Education
+                      </span>
+                    </div>
+                    <div className="font-semibold text-sm sm:text-base mt-1.5 text-foreground">
+                      BS Software Engineering
+                    </div>
+                    <div className="text-xs sm:text-sm text-muted-foreground mt-0.5">SSUET · Oct 2022 – July 2026</div>
                   </div>
                 </div>
               </Card>
@@ -2256,6 +2300,8 @@ function Experience() {
     {
       type: "work", logo: anasLogo, title: "Flutter Developer Intern",
       org: "ANAS Technologies", date: "Sept 2026 – Present",
+      category: "Internship",
+      categoryColor: "bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20",
       location: undefined,
       points: [
         "Developing cross-platform mobile applications using Flutter framework and Dart programming language",
@@ -2268,6 +2314,8 @@ function Experience() {
     {
       type: "work", logo: gitxolLogo, title: "Web Development Intern",
       org: "GitXol", date: "June 2026 – Present",
+      category: "Internship",
+      categoryColor: "bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/20",
       location: undefined,
       points: [
         "Assisted in website development and UI improvements using modern web technologies",
@@ -2280,6 +2328,8 @@ function Experience() {
     {
       type: "cert", logo: ibmLogo, title: "IBM iOS and Android Mobile App Developer",
       org: "IBM · Coursera Professional Certificate", date: "August 2026",
+      category: "Professional Certificate",
+      categoryColor: "bg-sky-500/10 text-sky-600 dark:text-sky-400 border-sky-500/20",
       location: undefined,
       points: [
         "Completed professional specialization covering native and cross-platform mobile app development",
@@ -2293,17 +2343,20 @@ function Experience() {
     {
       type: "edu", logo: ssuetLogo, title: "Bachelor of Science in Software Engineering",
       org: "Sir Syed University of Engineering & Technology, Karachi", date: "Oct 2022 – July 2026",
+      category: "Degree Program",
+      categoryColor: "bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-500/20",
       location: "Karachi, Pakistan",
       points: [],
     },
   ];
   return (
-    <section id="experience" className="relative py-24 px-6">
+    <section id="experience" className="relative py-20 sm:py-24 px-4 sm:px-6">
       <div className="max-w-4xl mx-auto">
         <SectionHeader eyebrow="Journey" title="Experience & Education" />
         <div className="relative">
-          <div className="absolute left-6 top-2 bottom-2 w-px bg-border" />
-          <div className="space-y-8">
+          {/* Luminous Gradient Spine */}
+          <div className="absolute left-5 sm:left-6 top-3 bottom-3 w-0.5 bg-gradient-to-b from-primary via-primary/40 to-primary/10 rounded-full" />
+          <div className="space-y-6 sm:space-y-8">
             {items.map((it, i) => (
               <motion.div
                 key={`${it.title}-${it.org}`}
@@ -2311,9 +2364,10 @@ function Experience() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="relative pl-20"
+                className="relative pl-14 sm:pl-20 group"
               >
-                <div className="absolute left-0 top-2 w-12 h-12 rounded-2xl bg-white p-2 flex items-center justify-center shadow-card border border-border/40 overflow-hidden ring-2 ring-primary/20">
+                {/* Node Logo Container */}
+                <div className="absolute left-0 top-2 w-11 h-11 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white p-2 flex items-center justify-center shadow-md border border-border/40 overflow-hidden ring-2 ring-primary/20 group-hover:ring-primary/50 group-hover:shadow-glow transition-all">
                   <img
                     src={it.logo}
                     alt={`${it.org} organization logo`}
@@ -2324,32 +2378,53 @@ function Experience() {
                     className="w-full h-full object-contain"
                   />
                 </div>
-                <Card className="p-6 rounded-2xl border-0 shadow-card hover:shadow-glow transition-shadow">
-                  <div className="flex flex-wrap items-baseline justify-between gap-2">
-                    <h3 className="text-lg font-semibold">{it.title}</h3>
-                    <span className="text-xs text-muted-foreground">{it.date}</span>
+
+                {/* Card Container */}
+                <Card className="p-5 sm:p-7 rounded-2xl sm:rounded-3xl border border-border/70 bg-card/60 shadow-sm hover:shadow-card hover:-translate-y-1 transition-all duration-200">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <span className={`text-[10px] sm:text-xs font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${it.categoryColor}`}>
+                      {it.category}
+                    </span>
+                    <span className="text-xs text-muted-foreground font-medium px-2.5 py-0.5 rounded-full border border-border/60 bg-muted/50">
+                      {it.date}
+                    </span>
                   </div>
+
+                  <h3 className="text-base sm:text-lg font-semibold text-foreground mt-2">
+                    {it.title}
+                  </h3>
+
                   <div className="text-primary font-medium text-sm mt-0.5">{it.org}</div>
                   {it.location && (
-                    <div className="text-muted-foreground text-sm mt-0.5">{it.location}</div>
+                    <div className="text-muted-foreground text-xs sm:text-sm mt-0.5">{it.location}</div>
                   )}
+
                   {it.points.length > 0 && (
-                    <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                    <ul className="mt-4 space-y-2 text-xs sm:text-sm text-muted-foreground">
                       {it.points.map((p) => (
-                        <li key={p} className="flex gap-2"><span className="text-primary">▹</span>{p}</li>
+                        <li key={p} className="flex gap-2.5 items-start">
+                          <span className="text-primary mt-0.5 text-xs shrink-0">▹</span>
+                          <span className="leading-relaxed">{p}</span>
+                        </li>
                       ))}
                     </ul>
                   )}
+
                   {it.certificateUrl && (
-                    <div className="mt-4 pt-1">
+                    <div className="mt-5 pt-1">
                       <a
                         href={it.certificateUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex"
                       >
-                        <Button size="sm" variant="outline" className="rounded-full gap-1.5 text-xs font-medium hover:text-primary hover:border-primary">
-                          View Certificate <ExternalLink className="w-3.5 h-3.5" />
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="rounded-full gap-1.5 text-xs font-medium border-border/70 text-foreground hover:text-primary hover:border-primary/50 hover:bg-primary/5 transition-all"
+                        >
+                          <span>View Certificate</span>
+                          <ExternalLink className="w-3.5 h-3.5" />
                         </Button>
                       </a>
                     </div>
