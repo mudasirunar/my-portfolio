@@ -5,7 +5,7 @@ import {
   Github, Linkedin, Mail, Phone, Download, ArrowRight, ArrowLeft, Code2, Smartphone,
   Database, Cloud, Cpu, Layers, GitBranch, Sparkles, Briefcase, GraduationCap,
   Palette, Zap, Brain, Send, MapPin, Bug, TestTube, X, ChevronLeft, ChevronRight, ExternalLink, Award,
-  Sun, Moon
+  Sun, Moon, Menu
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -205,7 +205,44 @@ const NAV = [
   { id: "contact", label: "Contact" },
 ];
 
-function ThemeToggle() {
+function ThemeToggle({
+  isDark,
+  onToggle,
+}: {
+  isDark: boolean;
+  onToggle: () => void;
+}) {
+  return (
+    <button
+      onClick={onToggle}
+      type="button"
+      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+      className="relative w-9 h-9 rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary overflow-hidden"
+    >
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.div
+          key={isDark ? "dark" : "light"}
+          initial={{ y: -14, opacity: 0, rotate: -40, scale: 0.7 }}
+          animate={{ y: 0, opacity: 1, rotate: 0, scale: 1 }}
+          exit={{ y: 14, opacity: 0, rotate: 40, scale: 0.7 }}
+          whileHover={{ scale: 1.15, rotate: isDark ? 15 : -15 }}
+          whileTap={{ scale: 0.85 }}
+          transition={{ duration: 0.22, ease: "easeOut" }}
+          className="flex items-center justify-center"
+        >
+          {isDark ? (
+            <Sun className="w-4 h-4 text-amber-400" />
+          ) : (
+            <Moon className="w-4 h-4 text-blue-500" />
+          )}
+        </motion.div>
+      </AnimatePresence>
+    </button>
+  );
+}
+
+function Navbar() {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isDark, setIsDark] = useState(() => {
     if (typeof window !== "undefined") {
       return document.documentElement.classList.contains("dark");
@@ -236,59 +273,142 @@ function ThemeToggle() {
     }
   };
 
-  return (
-    <button
-      onClick={toggleTheme}
-      type="button"
-      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
-      className="relative w-9 h-9 rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary overflow-hidden"
-    >
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.div
-          key={isDark ? "dark" : "light"}
-          initial={{ y: -14, opacity: 0, rotate: -40, scale: 0.7 }}
-          animate={{ y: 0, opacity: 1, rotate: 0, scale: 1 }}
-          exit={{ y: 14, opacity: 0, rotate: 40, scale: 0.7 }}
-          whileHover={{ scale: 1.15, rotate: isDark ? 15 : -15 }}
-          whileTap={{ scale: 0.85 }}
-          transition={{ duration: 0.22, ease: "easeOut" }}
-          className="flex items-center justify-center"
-        >
-          {isDark ? (
-            <Sun className="w-4 h-4 text-amber-400" />
-          ) : (
-            <Moon className="w-4 h-4 text-blue-500" />
-          )}
-        </motion.div>
-      </AnimatePresence>
-    </button>
-  );
-}
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsDrawerOpen(false);
+    };
+    if (isDrawerOpen) {
+      document.body.style.overflow = "hidden";
+      window.addEventListener("keydown", handleKeyDown);
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isDrawerOpen]);
 
-function Navbar() {
+  const handleNavClick = (id: string) => {
+    setIsDrawerOpen(false);
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <header className="fixed top-0 inset-x-0 z-50 px-4 pt-4">
-      <nav className="mx-auto max-w-6xl bg-card/60 border border-border rounded-full px-5 py-3 flex items-center justify-between shadow-sm">
-        <a href="#home" className="font-display font-bold text-lg tracking-tight text-foreground">
-          Mudasir.tech
-        </a>
-        <ul className="hidden md:flex items-center gap-1 text-sm">
-          {NAV.map((n) => (
-            <li key={n.id}>
-              <a
-                href={`#${n.id}`}
-                className="px-3 py-2 rounded-full hover:bg-secondary transition-colors text-muted-foreground hover:text-foreground"
-              >
-                {n.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-        <div className="flex items-center justify-end md:w-[110px]">
-          <ThemeToggle />
-        </div>
-      </nav>
-    </header>
+    <>
+      <header className="fixed top-0 inset-x-0 z-50 px-4 pt-4">
+        <nav className="mx-auto max-w-6xl bg-card/60 border border-border rounded-full px-5 py-3 flex items-center justify-between shadow-sm">
+          <a href="#home" className="font-display font-bold text-lg tracking-tight text-foreground">
+            Mudasir.tech
+          </a>
+
+          {/* Desktop Nav Links */}
+          <ul className="hidden md:flex items-center gap-1 text-sm">
+            {NAV.map((n) => (
+              <li key={n.id}>
+                <a
+                  href={`#${n.id}`}
+                  className="px-3 py-2 rounded-full hover:bg-secondary transition-colors text-muted-foreground hover:text-foreground"
+                >
+                  {n.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          {/* Right Action Area: Theme Toggle & Mobile Menu Trigger */}
+          <div className="flex items-center gap-1.5 justify-end md:w-[110px]">
+            <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
+
+            {/* Mobile Drawer Trigger Button */}
+            <button
+              onClick={() => setIsDrawerOpen(true)}
+              type="button"
+              aria-label="Open navigation menu"
+              className="md:hidden relative w-9 h-9 rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            >
+              <Menu className="w-5 h-5" />
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      {/* Mobile Drawer Sheet */}
+      <AnimatePresence>
+        {isDrawerOpen && (
+          <div className="fixed inset-0 z-[100] md:hidden">
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={() => setIsDrawerOpen(false)}
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+              aria-hidden="true"
+            />
+
+            {/* Slide-out Drawer */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 28, stiffness: 280 }}
+              className="absolute inset-y-0 right-0 w-[80%] max-w-sm bg-card border-l border-border shadow-2xl p-6 flex flex-col justify-between"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Navigation Drawer"
+            >
+              <div>
+                {/* Drawer Header */}
+                <div className="flex items-center justify-between pb-6 border-b border-border/60">
+                  <span className="font-display font-bold text-lg text-foreground">
+                    Mudasir.tech
+                  </span>
+                  <button
+                    onClick={() => setIsDrawerOpen(false)}
+                    type="button"
+                    aria-label="Close menu"
+                    className="w-9 h-9 rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+
+                {/* Nav Links */}
+                <ul className="flex flex-col gap-1.5 py-6">
+                  {NAV.map((n) => (
+                    <li key={n.id}>
+                      <button
+                        onClick={() => handleNavClick(n.id)}
+                        className="w-full text-left px-4 py-3 rounded-xl text-base font-medium text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors flex items-center justify-between"
+                      >
+                        <span>{n.label}</span>
+                        <span className="text-xs text-muted-foreground/60">→</span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Drawer Footer with Theme Toggle */}
+              <div className="pt-4 border-t border-border/60 flex items-center justify-between">
+                <div>
+                  <div className="text-sm font-medium text-foreground">Theme</div>
+                  <div className="text-xs text-muted-foreground">
+                    {isDark ? "Dark mode active" : "Light mode active"}
+                  </div>
+                </div>
+                <ThemeToggle isDark={isDark} onToggle={toggleTheme} />
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
 
