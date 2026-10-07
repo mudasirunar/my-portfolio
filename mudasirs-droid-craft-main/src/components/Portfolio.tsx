@@ -414,73 +414,118 @@ function Navbar() {
 
 function Hero() {
   const stack = [
-    { name: "Kotlin & Android", icon: Smartphone },
-    { name: "iOS & Swift", icon: Smartphone },
-    { name: "Flutter & Dart", icon: Layers },
-    { name: "Jetpack Compose", icon: Palette },
-    { name: "React & Web Dev", icon: Code2 },
-    { name: "Firebase", icon: Cloud },
+    { name: "Kotlin & Android", icon: Smartphone, color: "hover:border-blue-500/50" },
+    { name: "iOS & Swift", icon: Smartphone, color: "hover:border-sky-500/50" },
+    { name: "Flutter & Dart", icon: Layers, color: "hover:border-cyan-500/50" },
+    { name: "Jetpack Compose", icon: Palette, color: "hover:border-teal-500/50" },
+    { name: "React & Web Dev", icon: Code2, color: "hover:border-indigo-500/50" },
+    { name: "Firebase", icon: Cloud, color: "hover:border-amber-500/50" },
   ];
+
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
+    <section id="home" className="relative min-h-[92vh] flex items-center pt-28 sm:pt-32 pb-16 sm:pb-20 overflow-hidden">
+      {/* Ambient Animated Gradient Blobs */}
       <div className="blob bg-primary w-[520px] h-[520px] -top-20 -left-20 animate-blob" />
       <div className="blob bg-purple w-[420px] h-[420px] top-40 -right-10 animate-blob" style={{ animationDelay: "3s" }} />
       <div className="blob bg-teal w-[380px] h-[380px] bottom-0 left-1/3 animate-blob" style={{ animationDelay: "6s" }} />
 
-      <div className="relative z-10 mx-auto max-w-6xl px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 grid md:grid-cols-2 gap-10 lg:gap-14 items-center">
+        {/* Left Column: Headline, Bio, CTAs, Stack */}
         <motion.div initial="hidden" animate="show" variants={stagger}>
-          <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] text-black dark:text-white">
+          <motion.h1
+            variants={fadeUp}
+            className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.08] tracking-tight text-black dark:text-white"
+          >
             Hi, I'm <br />
             Mudasir Ali
           </motion.h1>
-          <motion.p variants={fadeUp} className="mt-4 text-xl md:text-2xl font-medium text-muted-foreground">
+
+          <motion.p
+            variants={fadeUp}
+            className="mt-4 text-xl sm:text-2xl font-medium text-muted-foreground tracking-tight"
+          >
             Software Engineer | Specializing in Mobile & Web Development
           </motion.p>
-          <motion.p variants={fadeUp} className="mt-6 text-base md:text-lg text-muted-foreground max-w-xl">
+
+          <motion.p
+            variants={fadeUp}
+            className="mt-5 text-base sm:text-lg text-muted-foreground/90 leading-relaxed max-w-xl"
+          >
             Building high-performance mobile apps and modern web interfaces with clean architecture,
             AI integration, and intuitive user experiences.
           </motion.p>
+
+          {/* Action CTAs */}
           <motion.div variants={fadeUp} className="mt-8 flex flex-col sm:flex-row gap-3">
             <a href="#projects" className="w-full sm:w-auto">
-              <Button size="lg" className="w-full sm:w-auto rounded-full shadow-glow">
-                View Projects <ArrowRight className="w-4 h-4 ml-1" />
+              <Button
+                size="lg"
+                className="w-full sm:w-auto rounded-full shadow-glow group hover:-translate-y-0.5 transition-all duration-200"
+              >
+                <span>View Projects</span>
+                <ArrowRight className="w-4 h-4 ml-1.5 transition-transform duration-200 group-hover:translate-x-1" />
               </Button>
             </a>
+
             <a href="#contact" className="w-full sm:w-auto">
-              <Button size="lg" variant="outline" className="w-full sm:w-auto rounded-full">
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full sm:w-auto rounded-full hover:-translate-y-0.5 transition-all duration-200 border-border/70 hover:border-foreground/30 hover:bg-secondary/70 text-foreground hover:text-foreground"
+              >
                 Contact Me
               </Button>
             </a>
-            <Button size="lg" variant="ghost" className="w-full sm:w-auto rounded-full" onClick={() => {
-              generateAndDownloadResume();
-              logAnalyticsEvent("download_resume", { source: "hero" });
-            }}><Download className="w-4 h-4 mr-1" /> Resume</Button>
+
+            <Button
+              size="lg"
+              variant="ghost"
+              className="w-full sm:w-auto rounded-full hover:-translate-y-0.5 transition-all duration-200 group hover:bg-secondary/60 text-muted-foreground hover:text-foreground"
+              onClick={() => {
+                generateAndDownloadResume();
+                logAnalyticsEvent("download_resume", { source: "hero" });
+              }}
+            >
+              <Download className="w-4 h-4 mr-1.5 transition-transform duration-200 group-hover:-translate-y-0.5" />
+              <span>Resume</span>
+            </Button>
           </motion.div>
-          <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-2">
-            {stack.map((s) => (
-              <div
-                key={s.name}
-                className="rounded-full px-3 py-1.5 flex items-center gap-1.5 text-xs font-medium border border-border/60 bg-muted/80 text-foreground"
-                style={{
-                  backdropFilter: 'blur(8px)',
-                  WebkitBackdropFilter: 'blur(8px)',
-                }}
-              >
-                <s.icon className="w-3.5 h-3.5 text-primary shrink-0" /> {s.name}
-              </div>
-            ))}
+
+          {/* Interactive Tech Stack Micro-Cards */}
+          <motion.div variants={fadeUp} className="mt-10">
+            <div className="text-xs uppercase tracking-wider text-muted-foreground/70 font-semibold mb-3">
+              Technologies & Frameworks
+            </div>
+            <div className="flex flex-wrap gap-2 sm:gap-2.5">
+              {stack.map((s) => (
+                <div
+                  key={s.name}
+                  className={`group rounded-full px-3.5 py-1.5 flex items-center gap-2 text-xs font-medium border border-border/70 bg-card/60 text-foreground shadow-sm hover:shadow-card hover:-translate-y-0.5 transition-all duration-200 cursor-default ${s.color}`}
+                >
+                  <s.icon className="w-3.5 h-3.5 text-primary shrink-0 transition-transform duration-200 group-hover:scale-110" />
+                  <span className="group-hover:text-foreground transition-colors">{s.name}</span>
+                </div>
+              ))}
+            </div>
           </motion.div>
         </motion.div>
 
+        {/* Right Column: Visual Centerpiece (Layered Portrait with Tech Badges) */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="relative flex justify-center"
+          className="relative flex justify-center items-center py-6"
         >
           <div className="relative animate-float">
-            <div className="absolute -inset-6 bg-hero-gradient rounded-full blur-2xl opacity-50" />
-            <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden ring-4 ring-background shadow-glow">
+            {/* Ambient Radial Backlight */}
+            <div className="absolute -inset-4 sm:-inset-6 bg-hero-gradient rounded-full blur-3xl opacity-40 dark:opacity-45 pointer-events-none" />
+
+            {/* Decorative Outer Concentric Hairline Ring */}
+            <div className="absolute -inset-3 rounded-full border border-primary/20 pointer-events-none" />
+
+            {/* Main Portrait Circle Frame */}
+            <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-88 md:h-88 lg:w-96 lg:h-96 rounded-full overflow-hidden ring-4 ring-card border border-border/80 shadow-2xl">
               <img
                 src={profileImg}
                 alt="Mudasir Ali - Software Engineer & Mobile Developer"
@@ -489,19 +534,45 @@ function Hero() {
                 fetchPriority="high"
                 loading="eager"
                 decoding="async"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover scale-[1.02] hover:scale-105 transition-transform duration-500"
               />
             </div>
-            <div className="absolute -bottom-4 -right-2 glass rounded-2xl px-4 py-3 shadow-card">
-              <div className="flex items-center gap-2">
-                <Smartphone className="w-5 h-5 text-primary" />
+
+            {/* Top-Left Floating Tech Accent Pill */}
+            <motion.div
+              initial={{ opacity: 0, x: -20, y: 10 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="absolute -top-3 -left-3 sm:-left-6 bg-card/90 backdrop-blur-md rounded-2xl p-3 sm:px-4 sm:py-3 shadow-card border border-border/70 hover:shadow-glow transition-all cursor-default select-none group"
+            >
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                  <Sparkles className="w-4 h-4 text-primary" />
+                </div>
                 <div>
-                  <div className="text-xs text-muted-foreground">Building</div>
-                  <div className="text-sm font-semibold">Mobile Apps</div>
+                  <div className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">Architecture</div>
+                  <div className="text-xs sm:text-sm font-semibold text-foreground">Clean & Scalable</div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
+            {/* Bottom-Right Floating Mobile Showcase Pill */}
+            <motion.div
+              initial={{ opacity: 0, x: 20, y: -10 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+              className="absolute -bottom-3 -right-2 sm:-right-5 bg-card/90 backdrop-blur-md rounded-2xl p-3 sm:px-4 sm:py-3 shadow-card border border-border/70 hover:shadow-glow transition-all cursor-default select-none group"
+            >
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-xl bg-teal/10 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                  <Smartphone className="w-4 h-4 text-teal" />
+                </div>
+                <div>
+                  <div className="text-[10px] uppercase tracking-wider text-muted-foreground font-semibold">Specialty</div>
+                  <div className="text-xs sm:text-sm font-semibold text-foreground">Mobile & Web Apps</div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </motion.div>
       </div>
