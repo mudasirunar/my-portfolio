@@ -4,7 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Github, Linkedin, Mail, Phone, Download, ArrowRight, ArrowLeft, Code2, Smartphone,
   Database, Cloud, Cpu, Layers, GitBranch, Sparkles, Briefcase, GraduationCap,
-  Palette, Zap, Brain, Send, MapPin, Bug, TestTube, X, ChevronLeft, ChevronRight, ExternalLink, Award
+  Palette, Zap, Brain, Send, MapPin, Bug, TestTube, X, ChevronLeft, ChevronRight, ExternalLink, Award,
+  Sun, Moon
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -14,6 +15,7 @@ import { Textarea } from "@/components/ui/textarea";
 import profileImg from "@/assets/profile.webp";
 import { generateAndDownloadResume } from "@/lib/generateResume";
 import { logAnalyticsEvent } from "@/lib/firebase";
+import { AmbientBackground } from "@/components/AmbientBackground";
 
 import anasLogo from "@/assets/exp-edu-cert-logos/anas_tech_logo.webp";
 import gitxolLogo from "@/assets/exp-edu-cert-logos/gitxol_logo.webp";
@@ -203,23 +205,88 @@ const NAV = [
   { id: "contact", label: "Contact" },
 ];
 
+function ThemeToggle() {
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window !== "undefined") {
+      return document.documentElement.classList.contains("dark");
+    }
+    return true;
+  });
+
+  useEffect(() => {
+    const saved = localStorage.getItem("theme");
+    if (saved === "light") {
+      setIsDark(false);
+      document.documentElement.classList.remove("dark");
+    } else if (saved === "dark") {
+      setIsDark(true);
+      document.documentElement.classList.add("dark");
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const nextDark = !isDark;
+    setIsDark(nextDark);
+    if (nextDark) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  };
+
+  return (
+    <button
+      onClick={toggleTheme}
+      type="button"
+      aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
+      className="relative w-9 h-9 rounded-full flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary overflow-hidden"
+    >
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.div
+          key={isDark ? "dark" : "light"}
+          initial={{ y: -14, opacity: 0, rotate: -40, scale: 0.7 }}
+          animate={{ y: 0, opacity: 1, rotate: 0, scale: 1 }}
+          exit={{ y: 14, opacity: 0, rotate: 40, scale: 0.7 }}
+          whileHover={{ scale: 1.15, rotate: isDark ? 15 : -15 }}
+          whileTap={{ scale: 0.85 }}
+          transition={{ duration: 0.22, ease: "easeOut" }}
+          className="flex items-center justify-center"
+        >
+          {isDark ? (
+            <Sun className="w-4 h-4 text-amber-400" />
+          ) : (
+            <Moon className="w-4 h-4 text-blue-500" />
+          )}
+        </motion.div>
+      </AnimatePresence>
+    </button>
+  );
+}
+
 function Navbar() {
   return (
     <header className="fixed top-0 inset-x-0 z-50 px-4 pt-4">
-      <nav className="mx-auto max-w-6xl glass rounded-full px-5 py-3 flex items-center justify-between shadow-card">
-        <a href="#home" className="font-display font-bold text-lg tracking-tight">
-          <span className="text-gradient">Mudasir</span>.tech
+      <nav className="mx-auto max-w-6xl bg-card/60 border border-border rounded-full px-5 py-3 flex items-center justify-between shadow-sm">
+        <a href="#home" className="font-display font-bold text-lg tracking-tight text-foreground">
+          Mudasir.tech
         </a>
         <ul className="hidden md:flex items-center gap-1 text-sm">
           {NAV.map((n) => (
             <li key={n.id}>
-              <a href={`#${n.id}`} className="px-3 py-2 rounded-full hover:bg-secondary transition-colors text-muted-foreground hover:text-foreground">
+              <a
+                href={`#${n.id}`}
+                className="px-3 py-2 rounded-full hover:bg-secondary transition-colors text-muted-foreground hover:text-foreground"
+              >
                 {n.label}
               </a>
             </li>
           ))}
         </ul>
-        <div className="hidden md:block w-[110px]" /> {/* Spacer matching logo width to keep menu centered */}
+        <div className="flex items-center justify-end md:w-[110px]">
+          <ThemeToggle />
+        </div>
       </nav>
     </header>
   );
@@ -236,15 +303,15 @@ function Hero() {
   ];
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
-      <div className="blob bg-primary w-[500px] h-[500px] -top-20 -left-20 animate-blob" />
-      <div className="blob bg-purple w-[400px] h-[400px] top-40 -right-10 animate-blob" style={{ animationDelay: "3s" }} />
-      <div className="blob bg-teal w-[350px] h-[350px] bottom-0 left-1/3 animate-blob" style={{ animationDelay: "6s" }} />
+      <div className="blob bg-primary w-[520px] h-[520px] -top-20 -left-20 animate-blob" />
+      <div className="blob bg-purple w-[420px] h-[420px] top-40 -right-10 animate-blob" style={{ animationDelay: "3s" }} />
+      <div className="blob bg-teal w-[380px] h-[380px] bottom-0 left-1/3 animate-blob" style={{ animationDelay: "6s" }} />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 grid md:grid-cols-2 gap-12 items-center">
         <motion.div initial="hidden" animate="show" variants={stagger}>
-          <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05]">
+          <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] text-black dark:text-white">
             Hi, I'm <br />
-            <span className="text-gradient">Mudasir Ali</span>
+            Mudasir Ali
           </motion.h1>
           <motion.p variants={fadeUp} className="mt-4 text-xl md:text-2xl font-medium text-muted-foreground">
             Software Engineer | Specializing in Mobile & Web Development
@@ -2242,7 +2309,7 @@ function Footer() {
     <footer className="border-t py-10 px-6">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         <div>
-          <div className="font-display font-bold text-lg"><span className="text-gradient">Mudasir</span>.tech</div>
+          <div className="font-display font-bold text-lg tracking-tight text-foreground">Mudasir.tech</div>
           <p className="text-sm text-muted-foreground mt-1">Engineering high-performance mobile & web solutions.</p>
         </div>
         <div className="flex items-center gap-2">
@@ -2265,7 +2332,8 @@ function Footer() {
 
 export function Portfolio() {
   return (
-    <div className="min-h-screen">
+    <div className="relative min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary/20 selection:text-foreground">
+      <AmbientBackground />
       <Navbar />
       <main>
         <Hero />
