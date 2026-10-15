@@ -759,107 +759,164 @@ function About() {
 }
 
 function Skills() {
-  const skillCategories = [
+  const [activeTab, setActiveTab] = useState<"android" | "crossplatform" | "web" | "cloud-ai">("android");
+
+  const departments = [
     {
-      category: "Native Android & Jetpack",
+      id: "android" as const,
+      name: "Native Android",
       badge: "Core Specialty",
       badgeColor: "border-sky-500/25 bg-sky-500/10 text-sky-600 dark:text-sky-400",
       icon: Smartphone,
-      iconColor: "text-sky-500",
-      description: "Building responsive, robust native Android applications utilizing Kotlin-first paradigms, reactive streams, and Jetpack architecture components.",
-      skills: [
-        "Kotlin",
-        "Jetpack Compose",
-        "Material Design 3",
-        "Room Database (KSP)",
-        "Coroutines & Flow",
-        "WorkManager",
-        "Dagger Hilt",
-        "Retrofit2 & REST APIs",
-        "XML Layouts",
-        "Android SDK & APIs",
+      tagline: "High-performance native Android engineering with Kotlin, Jetpack Compose, and offline-first reactive architectures.",
+      cards: [
+        {
+          title: "Kotlin & Reactive Coroutines",
+          role: "Core Language",
+          icon: Smartphone,
+          desc: "Primary language for Android development. Leveraging Kotlin Coroutines, StateFlow, and SharedFlow for thread-safe asynchronous concurrency.",
+          highlights: ["Coroutines & Flow", "StateFlow Reactive Streams", "Null-Safe Idiomatic Code"],
+        },
+        {
+          title: "Jetpack Compose & Material 3",
+          role: "Modern Declarative UI",
+          icon: Layers,
+          desc: "Crafting fluid, modern Android user interfaces with unidirectional data flow, custom animation specs, and Material 3 design tokens.",
+          highlights: ["Unidirectional Data Flow", "Recomposition Optimization", "Material 3 Design Tokens"],
+        },
+        {
+          title: "Room Database & Offline-First Storage",
+          role: "Data Persistence",
+          icon: Database,
+          desc: "Architecting robust local SQLite persistence using Room with KSP, type converters, background migrations, and reactive Flow observation.",
+          highlights: ["KSP Code Generation", "Reactive DAO Observers", "Zero-Latency Local Caching"],
+        },
+        {
+          title: "MVVM & Clean Architecture Suite",
+          role: "System Architecture",
+          icon: Cpu,
+          desc: "Decoupled domain-driven patterns featuring ViewModels, WorkManager for reliable background sync, Dagger Hilt DI, and Retrofit2 networking.",
+          highlights: ["Separation of Concerns", "WorkManager Background Jobs", "Retrofit2 REST Client"],
+        },
       ],
     },
     {
-      category: "Cross-Platform & iOS",
+      id: "crossplatform" as const,
+      name: "Cross-Platform & iOS",
       badge: "Multi-Platform",
       badgeColor: "border-indigo-500/25 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400",
       icon: Layers,
-      iconColor: "text-indigo-500",
-      description: "Developing cross-platform mobile apps with Flutter and exploring native iOS development with Swift and modern declarative UI systems.",
-      skills: [
-        "Flutter & Dart",
-        "iOS & Swift",
-        "SwiftUI Fundamentals",
-        "State Management",
-        "REST API Integration",
-        "Firebase for Flutter",
-        "Cross-Platform UI/UX",
-        "Clean Architecture",
+      tagline: "Unified mobile applications delivering native-feel 60fps performance across Android and iOS from shared codebases.",
+      cards: [
+        {
+          title: "Flutter & Dart Framework",
+          role: "Cross-Platform Core",
+          icon: Smartphone,
+          desc: "Building production cross-platform applications with single-codebase architectures, high-performance rendering, and responsive multi-screen layouts.",
+          highlights: ["Dart Sound Null Safety", "Widget Tree Composition", "Adaptive Screen Layouts"],
+        },
+        {
+          title: "Swift & SwiftUI Foundations",
+          role: "Native iOS",
+          icon: Layers,
+          desc: "Building native iOS experiences aligned with Apple Human Interface Guidelines, leveraging Swift, declarative SwiftUI, and preview tooling.",
+          highlights: ["SwiftUI Declarative UI", "Apple HIG Compliance", "Xcode Profiling & Simulator"],
+        },
+        {
+          title: "Predictable State Management",
+          role: "State & Logic",
+          icon: Cpu,
+          desc: "Implementing scalable state management strategies (BLoC, Provider) ensuring predictable state transitions and separation of UI from business logic.",
+          highlights: ["Predictable State Flows", "BLoC & Provider Patterns", "Decoupled Presentation Layer"],
+        },
+        {
+          title: "Cloud & REST API Integration",
+          role: "Networking & Sync",
+          icon: Database,
+          desc: "Connecting cross-platform clients to REST APIs and Firebase backends with secure token handling, offline caching, and error resilience.",
+          highlights: ["Dio / HTTP Networking", "Firebase Integration", "Offline Fallback Strategies"],
+        },
       ],
     },
     {
-      category: "Frontend & Web Development",
+      id: "web" as const,
+      name: "Web & Fullstack",
       badge: "Modern Web",
       badgeColor: "border-emerald-500/25 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
       icon: Code2,
-      iconColor: "text-emerald-500",
-      description: "Designing fast, responsive web interfaces with modern React ecosystems, component-driven architectures, and search engine optimization.",
-      skills: [
-        "React & Vite",
-        "TypeScript & JavaScript",
-        "Tailwind CSS",
-        "HTML5 & Modern CSS3",
-        "Responsive & Fluid UI",
-        "Component Architecture",
-        "Vercel & Cloudflare",
-        "Google Search Console",
-        "SEO Best Practices",
+      tagline: "Accessible, interactive web applications built with modern component architectures and technical SEO optimization.",
+      cards: [
+        {
+          title: "React & Modern Vite Ecosystem",
+          role: "Frontend Framework",
+          icon: Code2,
+          desc: "Building lightning-fast single-page web applications with modular components, React hooks, custom state management, and optimized asset bundling.",
+          highlights: ["Component-Driven Design", "Custom React Hooks", "Instant HMR & Optimized Bundles"],
+        },
+        {
+          title: "TypeScript & Strict Typing",
+          role: "Type Safety",
+          icon: Cpu,
+          desc: "Ensuring strict compile-time verification, self-documenting codebases, and maintainable data contracts between frontend and backend endpoints.",
+          highlights: ["Strict Type Contracts", "Interface & Generics Modeling", "Refactor Reliability"],
+        },
+        {
+          title: "Tailwind CSS & Responsive Design",
+          role: "Styling & Theme Engine",
+          icon: Layers,
+          desc: "Crafting bespoke, responsive design systems with sleek dark/light dual modes, custom fluid typography, and glassmorphic micro-interactions.",
+          highlights: ["Dual-Theme Engine", "Mobile-First Responsive Grid", "Micro-Animations & Glass"],
+        },
+        {
+          title: "SEO & Performance Engineering",
+          role: "Search & Web Vitals",
+          icon: Sparkles,
+          desc: "Implementing technical SEO, automated sitemap generators, robots.txt, Google Search Console indexing, and Core Web Vitals optimization.",
+          highlights: ["Google Search Console", "Sitemaps & OpenGraph Meta", "Core Web Vitals (LCP/INP)"],
+        },
       ],
     },
     {
-      category: "Cloud, Backend & AI",
+      id: "cloud-ai" as const,
+      name: "Cloud & AI",
       badge: "Applied Intelligence",
       badgeColor: "border-purple-500/25 bg-purple-500/10 text-purple-600 dark:text-purple-400",
       icon: Brain,
-      iconColor: "text-purple-500",
-      description: "Integrating real-time cloud data layers, scalable REST endpoints, and intelligent forecasting models via state-of-the-art AI APIs.",
-      skills: [
-        "Firebase Firestore",
-        "Firebase Authentication",
-        "Cloud Storage & Push Alerts",
-        "Python (Flask REST APIs)",
-        "Supabase",
-        "Groq & Gemini APIs",
-        "TensorFlow & Scikit-learn",
-        "RESTful API Design",
-        "Offline-First Sync",
+      tagline: "Real-time cloud databases, modular Python backends, and applied AI integrations that automate complex workflows.",
+      cards: [
+        {
+          title: "Firebase & Supabase Cloud",
+          role: "BaaS & Storage",
+          icon: Cloud,
+          desc: "Configuring Cloud Firestore NoSQL databases, Supabase Storage for secure document attachments, Firebase Authentication, and background sync pipelines.",
+          highlights: ["Real-Time Firestore Sync", "Supabase Document Storage", "Granular Security Rules"],
+        },
+        {
+          title: "Python Flask REST APIs",
+          role: "API Gateway",
+          icon: Database,
+          desc: "Building decoupled, lightweight Python microservice backends, structured REST endpoints, JSON validation, and async model inference execution.",
+          highlights: ["RESTful Route Handlers", "CORS & Auth Middleware", "Lightweight Scalability"],
+        },
+        {
+          title: "Generative AI & Multimodal APIs",
+          role: "Intelligent Systems",
+          icon: Brain,
+          desc: "Integrating Groq Cloud and Google Gemini APIs for contextual text transformation, smart task generation, and prompt optimization.",
+          highlights: ["Groq & Gemini APIs", "Structured JSON Schema Output", "Latency-Optimized Prompting"],
+        },
+        {
+          title: "Applied Machine Learning & Forecasting",
+          role: "Data Science",
+          icon: Zap,
+          desc: "Deploying predictive analytics models (Random Forest, Bi-LSTM) for load forecasting, seasonal bill prediction, and dataset preprocessing.",
+          highlights: ["Random Forest & Bi-LSTM", "Dataset Preprocessing", "Predictive Analytics"],
+        },
       ],
     },
   ];
 
-  const focusPillars = [
-    {
-      title: "Clean & Decoupled Architecture",
-      desc: "Strict MVVM and Clean Architecture patterns ensuring maintainability, separation of concerns, and scalable state handling.",
-      icon: Layers,
-    },
-    {
-      title: "Offline-First & Data Resilience",
-      desc: "Local-first database caching (Room/SQLite) paired with background synchronization for flawless offline operation.",
-      icon: Database,
-    },
-    {
-      title: "Reactive State & 60fps Performance",
-      desc: "Kotlin Coroutines & Flow combined with Compose recomposition optimization for silky smooth frame rendering.",
-      icon: Zap,
-    },
-    {
-      title: "Production Tooling & CI/CD",
-      desc: "Git/GitHub version control, Vercel deployments, Cloudflare caching, and structured SDLC execution.",
-      icon: GitBranch,
-    },
-  ];
+  const currentDept = departments.find((d) => d.id === activeTab) || departments[0];
 
   return (
     <section id="skills" className="relative py-20 sm:py-24 px-4 sm:px-6 bg-soft-gradient">
@@ -867,88 +924,157 @@ function Skills() {
         <SectionHeader
           eyebrow="Technical Stack"
           title="Skills & Technologies"
-          subtitle="A comprehensive toolkit engineered around modern Android, cross-platform mobile, and reactive web development."
+          subtitle="Curated by engineering department — showcasing real-world technical expertise and architecture standards."
         />
 
-        {/* 4 Categorized Bento Cards */}
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          variants={stagger}
-          className="grid md:grid-cols-2 gap-6"
-        >
-          {skillCategories.map((cat) => (
-            <motion.div key={cat.category} variants={fadeUp}>
-              <Card className="p-6 sm:p-7 rounded-3xl border border-border/70 bg-card/60 backdrop-blur-xl shadow-sm hover:shadow-card hover:-translate-y-1 transition-all duration-300 h-full flex flex-col group">
-                <div className="flex items-center justify-between gap-3 mb-3.5">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-card border border-border/60 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform">
-                      <cat.icon className={`w-5 h-5 ${cat.iconColor}`} />
+        {/* Recruiter-Friendly Department Tabs */}
+        <div className="flex items-center justify-start sm:justify-center gap-1.5 sm:gap-2 p-1.5 sm:p-2 px-2.5 sm:px-3 rounded-2xl sm:rounded-full bg-card/80 backdrop-blur-xl border border-border/70 max-w-fit mx-auto mb-6 sm:mb-8 overflow-x-auto no-scrollbar shadow-xs">
+          {departments.map((dept) => {
+            const isActive = activeTab === dept.id;
+            return (
+              <button
+                key={dept.id}
+                onClick={() => setActiveTab(dept.id)}
+                className={`relative flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl sm:rounded-full text-xs sm:text-sm font-medium transition-all duration-200 shrink-0 select-none cursor-pointer ${
+                  isActive
+                    ? "text-primary-foreground font-semibold"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted/40"
+                }`}
+              >
+                {isActive && (
+                  <motion.div
+                    layoutId="activeDeptTab"
+                    className="absolute inset-0 rounded-xl sm:rounded-full bg-primary shadow-glow z-0"
+                    transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                  />
+                )}
+                <dept.icon className="w-4 h-4 relative z-10 shrink-0" />
+                <span className="relative z-10 whitespace-nowrap">{dept.name}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Active Department Header Banner */}
+        <div className="flex flex-wrap items-center justify-between gap-3 p-4 sm:p-5 rounded-2xl border border-border/70 bg-card/40 backdrop-blur-md mb-6">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shrink-0">
+              <currentDept.icon className="w-4 h-4" />
+            </div>
+            <div>
+              <h3 className="text-sm sm:text-base font-semibold text-foreground">
+                {currentDept.name}
+              </h3>
+              <p className="text-xs text-muted-foreground">
+                {currentDept.tagline}
+              </p>
+            </div>
+          </div>
+          <span className={`text-[10px] font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full border shrink-0 ${currentDept.badgeColor}`}>
+            {currentDept.badge}
+          </span>
+        </div>
+
+        {/* Flagship Cards Grid with Smooth Tab Motion */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 12, filter: "blur(3px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            exit={{ opacity: 0, y: -12, filter: "blur(3px)" }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="grid sm:grid-cols-2 gap-5 sm:gap-6"
+          >
+            {currentDept.cards.map((card, i) => (
+              <Card
+                key={card.title}
+                className="p-6 sm:p-7 rounded-3xl border border-border/70 bg-card/60 backdrop-blur-xl shadow-sm hover:shadow-card hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-3 mb-3">
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-9 h-9 rounded-xl bg-muted/60 border border-border/60 flex items-center justify-center text-primary group-hover:scale-105 transition-transform">
+                        <card.icon className="w-4 h-4" />
+                      </div>
+                      <span className="text-xs text-muted-foreground font-mono">
+                        0{i + 1}
+                      </span>
                     </div>
-                    <h3 className="text-lg font-semibold text-foreground">
-                      {cat.category}
-                    </h3>
+                    <span className="text-[10px] font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full border border-border/60 bg-muted/40 text-foreground/80">
+                      {card.role}
+                    </span>
                   </div>
-                  <span className={`text-[10px] font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${cat.badgeColor}`}>
-                    {cat.badge}
-                  </span>
+
+                  <h4 className="text-base sm:text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-2">
+                    {card.title}
+                  </h4>
+
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-4">
+                    {card.desc}
+                  </p>
                 </div>
 
-                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-4">
-                  {cat.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2 pt-4 border-t border-border/40">
-                  {cat.skills.map((skill) => (
+                <div className="flex flex-wrap gap-1.5 pt-3 border-t border-border/40">
+                  {card.highlights.map((h) => (
                     <span
-                      key={skill}
-                      className="px-3 py-1.5 rounded-xl text-xs font-medium border border-border/60 bg-muted/30 text-foreground/85 hover:bg-muted/70 hover:border-primary/40 hover:text-foreground hover:-translate-y-0.5 transition-all duration-200 cursor-default select-none shadow-2xs"
+                      key={h}
+                      className="px-2.5 py-1 rounded-lg text-xs font-medium border border-border/50 bg-muted/30 text-foreground/80 hover:bg-muted/70 hover:border-primary/40 hover:text-foreground transition-all duration-200 cursor-default select-none"
                     >
-                      {skill}
+                      {h}
                     </span>
                   ))}
                 </div>
               </Card>
-            </motion.div>
-          ))}
-        </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
 
-        {/* Engineering Philosophy & Architectural Pillars */}
+        {/* Recruiter Fast-Facts Callout Bar */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-6 sm:mt-8"
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="mt-8"
         >
-          <Card className="p-6 sm:p-8 rounded-3xl border border-border/70 bg-card/60 backdrop-blur-xl shadow-sm">
-            <div className="flex flex-wrap items-center justify-between gap-2 mb-6 pb-4 border-b border-border/40">
-              <div className="flex items-center gap-2.5">
-                <Sparkles className="w-5 h-5 text-primary" />
-                <h4 className="text-base sm:text-lg font-semibold text-foreground">
-                  Core Engineering Principles
+          <Card className="p-6 sm:p-7 rounded-3xl border border-border/70 bg-card/60 backdrop-blur-xl shadow-sm">
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-border/40">
+              <div className="flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-primary" />
+                <h4 className="text-sm font-semibold text-foreground uppercase tracking-wider">
+                  Recruiter Fast Facts &amp; Production Philosophy
                 </h4>
               </div>
               <span className="text-xs text-muted-foreground font-medium">
-                Production-Ready Standards
+                Open to Opportunities
               </span>
             </div>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {focusPillars.map((pillar) => (
-                <div key={pillar.title} className="space-y-1.5">
-                  <div className="flex items-center gap-2">
-                    <pillar.icon className="w-4 h-4 text-primary shrink-0" />
-                    <h5 className="font-semibold text-xs sm:text-sm text-foreground">
-                      {pillar.title}
-                    </h5>
-                  </div>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    {pillar.desc}
-                  </p>
+            <div className="grid sm:grid-cols-3 gap-4">
+              <div className="space-y-1">
+                <div className="text-xs font-semibold text-foreground">
+                  Primary Engineering Focus
                 </div>
-              ))}
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Native Android (Kotlin &amp; Jetpack Compose), Cross-Platform (Flutter), and Modern Reactive Web.
+                </p>
+              </div>
+              <div className="space-y-1">
+                <div className="text-xs font-semibold text-foreground">
+                  Architecture &amp; Reliability
+                </div>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Strict MVVM &amp; Clean Architecture, offline-first local database caching (Room), and thread-safe concurrency.
+                </p>
+              </div>
+              <div className="space-y-1">
+                <div className="text-xs font-semibold text-foreground">
+                  Work Authorization &amp; Availability
+                </div>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Available for full-time, remote, or hybrid engineering roles with rapid onboarding.
+                </p>
+              </div>
             </div>
           </Card>
         </motion.div>
@@ -956,6 +1082,7 @@ function Skills() {
     </section>
   );
 }
+
 
 function Services() {
   const services = [
@@ -977,8 +1104,8 @@ function Services() {
       num: "03",
       icon: Cloud,
       title: "Firebase & Cloud Architecture",
-      desc: "End-to-end cloud backend integration encompassing secure authentication, real-time Firestore database schema design, offline caching, and push notification flows.",
-      tags: ["Cloud Firestore", "Auth Workflows", "Real-Time Sync", "Push Alerts"],
+      desc: "End-to-end cloud backend integration encompassing secure authentication, real-time Firestore databases, Supabase Storage for attachments, and background sync flows.",
+      tags: ["Cloud Firestore", "Supabase Storage", "Auth Workflows", "Real-Time Sync"],
     },
     {
       num: "04",
@@ -1400,7 +1527,7 @@ const TodoAppDesc = () => (
       <ul className="space-y-4 list-none">
         <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>Cloud Sync & Authentication:</strong> Seamlessly syncs your tasks and collections across multiple devices in real-time using Firebase. Includes offline support, robust conflict resolution, and seamless account linking via Google Sign-In.</span></li>
         <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>Voice-to-Text Entry:</strong> Integrated speech recognition allows you to quickly add or append text to tasks hands-free using your device's microphone.</span></li>
-        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>AI-Powered Task Rewriting:</strong> Utilizes the Groq API (running the <code>llama-3.3-70b-versatile</code> model) to instantly rewrite task descriptions. Users can choose between Standard, Professional, and Casual styles to match the context of their work.</span></li>
+        <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>AI-Powered Task Rewriting:</strong> Utilizes the Groq API for rapid cloud inference to instantly rewrite task descriptions. Users can choose between Standard, Professional, and Casual styles to match the context of their work.</span></li>
         <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>Dynamic Search with Highlights:</strong> Instantly filter collections and tasks from the dashboard. The application dynamically highlights matching search queries directly within the text for rapid navigation and context discovery.</span></li>
         <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>Organized Collections:</strong> Group tasks into overarching projects or collections. Pin high-priority collections to the top of your workspace for immediate access.</span></li>
         <li className="flex gap-3"><div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" /> <span><strong>Visual Progress Tracking:</strong> Get a quick overview of your productivity with multi-color progress bars that dynamically reflect the ratio of completed tasks, including specialized indicators for "Favorited" tasks.</span></li>
@@ -2116,7 +2243,7 @@ function Projects() {
         dot: "bg-indigo-500 dark:bg-indigo-400",
       },
       desc: "Task manager enhanced with AI-powered task rewriting and smart productivity assistance.",
-      desktopDesc: "A feature-rich productivity suite combining Jetpack Compose with the Groq API (LLaMA-3.3-70B) for context-aware task rewriting across Standard, Professional, and Casual styles. Features real-time multi-device cloud synchronization via Firebase Firestore, hands-free voice-to-text input, dynamic in-line search highlighting, visual progress indicators, and custom PDF preview and export.",
+      desktopDesc: "A feature-rich productivity suite combining Jetpack Compose with the Groq API for context-aware task rewriting across Standard, Professional, and Casual styles. Features real-time multi-device cloud synchronization via Firebase Firestore, hands-free voice-to-text input, dynamic in-line search highlighting, visual progress indicators, and custom PDF preview and export.",
       tech: ["Kotlin", "Compose", "Firebase", "MVVM", "Room DB", "Groq API"],
       gradient: "from-purple to-teal",
       githubLink: PROJECT_LINKS.todoApp.github,
