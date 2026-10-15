@@ -73,12 +73,18 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
-    title: "Mudasir Ali | Software Engineer - Mobile & Web Developer",
+    title: "Mudasir Ali — Software Engineer | Android, Flutter & Web",
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "description", content: "Mudasir Ali is a Software Engineer specializing in high-performance Android (Kotlin, Jetpack Compose), Flutter, and full-stack web apps in Karachi, Pakistan." },
       { name: "author", content: "Mudasir Ali" },
-      { name: "keywords", content: "Mudasir Ali, Software Engineer, Android Developer, iOS Developer, Flutter Developer, React Developer, Kotlin, Jetpack Compose, Karachi, Pakistan, mudasir.tech" },
+      { name: "keywords", content: "Mudasir Ali, Software Engineer, Android Developer, Flutter Developer, iOS Developer, Mobile App Developer, Web Developer, Kotlin, Jetpack Compose, Swift, React, Vite, Karachi, Pakistan, mudasir.tech" },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
+      { name: "theme-color", content: "#090d16" },
+      { property: "og:site_name", content: "Mudasir Ali — Software Engineer" },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://mudasir.tech/" },
     ],
     links: [
       {
