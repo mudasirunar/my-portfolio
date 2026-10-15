@@ -23,7 +23,7 @@ export const Route = createFileRoute("/")({
       { property: "og:image", content: `https://mudasir.tech${previewImg}` },
       { property: "og:image:alt", content: "Mudasir Ali - Software Engineer Portfolio Preview" },
       { property: "og:image:width", content: "1024" },
-      { property: "og:image:height", content: "589" },
+      { property: "og:image:height", content: "535" },
       { property: "og:image:type", content: "image/webp" },
 
       // Twitter Cards

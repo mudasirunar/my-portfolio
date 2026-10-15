@@ -431,7 +431,7 @@ function Hero() {
 
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 grid md:grid-cols-2 gap-10 lg:gap-14 items-center">
         {/* Left Column: Headline, Bio, CTAs, Stack */}
-        <motion.div initial="hidden" animate="show" variants={stagger}>
+        <motion.div initial="hidden" animate="show" variants={stagger} className="order-2 md:order-1">
           <motion.h1
             variants={fadeUp}
             className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.08] tracking-tight text-black dark:text-white"
@@ -510,31 +510,28 @@ function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Right Column: Visual Centerpiece (Layered Portrait with Tech Badges) */}
+        {/* Right Column (Top on mobile): Visual Centerpiece (Layered Portrait with Tech Badges) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="relative flex justify-center items-center py-6"
+          className="relative flex justify-center items-center py-4 md:py-6 order-1 md:order-2"
         >
           <div className="relative animate-float">
-            {/* Ambient Radial Backlight */}
-            <div className="absolute -inset-4 sm:-inset-6 bg-hero-gradient rounded-full blur-3xl opacity-40 dark:opacity-45 pointer-events-none" />
-
             {/* Decorative Outer Concentric Hairline Ring */}
-            <div className="absolute -inset-3 rounded-full border border-primary/20 pointer-events-none" />
+            <div className="absolute -inset-3 rounded-full border border-border/60 pointer-events-none" />
 
-            {/* Main Portrait Circle Frame */}
-            <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-88 md:h-88 lg:w-96 lg:h-96 rounded-full overflow-hidden ring-4 ring-card border border-border/80 shadow-2xl">
+            {/* Main Portrait Circle Frame with Theme-Adaptive Solid Background */}
+            <div className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-88 md:h-88 lg:w-96 lg:h-96 rounded-full overflow-hidden ring-4 ring-card border border-border/80 shadow-2xl bg-white dark:bg-[#0c101d]">
               <img
                 src={profileImg}
                 alt="Mudasir Ali - Software Engineer & Mobile Developer"
-                width={768}
-                height={768}
+                width={500}
+                height={500}
                 fetchPriority="high"
                 loading="eager"
                 decoding="async"
-                className="w-full h-full object-cover scale-[1.02] hover:scale-105 transition-transform duration-500"
+                className="w-full h-full object-cover scale-[0.88] sm:scale-[0.90] translate-y-2.5 sm:translate-y-3 hover:scale-[0.92] transition-transform duration-500"
               />
             </div>
 
