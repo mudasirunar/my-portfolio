@@ -759,85 +759,199 @@ function About() {
 }
 
 function Skills() {
-  const primary = [
-    { name: "Kotlin", level: 90 },
-    { name: "Jetpack Compose", level: 85 },
-    { name: "Room Database", level: 80 },
-    { name: "MVVM Architecture", level: 78 },
-    { name: "Retrofit / REST APIs", level: 75 },
-    { name: "Firebase", level: 75 },
-    { name: "Flutter & Dart", level: 65 },
-    { name: "React & Web Dev", level: 60 },
-    { name: "iOS & Swift", level: 55 },
+  const skillCategories = [
+    {
+      category: "Native Android & Jetpack",
+      badge: "Core Specialty",
+      badgeColor: "border-sky-500/25 bg-sky-500/10 text-sky-600 dark:text-sky-400",
+      icon: Smartphone,
+      iconColor: "text-sky-500",
+      description: "Building responsive, robust native Android applications utilizing Kotlin-first paradigms, reactive streams, and Jetpack architecture components.",
+      skills: [
+        "Kotlin",
+        "Jetpack Compose",
+        "Material Design 3",
+        "Room Database (KSP)",
+        "Coroutines & Flow",
+        "WorkManager",
+        "Dagger Hilt",
+        "Retrofit2 & REST APIs",
+        "XML Layouts",
+        "Android SDK & APIs",
+      ],
+    },
+    {
+      category: "Cross-Platform & iOS",
+      badge: "Multi-Platform",
+      badgeColor: "border-indigo-500/25 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400",
+      icon: Layers,
+      iconColor: "text-indigo-500",
+      description: "Developing cross-platform mobile apps with Flutter and exploring native iOS development with Swift and modern declarative UI systems.",
+      skills: [
+        "Flutter & Dart",
+        "iOS & Swift",
+        "SwiftUI Fundamentals",
+        "State Management",
+        "REST API Integration",
+        "Firebase for Flutter",
+        "Cross-Platform UI/UX",
+        "Clean Architecture",
+      ],
+    },
+    {
+      category: "Frontend & Web Development",
+      badge: "Modern Web",
+      badgeColor: "border-emerald-500/25 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
+      icon: Code2,
+      iconColor: "text-emerald-500",
+      description: "Designing fast, responsive web interfaces with modern React ecosystems, component-driven architectures, and search engine optimization.",
+      skills: [
+        "React & Vite",
+        "TypeScript & JavaScript",
+        "Tailwind CSS",
+        "HTML5 & Modern CSS3",
+        "Responsive & Fluid UI",
+        "Component Architecture",
+        "Vercel & Cloudflare",
+        "Google Search Console",
+        "SEO Best Practices",
+      ],
+    },
+    {
+      category: "Cloud, Backend & AI",
+      badge: "Applied Intelligence",
+      badgeColor: "border-purple-500/25 bg-purple-500/10 text-purple-600 dark:text-purple-400",
+      icon: Brain,
+      iconColor: "text-purple-500",
+      description: "Integrating real-time cloud data layers, scalable REST endpoints, and intelligent forecasting models via state-of-the-art AI APIs.",
+      skills: [
+        "Firebase Firestore",
+        "Firebase Authentication",
+        "Cloud Storage & Push Alerts",
+        "Python (Flask REST APIs)",
+        "Supabase",
+        "Groq & Gemini APIs",
+        "TensorFlow & Scikit-learn",
+        "RESTful API Design",
+        "Offline-First Sync",
+      ],
+    },
   ];
-  const additional = [
-    "XML Layouts", "Coroutines & Flow", "Clean Architecture", "AI Integration",
-    "Responsive UI", "State Management", "Git & GitHub", "Material 3",
-    "Dagger Hilt", "Android UI", "Vercel & Cloudflare", "SEO & Search Console",
+
+  const focusPillars = [
+    {
+      title: "Clean & Decoupled Architecture",
+      desc: "Strict MVVM and Clean Architecture patterns ensuring maintainability, separation of concerns, and scalable state handling.",
+      icon: Layers,
+    },
+    {
+      title: "Offline-First & Data Resilience",
+      desc: "Local-first database caching (Room/SQLite) paired with background synchronization for flawless offline operation.",
+      icon: Database,
+    },
+    {
+      title: "Reactive State & 60fps Performance",
+      desc: "Kotlin Coroutines & Flow combined with Compose recomposition optimization for silky smooth frame rendering.",
+      icon: Zap,
+    },
+    {
+      title: "Production Tooling & CI/CD",
+      desc: "Git/GitHub version control, Vercel deployments, Cloudflare caching, and structured SDLC execution.",
+      icon: GitBranch,
+    },
   ];
+
   return (
-    <section id="skills" className="relative py-24 px-6 bg-soft-gradient">
+    <section id="skills" className="relative py-20 sm:py-24 px-4 sm:px-6 bg-soft-gradient">
       <div className="max-w-6xl mx-auto">
-        <SectionHeader eyebrow="Skills" title="Tools I build with" subtitle="A growing toolkit focused on modern Android development." />
-        <div className="grid lg:grid-cols-2 gap-8">
-          <Card className="p-8 rounded-3xl border-0 shadow-card glass">
-            <h3 className="text-xl font-semibold mb-6">Core Stack</h3>
-            <div className="space-y-5">
-              {primary.map((s, i) => (
-                <motion.div key={s.name}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.04 }}
-                >
-                  <div className="flex justify-between text-sm mb-1.5">
-                    <span className="font-medium">{s.name}</span>
-                    <span className="text-muted-foreground">{s.level}%</span>
+        <SectionHeader
+          eyebrow="Technical Stack"
+          title="Skills & Technologies"
+          subtitle="A comprehensive toolkit engineered around modern Android, cross-platform mobile, and reactive web development."
+        />
+
+        {/* 4 Categorized Bento Cards */}
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          variants={stagger}
+          className="grid md:grid-cols-2 gap-6"
+        >
+          {skillCategories.map((cat) => (
+            <motion.div key={cat.category} variants={fadeUp}>
+              <Card className="p-6 sm:p-7 rounded-3xl border border-border/70 bg-card/60 backdrop-blur-xl shadow-sm hover:shadow-card hover:-translate-y-1 transition-all duration-300 h-full flex flex-col group">
+                <div className="flex items-center justify-between gap-3 mb-3.5">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-card border border-border/60 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform">
+                      <cat.icon className={`w-5 h-5 ${cat.iconColor}`} />
+                    </div>
+                    <h3 className="text-lg font-semibold text-foreground">
+                      {cat.category}
+                    </h3>
                   </div>
-                  <div className="h-2 rounded-full bg-secondary overflow-hidden">
-                    <motion.div
-                      className="h-full bg-hero-gradient rounded-full"
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${s.level}%` }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1, delay: i * 0.04, ease: "easeOut" }}
-                    />
+                  <span className={`text-[10px] font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${cat.badgeColor}`}>
+                    {cat.badge}
+                  </span>
+                </div>
+
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-4">
+                  {cat.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2 pt-4 border-t border-border/40">
+                  {cat.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-3 py-1.5 rounded-xl text-xs font-medium border border-border/60 bg-muted/30 text-foreground/85 hover:bg-muted/70 hover:border-primary/40 hover:text-foreground hover:-translate-y-0.5 transition-all duration-200 cursor-default select-none shadow-2xs"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </Card>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Engineering Philosophy & Architectural Pillars */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-6 sm:mt-8"
+        >
+          <Card className="p-6 sm:p-8 rounded-3xl border border-border/70 bg-card/60 backdrop-blur-xl shadow-sm">
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-6 pb-4 border-b border-border/40">
+              <div className="flex items-center gap-2.5">
+                <Sparkles className="w-5 h-5 text-primary" />
+                <h4 className="text-base sm:text-lg font-semibold text-foreground">
+                  Core Engineering Principles
+                </h4>
+              </div>
+              <span className="text-xs text-muted-foreground font-medium">
+                Production-Ready Standards
+              </span>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {focusPillars.map((pillar) => (
+                <div key={pillar.title} className="space-y-1.5">
+                  <div className="flex items-center gap-2">
+                    <pillar.icon className="w-4 h-4 text-primary shrink-0" />
+                    <h5 className="font-semibold text-xs sm:text-sm text-foreground">
+                      {pillar.title}
+                    </h5>
                   </div>
-                </motion.div>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    {pillar.desc}
+                  </p>
+                </div>
               ))}
             </div>
           </Card>
-
-          <div className="space-y-6">
-            <Card className="p-8 rounded-3xl border-0 shadow-card glass">
-              <h3 className="text-xl font-semibold mb-4">Additional</h3>
-              <div className="flex flex-wrap gap-2">
-                {additional.map((t) => (
-                  <span key={t} className="rounded-full px-4 py-2 bg-background border text-sm font-medium hover:border-primary hover:text-primary transition-colors cursor-default">
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </Card>
-            <Card className="p-8 rounded-3xl border-0 shadow-card glass">
-              <h3 className="text-xl font-semibold mb-4">What I focus on</h3>
-              <ul className="space-y-3 text-muted-foreground">
-                {[
-                  "Clean, scalable mobile & web architectures",
-                  "Responsive & native UI/UX across devices",
-                  "Offline-first sync & robust local caching",
-                  "Reliable APIs & secure cloud databases",
-                  "Intelligent features & custom AI integrations",
-                ].map((t) => (
-                  <li key={t} className="flex items-start gap-3">
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" />
-                    <span>{t}</span>
-                  </li>
-                ))}
-              </ul>
-            </Card>
-          </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -845,29 +959,97 @@ function Skills() {
 
 function Services() {
   const services = [
-    { icon: Smartphone, title: "Mobile App Development", desc: "Building high-performance native Android and cross-platform mobile applications using Kotlin, Jetpack Compose, Swift, and Flutter." },
-    { icon: Code2, title: "Frontend Web Development", desc: "Creating beautiful, interactive, and responsive web interfaces using modern frameworks like React and Vite with clean styling." },
-    { icon: Layers, title: "Cloud & Deployment", desc: "Setting up production-ready deployment pipelines using Vercel hosting, Cloudflare DNS/caching, and DigitalOcean server management." },
-    { icon: Cloud, title: "Firebase Integration", desc: "Implementing secure authentication workflows, real-time Cloud Firestore databases, and push notifications for mobile and web." },
-    { icon: Zap, title: "API Integration & Backend", desc: "Building Python Flask REST APIs and developing robust networking layers for seamless data fetching and communication." },
-    { icon: Brain, title: "AI & Machine Learning", desc: "Integrating custom TensorFlow/Scikit-learn models and connecting external AI APIs like Groq or Gemini for smart forecasting." },
+    {
+      num: "01",
+      icon: Smartphone,
+      title: "Mobile App Development",
+      desc: "High-performance native Android (Kotlin, Jetpack Compose) and cross-platform apps (Flutter, Dart) with fluid 60fps animations, intuitive UI, and offline-first data synchronization.",
+      tags: ["Native Android", "Flutter & Dart", "Jetpack Compose", "Material 3"],
+    },
+    {
+      num: "02",
+      icon: Code2,
+      title: "Frontend Web Development",
+      desc: "Fast, responsive, and SEO-optimized web applications crafted with React, TypeScript, and modern styling solutions that deliver interactive user experiences.",
+      tags: ["React & Vite", "TypeScript", "Tailwind CSS", "SEO Optimization"],
+    },
+    {
+      num: "03",
+      icon: Cloud,
+      title: "Firebase & Cloud Architecture",
+      desc: "End-to-end cloud backend integration encompassing secure authentication, real-time Firestore database schema design, offline caching, and push notification flows.",
+      tags: ["Cloud Firestore", "Auth Workflows", "Real-Time Sync", "Push Alerts"],
+    },
+    {
+      num: "04",
+      icon: Zap,
+      title: "API Integration & Backend",
+      desc: "Developing decoupled Python Flask REST APIs, designing clean network abstraction layers with Retrofit, and orchestrating reliable client-server communication.",
+      tags: ["Python Flask", "Retrofit2 REST", "Async Coroutines", "JSON Schema"],
+    },
+    {
+      num: "05",
+      icon: Brain,
+      title: "AI Integration & Machine Learning",
+      desc: "Embedding generative AI intelligence (Groq, Gemini APIs) into mobile and web apps, alongside deploying custom forecasting and regression models.",
+      tags: ["Gemini & Groq", "AI Prompting", "TensorFlow Models", "Smart Forecasting"],
+    },
+    {
+      num: "06",
+      icon: Layers,
+      title: "Architecture & DevOps Deployment",
+      desc: "Structuring projects around clean MVVM design patterns, configuring automated CI/CD deployment pipelines on Vercel and Cloudflare, and performance profiling.",
+      tags: ["Clean Architecture", "MVVM Pattern", "Vercel & DNS", "Git Workflow"],
+    },
   ];
+
   return (
-    <section id="services" className="relative py-24 px-6">
+    <section id="services" className="relative py-20 sm:py-24 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
-        <SectionHeader eyebrow="Services" title="What I can build for you" />
+        <SectionHeader
+          eyebrow="Solutions"
+          title="What I Can Build For You"
+          subtitle="End-to-end engineering from architectural concept to polished production release."
+        />
         <motion.div
-          initial="hidden" whileInView="show" viewport={{ once: true }} variants={stagger}
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          variants={stagger}
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6"
         >
           {services.map((s) => (
-            <motion.div key={s.title} variants={fadeUp}>
-              <Card className="group p-7 rounded-3xl border-0 shadow-card hover:shadow-glow hover:-translate-y-1 transition-all duration-300 h-full">
-                <div className="w-14 h-14 rounded-2xl bg-hero-gradient flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                  <s.icon className="w-7 h-7 text-white" />
+            <motion.div key={s.title} variants={fadeUp} className="h-full">
+              <Card className="group relative p-6 sm:p-7 rounded-3xl border border-border/70 bg-card/60 backdrop-blur-xl hover:border-primary/40 hover:-translate-y-1.5 transition-all duration-300 h-full flex flex-col justify-between shadow-sm hover:shadow-card overflow-hidden">
+                <div>
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-[0_0_20px_rgba(59,130,246,0.35)] transition-all duration-300">
+                      <s.icon className="w-6 h-6" />
+                    </div>
+                    <span className="text-xs font-mono font-semibold text-muted-foreground/50 tracking-wider">
+                      {s.num}
+                    </span>
+                  </div>
+
+                  <h3 className="text-base sm:text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-2.5">
+                    {s.title}
+                  </h3>
+
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-5">
+                    {s.desc}
+                  </p>
                 </div>
-                <h3 className="text-lg font-semibold mb-2">{s.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{s.desc}</p>
+
+                <div className="flex flex-wrap gap-1.5 pt-4 border-t border-border/40">
+                  {s.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[11px] font-medium px-2.5 py-0.5 rounded-md border border-border/50 bg-muted/40 text-muted-foreground"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </Card>
             </motion.div>
           ))}
