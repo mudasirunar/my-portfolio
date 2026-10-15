@@ -2840,7 +2840,7 @@ function Contact() {
                   <Input
                     required
                     className="mt-1.5 rounded-xl border-border/70 bg-background/50 focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:border-primary/60 transition-all text-sm"
-                    placeholder="Mudasir Ali"
+                    placeholder="Full Name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   />
