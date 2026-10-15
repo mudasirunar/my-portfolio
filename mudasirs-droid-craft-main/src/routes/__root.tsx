@@ -97,6 +97,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: favicon,
       },
       {
+        rel: "apple-touch-icon",
+        href: favicon,
+      },
+      {
         rel: "canonical",
         href: "https://mudasir.tech/",
       },
