@@ -5,7 +5,7 @@ import {
   Github, Linkedin, Mail, Phone, Download, ArrowRight, ArrowLeft, Code2, Smartphone,
   Database, Cloud, Cpu, Layers, GitBranch, Sparkles, Briefcase, GraduationCap,
   Palette, Zap, Brain, Send, MapPin, Bug, TestTube, X, ChevronLeft, ChevronRight, ExternalLink, Award,
-  Sun, Moon, Menu
+  Sun, Moon, Menu, ArrowUpRight, CheckCircle2, Loader2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -2774,7 +2774,7 @@ function Contact() {
       setStatus("success");
       logAnalyticsEvent("contact_form_submit", { status: "success" });
       setFormData({ name: "", email: "", subject: "", message: "" });
-      setTimeout(() => setStatus("idle"), 3000);
+      setTimeout(() => setStatus("idle"), 4000);
     } catch (error) {
       console.error(error);
       logAnalyticsEvent("contact_form_submit", { status: "failed", error: error instanceof Error ? error.message : String(error) });
@@ -2785,92 +2785,135 @@ function Contact() {
   };
 
   const cards = [
-    { icon: Mail, label: "Email", value: "unarmudasir@gmail.com", href: "mailto:unarmudasir@gmail.com" },
-    { icon: Phone, label: "Phone", value: "+92 326 8920883", href: "tel:+923268920883" },
-    { icon: Linkedin, label: "LinkedIn", value: "mudasir-ali", href: "https://www.linkedin.com/in/mudasir-ali-442196261" },
-    { icon: Github, label: "GitHub", value: "mudasirunar", href: "https://github.com/mudasirunar" },
+    { icon: Mail, label: "Direct Email", value: "unarmudasir@gmail.com", href: "mailto:unarmudasir@gmail.com" },
+    { icon: Phone, label: "Phone & WhatsApp", value: "+92 326 8920883", href: "tel:+923268920883" },
+    { icon: Linkedin, label: "LinkedIn Profile", value: "in/mudasir-ali-442196261", href: "https://www.linkedin.com/in/mudasir-ali-442196261" },
+    { icon: Github, label: "GitHub Profile", value: "github.com/mudasirunar", href: "https://github.com/mudasirunar" },
   ];
+
   return (
-    <section id="contact" className="relative py-24 px-6 overflow-hidden">
-      <div className="blob bg-primary w-[400px] h-[400px] -top-20 -right-20" />
-      <div className="blob bg-purple w-[400px] h-[400px] -bottom-20 -left-20" />
+    <section id="contact" className="relative py-20 sm:py-24 px-4 sm:px-6 bg-soft-gradient overflow-hidden">
       <div className="relative z-10 max-w-6xl mx-auto">
-        <SectionHeader eyebrow="Contact" title="Let's build something together" subtitle="Got a project, role, or idea? Drop me a message." />
+        <SectionHeader
+          eyebrow="Get In Touch"
+          title="Let's Build Something Exceptional"
+          subtitle="Open to full-time engineering roles, freelance opportunities, or technical collaboration."
+        />
+
         <div className="grid lg:grid-cols-5 gap-6">
-          <div className="lg:col-span-2 space-y-3">
+          {/* Quick Contact Cards */}
+          <div className="lg:col-span-2 space-y-3.5">
             {cards.map((c) => (
-              <a key={c.label} href={c.href} target="_blank" rel="noreferrer">
-                <Card className="p-5 rounded-2xl border-0 shadow-card glass hover:shadow-glow hover:-translate-y-0.5 transition-all flex items-center gap-4">
-                  <div className="w-11 h-11 rounded-xl bg-hero-gradient flex items-center justify-center shrink-0">
-                    <c.icon className="w-5 h-5 text-white" />
+              <a key={c.label} href={c.href} target="_blank" rel="noreferrer" className="block group">
+                <Card className="p-4 sm:p-5 rounded-2xl border border-border/70 bg-card/60 backdrop-blur-xl shadow-xs hover:shadow-card hover:border-primary/40 hover:-translate-y-1 transition-all duration-300 flex items-center gap-4">
+                  <div className="w-11 h-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-105 transition-all duration-200 shrink-0">
+                    <c.icon className="w-5 h-5" />
                   </div>
-                  <div className="min-w-0">
-                    <div className="text-xs text-muted-foreground">{c.label}</div>
-                    <div className="font-medium truncate">{c.value}</div>
+                  <div className="min-w-0 flex-1">
+                    <div className="text-xs text-muted-foreground font-medium">{c.label}</div>
+                    <div className="font-semibold text-sm sm:text-base text-foreground truncate group-hover:text-primary transition-colors">{c.value}</div>
                   </div>
+                  <ArrowUpRight className="w-4 h-4 text-muted-foreground/50 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-200 shrink-0" />
                 </Card>
               </a>
             ))}
-            <Card className="p-5 rounded-2xl border-0 shadow-card glass flex items-center gap-4">
-              <div className="w-11 h-11 rounded-xl bg-teal/20 flex items-center justify-center shrink-0">
-                <Phone className="w-5 h-5 text-teal" />
+
+            <Card className="p-4 sm:p-5 rounded-2xl border border-border/70 bg-card/60 backdrop-blur-xl shadow-xs flex items-center gap-4">
+              <div className="w-11 h-11 rounded-xl bg-muted/60 border border-border/60 flex items-center justify-center text-muted-foreground shrink-0">
+                <Phone className="w-5 h-5" />
               </div>
-              <div>
-                <div className="text-xs text-muted-foreground">Alt Phone</div>
-                <div className="font-medium">+92 312 3842557</div>
+              <div className="min-w-0">
+                <div className="text-xs text-muted-foreground font-medium">Alternative Contact</div>
+                <div className="font-medium text-sm sm:text-base text-foreground">+92 312 3842557</div>
               </div>
             </Card>
           </div>
 
-          <Card className="lg:col-span-3 p-8 rounded-3xl border-0 shadow-card glass">
-            <form className="space-y-4" onSubmit={handleSubmit}>
+          {/* Form Card */}
+          <Card className="lg:col-span-3 p-6 sm:p-8 rounded-3xl border border-border/70 bg-card/60 backdrop-blur-xl shadow-card">
+            <form className="space-y-4 sm:space-y-5" onSubmit={handleSubmit}>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="text-sm font-medium">Name</label>
+                  <label className="text-xs sm:text-sm font-medium text-foreground">
+                    Your Name <span className="text-primary">*</span>
+                  </label>
                   <Input
                     required
-                    className="mt-1.5 rounded-xl"
-                    placeholder="Your name"
+                    className="mt-1.5 rounded-xl border-border/70 bg-background/50 focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:border-primary/60 transition-all text-sm"
+                    placeholder="Mudasir Ali"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   />
                 </div>
                 <div>
-                  <label className="text-sm font-medium">Email</label>
+                  <label className="text-xs sm:text-sm font-medium text-foreground">
+                    Your Email <span className="text-primary">*</span>
+                  </label>
                   <Input
                     required
                     type="email"
-                    className="mt-1.5 rounded-xl"
-                    placeholder="you@email.com"
+                    className="mt-1.5 rounded-xl border-border/70 bg-background/50 focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:border-primary/60 transition-all text-sm"
+                    placeholder="name@company.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   />
                 </div>
               </div>
+
               <div>
-                <label className="text-sm font-medium">Subject</label>
+                <label className="text-xs sm:text-sm font-medium text-foreground">
+                  Subject / Topic
+                </label>
                 <Input
-                  className="mt-1.5 rounded-xl"
-                  placeholder="What's this about?"
+                  className="mt-1.5 rounded-xl border-border/70 bg-background/50 focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:border-primary/60 transition-all text-sm"
+                  placeholder="Opportunity: Android Engineer / Project Consultation"
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                 />
               </div>
+
               <div>
-                <label className="text-sm font-medium">Message</label>
+                <label className="text-xs sm:text-sm font-medium text-foreground">
+                  Message <span className="text-primary">*</span>
+                </label>
                 <Textarea
                   required
-                  className="mt-1.5 rounded-xl min-h-32"
-                  placeholder="Tell me about your project..."
+                  className="mt-1.5 rounded-xl border-border/70 bg-background/50 focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:border-primary/60 transition-all min-h-32 text-sm resize-none"
+                  placeholder="Describe your project, role scope, or question..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 />
               </div>
-              <Button type="submit" disabled={isSubmitting} size="lg" className="rounded-full w-full shadow-glow">
-                {isSubmitting ? "Sending..." : status === "success" ? "Message Sent!" : "Send Message"}
-                {!isSubmitting && status !== "success" && <Send className="w-4 h-4 ml-2" />}
+
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                size="lg"
+                className="rounded-full w-full shadow-glow bg-primary hover:bg-primary/90 text-primary-foreground font-semibold cursor-pointer transition-all duration-200"
+              >
+                {isSubmitting ? (
+                  <span className="flex items-center gap-2">
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    Sending Message...
+                  </span>
+                ) : status === "success" ? (
+                  <span className="flex items-center gap-2 text-white">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                    Message Delivered Successfully!
+                  </span>
+                ) : (
+                  <span className="flex items-center gap-2">
+                    Send Message
+                    <Send className="w-4 h-4" />
+                  </span>
+                )}
               </Button>
-              {status === "error" && <p className="text-destructive text-sm text-center">Failed to send message. Please try again.</p>}
+
+              {status === "error" && (
+                <p className="text-destructive text-xs sm:text-sm text-center pt-1">
+                  Failed to send message. Please reach out directly to unarmudasir@gmail.com.
+                </p>
+              )}
             </form>
           </Card>
         </div>
@@ -2881,25 +2924,39 @@ function Contact() {
 
 function Footer() {
   return (
-    <footer className="border-t py-10 px-6">
+    <footer className="relative border-t border-border/70 py-12 px-4 sm:px-6 bg-card/40 backdrop-blur-xl">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-        <div>
-          <div className="font-display font-bold text-lg tracking-tight text-foreground">Mudasir.tech</div>
-          <p className="text-sm text-muted-foreground mt-1">Engineering high-performance mobile & web solutions.</p>
+        <div className="text-center md:text-left">
+          <a href="#hero" className="font-display font-bold text-lg tracking-tight text-foreground hover:text-primary transition-colors">
+            Mudasir.tech
+          </a>
+          <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+            Engineering high-performance mobile &amp; web solutions.
+          </p>
         </div>
-        <div className="flex items-center gap-2">
+
+        <div className="flex items-center gap-2.5">
           {[
-            { icon: Github, href: "https://github.com/mudasirunar" },
-            { icon: Linkedin, href: "https://www.linkedin.com/in/mudasir-ali-442196261" },
-            { icon: Mail, href: "mailto:unarmudasir@gmail.com" },
+            { icon: Github, href: "https://github.com/mudasirunar", label: "GitHub" },
+            { icon: Linkedin, href: "https://www.linkedin.com/in/mudasir-ali-442196261", label: "LinkedIn" },
+            { icon: Mail, href: "mailto:unarmudasir@gmail.com", label: "Email" },
           ].map((s, i) => (
-            <a key={i} href={s.href} target="_blank" rel="noreferrer"
-              className="w-10 h-10 rounded-full glass flex items-center justify-center hover:shadow-glow hover:-translate-y-0.5 transition-all">
+            <a
+              key={i}
+              href={s.href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={s.label}
+              className="w-10 h-10 rounded-full border border-border/70 bg-card/60 backdrop-blur-md flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/50 hover:bg-primary/10 hover:shadow-glow hover:-translate-y-0.5 transition-all duration-200"
+            >
               <s.icon className="w-4 h-4" />
             </a>
           ))}
         </div>
-        <div className="text-sm text-muted-foreground">© {new Date().getFullYear()} Mudasir Ali</div>
+
+        <div className="text-xs sm:text-sm text-muted-foreground text-center md:text-right">
+          © {new Date().getFullYear()} Mudasir Ali · All rights reserved.
+        </div>
       </div>
     </footer>
   );
